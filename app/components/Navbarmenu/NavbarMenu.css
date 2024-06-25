@@ -1,0 +1,30 @@
+.navbar_bottom {
+  width: 100%;
+  margin-top: 5.5rem;
+  display: flex;
+  justify-content: center;
+  justify-content: center;
+  color: #fff;
+  background-color: #444;
+  box-shadow: 3px 4px 3px #555;
+}
+.navbar_bottom ul {
+  display: flex;
+  gap: 1rem;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+.navbar_bottom ul li {
+  margin: 10px 20px;
+  transition: 0.3s ease;
+}
+.navbar_bottom ul li:hover {
+  color: #999;
+}
+
+@media screen and (max-width: 789px) {
+  .navbar_bottom {
+    display: none;
+  }
+}

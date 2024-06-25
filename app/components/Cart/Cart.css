@@ -1,0 +1,92 @@
+.cart {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.cart_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+}
+.cart_container h1 {
+  margin-bottom: 1rem;
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 98%;
+}
+thead,
+tbody {
+  text-align: center;
+  width: 100%;
+}
+
+td,
+th {
+  border: 1px solid #333;
+  text-align: left;
+  padding: 8px;
+  text-align: center;
+}
+
+tr:nth-child(even) {
+  background-color: #ccc;
+}
+tr:nth-child(odd) {
+  background-color: #999;
+}
+
+.quantity-counter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+.quantity-counter .value {
+  border: 1px solid #adadad;
+  border-radius: 3px;
+  width: 40px;
+  margin: 2px 5px;
+  padding: 4px;
+  text-align: center;
+  -moz-appearance: textfield;
+  &::-webkit-outer-spin-button,
+  &::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+}
+.quantity-counter .increment,
+.quantity-counter .decrement {
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  border-radius: 3px;
+  background: blue;
+  color: #fff;
+  height: 30px;
+  width: 30px;
+}
+.cart_Check {
+  padding: 1rem;
+}
+.cart_Check button {
+  background-color: rgb(15, 15, 194);
+  padding: 10px 20px;
+  border-radius: 10px;
+  color: #fff;
+  font-weight: bold;
+  transition: 0.3s ease;
+}
+.cart_Check button:hover {
+  background-color: rgb(0, 0, 255);
+}
+.cart_Check button:active {
+  transform: scale(0.95);
+}

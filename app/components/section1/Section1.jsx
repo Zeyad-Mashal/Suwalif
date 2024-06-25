@@ -1,0 +1,140 @@
+"use client";
+import React from "react";
+// Import Swiper React components
+import { Swiper, SwiperSlide } from "swiper/react";
+
+// Import Swiper styles
+import "swiper/css";
+import "swiper/css/pagination";
+
+import "./Section1.css";
+
+// import required modules
+import { Pagination } from "swiper/modules";
+
+import Image from "next/image";
+import "./Section1.css";
+const Section1 = () => {
+  return (
+    <section className="section1">
+      <div className="section1_container">
+        <h2>Most common</h2>
+        <div className="section1_list">
+          <Swiper
+            slidesPerView={"auto"}
+            spaceBetween={10}
+            pagination={{
+              clickable: true,
+            }}
+            modules={[Pagination]}
+            className="mySwiper"
+          >
+            <SwiperSlide>
+              <div className="section1_item">
+                <Image
+                  src="/images/product.jpeg"
+                  width={200}
+                  height={200}
+                  alt="product image"
+                />
+                <div className="item_content">
+                  <h3>أوراق شاي كاملة علبة معدنية</h3>
+                  <p>20 SAR</p>
+                </div>
+                <div className="cart_btn">
+                  <button>Add to Cart</button>
+                </div>
+              </div>
+            </SwiperSlide>
+            <SwiperSlide>
+              <div className="section1_item">
+                <Image
+                  src="/images/product.jpeg"
+                  width={200}
+                  height={200}
+                  alt="product image"
+                />
+                <div className="item_content">
+                  <h3>أوراق شاي كاملة علبة معدنية</h3>
+                  <p>20 SAR</p>
+                </div>
+                <div className="cart_btn">
+                  <button>Add to Cart</button>
+                </div>
+              </div>
+            </SwiperSlide>
+            <SwiperSlide>
+              <div className="section1_item">
+                <Image
+                  src="/images/product.jpeg"
+                  width={200}
+                  height={200}
+                  alt="product image"
+                />
+                <div className="item_content">
+                  <h3>أوراق شاي كاملة علبة معدنية</h3>
+                  <p>20 SAR</p>
+                </div>
+                <div className="cart_btn">
+                  <button>Add to Cart</button>
+                </div>
+              </div>
+            </SwiperSlide>
+            <SwiperSlide>
+              <div className="section1_item">
+                <Image
+                  src="/images/product.jpeg"
+                  width={200}
+                  height={200}
+                  alt="product image"
+                />
+                <div className="item_content">
+                  <h3>أوراق شاي كاملة علبة معدنية</h3>
+                  <p>20 SAR</p>
+                </div>
+                <div className="cart_btn">
+                  <button>Add to Cart</button>
+                </div>
+              </div>
+            </SwiperSlide>
+            <SwiperSlide>
+              <div className="section1_item">
+                <Image
+                  src="/images/product.jpeg"
+                  width={200}
+                  height={200}
+                  alt="product image"
+                />
+                <div className="item_content">
+                  <h3>أوراق شاي كاملة علبة معدنية</h3>
+                  <p>20 SAR</p>
+                </div>
+                <div className="cart_btn">
+                  <button>Add to Cart</button>
+                </div>
+              </div>
+            </SwiperSlide>
+          </Swiper>
+        </div>
+      </div>
+
+      <div>
+        <Image
+          src="/images/banner1.jpg"
+          width={1500}
+          height={100}
+          alt="banner image"
+        />
+      </div>
+
+      <div className="shapes">
+        <Image src="/images/shape-4.png" width={250} height={100} alt="shape" />
+      </div>
+      <div className="shapes2">
+        <Image src="/images/shape-5.png" width={250} height={100} alt="shape" />
+      </div>
+    </section>
+  );
+};
+
+export default Section1;
