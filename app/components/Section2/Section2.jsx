@@ -1,5 +1,6 @@
 "use client";
 import React from "react";
+import "./Section2.css";
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
 
@@ -7,13 +8,10 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
 
-import "./Section2.css";
-
 // import required modules
 import { Pagination } from "swiper/modules";
 
 import Image from "next/image";
-import "./section2.css";
 const Section2 = () => {
   return (
     <section className="section2">
