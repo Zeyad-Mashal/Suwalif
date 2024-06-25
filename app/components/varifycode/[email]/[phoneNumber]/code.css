@@ -1,13 +1,13 @@
 .register_conatiner {
   width: 100%;
-  height: 100vh;
+  height: auto;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 .image_register {
   width: 50%;
-  height: 100vh;
+  height: 100%;
 }
 .image_register img {
   width: 100%;

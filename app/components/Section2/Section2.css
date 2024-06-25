@@ -97,6 +97,13 @@
   right: 20px;
   width: 100;
 }
+.section2_list .swiper .swiper-pagination .swiper-pagination-bullet {
+  background-color: goldenrod;
+}
+.section2_list .swiper .swiper-pagination .swiper-pagination-bullet-active {
+  width: 10px;
+  height: 10px;
+}
 @media screen and (max-width: 589px) {
   .section2_container h2 {
     font-size: 1.2rem;
