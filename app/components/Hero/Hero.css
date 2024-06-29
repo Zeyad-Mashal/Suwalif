@@ -2,7 +2,7 @@
   width: 100%;
 }
 .hero .swiper {
-  height: 80vh;
+  height: 90vh;
 }
 .hero .swiper .swiper-pagination .swiper-pagination-bullet {
   background-color: goldenrod;
@@ -33,8 +33,11 @@
 @media screen and (max-width: 489px) {
   .hero .swiper {
     margin-top: 8rem;
-    height: 25vh;
+    height: 20vh;
   }
+  /* .hero .swiper img {
+    height: auto;
+  } */
   .hero .swiper .swiper-button-prev,
   .hero .swiper .swiper-button-next {
     display: none;

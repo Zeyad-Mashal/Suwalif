@@ -17,7 +17,8 @@
   color: #fff;
   font-size: 28px;
   font-weight: bold;
-  margin-bottom: 1rem;
+  margin: 10px 0;
+  z-index: 2;
 }
 .section1_list {
   width: 100%;
@@ -42,7 +43,7 @@
 }
 .section1_item .item_content {
   color: #fff;
-  margin-right: 1rem;
+  margin: 0 1rem 5px 1rem;
 }
 .section1_item .item_content h3 {
   margin: 5px;
@@ -50,6 +51,22 @@
 }
 .section1_item .item_content p {
   color: goldenrod;
+}
+.section1 .price {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-left: 1.5rem;
+}
+.section1 .price svg {
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+.addtofav {
+  color: red;
+  transform: scale(1.1);
 }
 .section1_item .cart_btn {
   display: flex;

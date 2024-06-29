@@ -7,6 +7,7 @@ import {
   faUser,
   faBars,
   faXmark,
+  faHeart,
 } from "@fortawesome/free-solid-svg-icons";
 import Link from "next/link";
 
@@ -25,14 +26,16 @@ const NavbarTop = () => {
   return (
     <>
       <div className="navbar_top">
-        <Image
-          src="/images/logo.png"
-          width={110}
-          height={110}
-          alt="logo"
-          loading="lazy"
-          className="logo_image mr-5"
-        />
+        <Link href={"/"}>
+          <Image
+            src="/images/logo.png"
+            width={110}
+            height={110}
+            alt="logo"
+            loading="lazy"
+            className="logo_image mr-5"
+          />
+        </Link>
 
         <div className="search">
           <input type="text" placeholder="بحث" />
@@ -45,6 +48,9 @@ const NavbarTop = () => {
           <span className="cart_count">1</span>
           <Link href="/components/register">
             <FontAwesomeIcon icon={faUser} width={30} />
+          </Link>
+          <Link href={"/"}>
+            <FontAwesomeIcon icon={faHeart} />
           </Link>
         </div>
       </div>
@@ -60,11 +66,17 @@ const NavbarTop = () => {
             className="logo_image mr-5"
           />
           <div className="nav_icons">
-            <FontAwesomeIcon icon={faBagShopping} width={30} />
+            <Link href="/components/Cart">
+              <FontAwesomeIcon icon={faBagShopping} width={30} />
+            </Link>
             <span className="cart_count">1</span>
             <Link href="/components/register">
               <FontAwesomeIcon icon={faUser} width={30} />
             </Link>
+            <Link href={"/"}>
+              <FontAwesomeIcon icon={faHeart} width={30} />
+            </Link>
+
             <FontAwesomeIcon
               icon={faBars}
               width={30}
