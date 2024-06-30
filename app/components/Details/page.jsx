@@ -3,8 +3,9 @@ import React, { useState } from "react";
 import Image from "next/image";
 import "./Details.css";
 import NavbarTop from "../Navbartop/Navbar";
+import Stars from "../Stars/Stars";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faHeart } from "@fortawesome/free-solid-svg-icons";
+import { faHeart, faStar } from "@fortawesome/free-solid-svg-icons";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 // Import Swiper styles
@@ -99,6 +100,110 @@ const Details = () => {
                   <button>Add To Cart</button>
                   <FontAwesomeIcon icon={faHeart} />
                 </div>
+              </div>
+            </div>
+          </div>
+          <div className="testemonials">
+            <h2>Testemonials</h2>
+            <div className="stars">
+              <Stars />
+            </div>
+            <div className="review">
+              <p>Your Message</p>
+              <textarea />
+              <button>Send</button>
+            </div>
+          </div>
+          <div className="relatedProducts">
+            <h2>Related Products</h2>
+            <div className="relatedProductsList">
+              <div className="relatedProducts_item">
+                <Image
+                  src="/images/product.jpeg"
+                  width={1000}
+                  height={1000}
+                  alt="related product"
+                />
+                <h3>name Here</h3>
+                <h4>100 SAR</h4>
+                <button>Add To Cart</button>
+              </div>
+              <div className="relatedProducts_item">
+                <Image
+                  src="/images/product.jpeg"
+                  width={1000}
+                  height={1000}
+                  alt="related product"
+                />
+                <h3>name Here</h3>
+                <h4>100 SAR</h4>
+                <button>Add To Cart</button>
+              </div>
+              <div className="relatedProducts_item">
+                <Image
+                  src="/images/product.jpeg"
+                  width={1000}
+                  height={1000}
+                  alt="related product"
+                />
+                <h3>name Here</h3>
+                <h4>100 SAR</h4>
+                <button>Add To Cart</button>
+              </div>
+              <div className="relatedProducts_item">
+                <Image
+                  src="/images/product.jpeg"
+                  width={1000}
+                  height={1000}
+                  alt="related product"
+                />
+                <h3>name Here</h3>
+                <h4>100 SAR</h4>
+                <button>Add To Cart</button>
+              </div>
+              <div className="relatedProducts_item">
+                <Image
+                  src="/images/product.jpeg"
+                  width={1000}
+                  height={1000}
+                  alt="related product"
+                />
+                <h3>name Here</h3>
+                <h4>100 SAR</h4>
+                <button>Add To Cart</button>
+              </div>
+              <div className="relatedProducts_item">
+                <Image
+                  src="/images/product.jpeg"
+                  width={1000}
+                  height={1000}
+                  alt="related product"
+                />
+                <h3>name Here</h3>
+                <h4>100 SAR</h4>
+                <button>Add To Cart</button>
+              </div>
+              <div className="relatedProducts_item">
+                <Image
+                  src="/images/product.jpeg"
+                  width={1000}
+                  height={1000}
+                  alt="related product"
+                />
+                <h3>name Here</h3>
+                <h4>100 SAR</h4>
+                <button>Add To Cart</button>
+              </div>
+              <div className="relatedProducts_item">
+                <Image
+                  src="/images/product.jpeg"
+                  width={1000}
+                  height={1000}
+                  alt="related product"
+                />
+                <h3>name Here</h3>
+                <h4>100 SAR</h4>
+                <button>Add To Cart</button>
               </div>
             </div>
           </div>
