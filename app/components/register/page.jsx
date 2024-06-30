@@ -53,7 +53,7 @@ const RegisterPage = () => {
             <h2 className="text-center">Register</h2>
             <input
               type="text"
-              placeholder="أسمك في الموقع"
+              placeholder="أسمك"
               value={userName}
               onChange={(e) => setUserName(e.target.value)}
             />

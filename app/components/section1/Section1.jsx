@@ -17,6 +17,7 @@ import "./Section1.css";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart } from "@fortawesome/free-solid-svg-icons";
+import Link from "next/link";
 const Section1 = () => {
   const addtoFav = () => {
     document.querySelector(".price svg").classList.toggle("addtofav");
@@ -29,6 +30,8 @@ const Section1 = () => {
           <Swiper
             slidesPerView={"auto"}
             spaceBetween={10}
+            mousewheel={true}
+            cssMode={true}
             pagination={{
               clickable: true,
             }}
@@ -36,24 +39,26 @@ const Section1 = () => {
             className="mySwiper"
           >
             <SwiperSlide>
-              <div className="section1_item">
-                <Image
-                  src="/images/product.jpeg"
-                  width={200}
-                  height={200}
-                  alt="product image"
-                />
-                <div className="item_content">
-                  <h3>أوراق شاي كاملة علبة معدنية</h3>
-                  <div className="price">
-                    <p>20 SAR</p>
-                    <FontAwesomeIcon icon={faHeart} onClick={addtoFav} />
+              <Link href="/components/Details">
+                <div className="section1_item">
+                  <Image
+                    src="/images/product.jpeg"
+                    width={200}
+                    height={200}
+                    alt="product image"
+                  />
+                  <div className="item_content">
+                    <h3>أوراق شاي كاملة علبة معدنية</h3>
+                    <div className="price">
+                      <p>20 SAR</p>
+                      <FontAwesomeIcon icon={faHeart} onClick={addtoFav} />
+                    </div>
+                  </div>
+                  <div className="cart_btn">
+                    <button>Add to Cart</button>
                   </div>
                 </div>
-                <div className="cart_btn">
-                  <button>Add to Cart</button>
-                </div>
-              </div>
+              </Link>
             </SwiperSlide>
             <SwiperSlide>
               <div className="section1_item">

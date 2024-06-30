@@ -21,6 +21,8 @@ const Section2 = () => {
           <Swiper
             slidesPerView={"auto"}
             spaceBetween={10}
+            mousewheel={true}
+            cssMode={true}
             pagination={{
               clickable: true,
             }}

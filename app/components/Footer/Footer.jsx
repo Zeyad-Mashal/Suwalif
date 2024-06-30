@@ -5,6 +5,7 @@ import {
   faInstagram,
   faSnapchat,
   faXTwitter,
+  faTiktok,
 } from "@fortawesome/free-brands-svg-icons";
 import { faEarthAmericas } from "@fortawesome/free-solid-svg-icons";
 import "./Footer.css";
@@ -23,6 +24,7 @@ const Footer = () => {
 
           <FontAwesomeIcon icon={faSnapchat} />
           <FontAwesomeIcon icon={faXTwitter} />
+          <FontAwesomeIcon icon={faTiktok} />
           <Link href="https://suwaliftea.com/" target="_blank">
             <FontAwesomeIcon icon={faEarthAmericas} />
           </Link>
@@ -32,6 +34,7 @@ const Footer = () => {
             <form>
               <h3>تواصل معنا</h3>
               <input type="text" placeholder="اسمك" />
+              <input type="text" placeholder="رقم الهاتف" />
               <textarea placeholder="رسالتك"></textarea>
               <button>ارسال</button>
             </form>
