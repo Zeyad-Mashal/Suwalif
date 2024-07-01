@@ -106,11 +106,14 @@
   color: #fff;
   background-color: #111;
   box-shadow: -3px -4px 3px #333;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 .navbar_bottom_mobile ul {
   display: flex;
   gap: 1rem;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 .navbar_bottom_mobile svg {
   position: absolute;

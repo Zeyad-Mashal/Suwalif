@@ -16,7 +16,7 @@ const Section2 = () => {
   return (
     <section className="section2">
       <div className="section2_container">
-        <h2>Most common 2</h2>
+        <h2>عروضنا</h2>
         <div className="section2_list">
           <Swiper
             slidesPerView={"auto"}

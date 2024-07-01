@@ -8,19 +8,28 @@ const NavbarMenu = () => {
       <nav className="navbar_bottom">
         <ul>
           <li>
-            <Link href="/">Home</Link>
+            <Link href="/">الصفحة الرئيسية</Link>
           </li>
           <li>
-            <Link href="/">Home</Link>
+            <Link href="/">عروضنا</Link>
           </li>
           <li>
-            <Link href="/">Home</Link>
+            <Link href="/">الشاي الاسود</Link>
           </li>
           <li>
-            <Link href="/">Home</Link>
+            <Link href="/">الشاي الاخضر</Link>
           </li>
           <li>
-            <Link href="/">Home</Link>
+            <Link href="/">الشاي المنكه</Link>
+          </li>
+          <li>
+            <Link href="/">ادوات الشاي</Link>
+          </li>
+          <li>
+            <Link href="/">مجموعات توفير</Link>
+          </li>
+          <li>
+            <Link href="/">مع شاي سوالف</Link>
           </li>
         </ul>
       </nav>

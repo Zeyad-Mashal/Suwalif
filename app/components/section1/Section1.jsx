@@ -25,7 +25,7 @@ const Section1 = () => {
   return (
     <section className="section1">
       <div className="section1_container">
-        <h2>Most common</h2>
+        <h2>الأكثر مبيعا</h2>
         <div className="section1_list">
           <Swiper
             slidesPerView={"auto"}

@@ -5,6 +5,7 @@ import Hero from "./components/Hero/Hero"
 import Section1 from "./components/section1/Section1"
 import Section2 from "./components/Section2/Section2"
 import Footer from "./components/Footer/Footer"
+
 export const metadata: Metadata = {
   title: "Suwalif",
   description: "Created By Zeyad Mashaal",
