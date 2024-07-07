@@ -50,6 +50,30 @@
   color: #999;
   margin-top: 1rem;
 }
+.details_item .item_content .leaves_rating {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 10px;
+}
+.details_item .item_content .leaves_rating .leaves_rating_leaves {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+}
+.details_item .item_content .leaves_rating svg {
+  color: #fff;
+}
+.details_item .item_content .leaves_rating .leaves_rating_word {
+  color: #aaa;
+  font-size: 0.9rem;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+}
 .price_quantity {
   width: 95%;
   display: flex;

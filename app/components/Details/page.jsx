@@ -5,7 +5,7 @@ import "./Details.css";
 import NavbarTop from "../Navbartop/Navbar";
 import Stars from "../Stars/Stars";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faHeart, faStar } from "@fortawesome/free-solid-svg-icons";
+import { faHeart, faLeaf } from "@fortawesome/free-solid-svg-icons";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 // Import Swiper styles
@@ -76,6 +76,18 @@ const Details = () => {
               <h3>Product Name here</h3>
               <span>100 pice</span>
               <h4>100 SAR</h4>
+              <div className="leaves_rating">
+                <div className="leaves_rating_leaves">
+                  <FontAwesomeIcon icon={faLeaf} width={30} />
+                  <FontAwesomeIcon icon={faLeaf} width={30} />
+                  <FontAwesomeIcon icon={faLeaf} width={30} />
+                  <FontAwesomeIcon icon={faLeaf} width={30} />
+                  <FontAwesomeIcon icon={faLeaf} width={30} />
+                </div>
+                <div className="leaves_rating_word">
+                  <p>قوي و مكثف</p>
+                </div>
+              </div>
               <p>
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos,
                 ut quidem temporibus beatae iste consequatur fuga debitis, id

@@ -3,14 +3,13 @@ import "./Navbar.css";
 import Image from "next/image";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  faBagShopping,
+  faCartShopping,
   faUser,
   faBars,
   faXmark,
   faHeart,
 } from "@fortawesome/free-solid-svg-icons";
 import Link from "next/link";
-
 const NavbarTop = () => {
   const openMobileNavbar = () => {
     document
@@ -43,7 +42,7 @@ const NavbarTop = () => {
 
         <div className="nav_icons">
           <Link href="/components/Cart">
-            <FontAwesomeIcon icon={faBagShopping} width={30} />
+            <FontAwesomeIcon icon={faCartShopping} width={30} />
           </Link>
           <span className="cart_count">1</span>
           <Link href="/components/register">
@@ -52,6 +51,12 @@ const NavbarTop = () => {
           <Link href={"/"}>
             <FontAwesomeIcon icon={faHeart} />
           </Link>
+          <Image
+            src="/images/saudi-arabia.png"
+            width={40}
+            height={40}
+            style={{ cursor: "auto" }}
+          />
         </div>
       </div>
 
@@ -67,7 +72,7 @@ const NavbarTop = () => {
           />
           <div className="nav_icons">
             <Link href="/components/Cart">
-              <FontAwesomeIcon icon={faBagShopping} width={30} />
+              <FontAwesomeIcon icon={faCartShopping} width={30} />
             </Link>
             <span className="cart_count">1</span>
             <Link href="/components/register">
