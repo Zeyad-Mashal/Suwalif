@@ -6,6 +6,7 @@
   flex-direction: column;
   background-color: #111;
   position: relative;
+  font-family: myriad-arabic, sans-serif;
 }
 .section2_container {
   width: 100%;

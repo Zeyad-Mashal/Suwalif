@@ -52,7 +52,7 @@ const NavbarTop = () => {
             <FontAwesomeIcon icon={faHeart} />
           </Link>
           <Image
-            src="/images/saudi-arabia.png"
+            src="/images/saudi-arabia-flag-icon.png"
             width={40}
             height={40}
             style={{ cursor: "auto" }}

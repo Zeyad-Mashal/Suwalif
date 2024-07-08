@@ -6,11 +6,12 @@ import { Swiper, SwiperSlide } from "swiper/react";
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/pagination";
+import "swiper/css/navigation";
 
 import "./Section1.css";
 
 // import required modules
-import { Pagination } from "swiper/modules";
+import { Navigation, Pagination } from "swiper/modules";
 
 import Image from "next/image";
 import "./Section1.css";
@@ -30,12 +31,12 @@ const Section1 = () => {
           <Swiper
             slidesPerView={"auto"}
             spaceBetween={10}
-            mousewheel={true}
-            cssMode={true}
+            navigation={true}
+            loop={true}
             pagination={{
               clickable: true,
             }}
-            modules={[Pagination]}
+            modules={[Navigation, Pagination]}
             className="mySwiper"
           >
             <SwiperSlide>

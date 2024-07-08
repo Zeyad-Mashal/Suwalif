@@ -5,6 +5,7 @@
   align-content: center;
   flex-wrap: wrap;
   background: #222;
+  font-family: myriad-arabic, sans-serif;
 }
 .review_container {
   width: 100%;
