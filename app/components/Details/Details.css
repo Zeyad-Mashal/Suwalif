@@ -265,6 +265,12 @@
 .relatedProducts .relatedProductsList .relatedProducts_item button:active {
   transform: scale(0.9);
 }
+.relatedProducts .relatedProductsList .swiper {
+  width: 100%;
+}
+.relatedProducts .relatedProductsList .swiper .swiper-wrapper .swiper-slide {
+  width: auto;
+}
 @media screen and (max-width: 789px) {
   .details_item {
     flex-direction: column;

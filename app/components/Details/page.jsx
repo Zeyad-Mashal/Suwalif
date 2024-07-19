@@ -129,94 +129,95 @@ const Details = () => {
           <div className="relatedProducts">
             <h2>Related Products</h2>
             <div className="relatedProductsList">
-              <div className="relatedProducts_item">
-                <Image
-                  src="/images/product.jpeg"
-                  width={1000}
-                  height={1000}
-                  alt="related product"
-                />
-                <h3>name Here</h3>
-                <h4>100 SAR</h4>
-                <button>Add To Cart</button>
-              </div>
-              <div className="relatedProducts_item">
-                <Image
-                  src="/images/product.jpeg"
-                  width={1000}
-                  height={1000}
-                  alt="related product"
-                />
-                <h3>name Here</h3>
-                <h4>100 SAR</h4>
-                <button>Add To Cart</button>
-              </div>
-              <div className="relatedProducts_item">
-                <Image
-                  src="/images/product.jpeg"
-                  width={1000}
-                  height={1000}
-                  alt="related product"
-                />
-                <h3>name Here</h3>
-                <h4>100 SAR</h4>
-                <button>Add To Cart</button>
-              </div>
-              <div className="relatedProducts_item">
-                <Image
-                  src="/images/product.jpeg"
-                  width={1000}
-                  height={1000}
-                  alt="related product"
-                />
-                <h3>name Here</h3>
-                <h4>100 SAR</h4>
-                <button>Add To Cart</button>
-              </div>
-              <div className="relatedProducts_item">
-                <Image
-                  src="/images/product.jpeg"
-                  width={1000}
-                  height={1000}
-                  alt="related product"
-                />
-                <h3>name Here</h3>
-                <h4>100 SAR</h4>
-                <button>Add To Cart</button>
-              </div>
-              <div className="relatedProducts_item">
-                <Image
-                  src="/images/product.jpeg"
-                  width={1000}
-                  height={1000}
-                  alt="related product"
-                />
-                <h3>name Here</h3>
-                <h4>100 SAR</h4>
-                <button>Add To Cart</button>
-              </div>
-              <div className="relatedProducts_item">
-                <Image
-                  src="/images/product.jpeg"
-                  width={1000}
-                  height={1000}
-                  alt="related product"
-                />
-                <h3>name Here</h3>
-                <h4>100 SAR</h4>
-                <button>Add To Cart</button>
-              </div>
-              <div className="relatedProducts_item">
-                <Image
-                  src="/images/product.jpeg"
-                  width={1000}
-                  height={1000}
-                  alt="related product"
-                />
-                <h3>name Here</h3>
-                <h4>100 SAR</h4>
-                <button>Add To Cart</button>
-              </div>
+              <Swiper
+                slidesPerView={"auto"}
+                spaceBetween={10}
+                loop={true}
+                navigation={true}
+                pagination={true}
+                keyboard={true}
+                modules={[Navigation, Pagination, Keyboard]}
+                className="mySwiper"
+              >
+                <SwiperSlide>
+                  <div className="relatedProducts_item">
+                    <Image
+                      src="/images/product.jpeg"
+                      width={1000}
+                      height={1000}
+                      alt="related product"
+                    />
+                    <h3>name Here</h3>
+                    <h4>100 SAR</h4>
+                    <button>Add To Cart</button>
+                  </div>
+                </SwiperSlide>
+                <SwiperSlide>
+                  <div className="relatedProducts_item">
+                    <Image
+                      src="/images/product.jpeg"
+                      width={1000}
+                      height={1000}
+                      alt="related product"
+                    />
+                    <h3>name Here</h3>
+                    <h4>100 SAR</h4>
+                    <button>Add To Cart</button>
+                  </div>
+                </SwiperSlide>
+                <SwiperSlide>
+                  <div className="relatedProducts_item">
+                    <Image
+                      src="/images/product.jpeg"
+                      width={1000}
+                      height={1000}
+                      alt="related product"
+                    />
+                    <h3>name Here</h3>
+                    <h4>100 SAR</h4>
+                    <button>Add To Cart</button>
+                  </div>
+                </SwiperSlide>
+                <SwiperSlide>
+                  <div className="relatedProducts_item">
+                    <Image
+                      src="/images/product.jpeg"
+                      width={1000}
+                      height={1000}
+                      alt="related product"
+                    />
+                    <h3>name Here</h3>
+                    <h4>100 SAR</h4>
+                    <button>Add To Cart</button>
+                  </div>
+                </SwiperSlide>
+                <SwiperSlide>
+                  <div className="relatedProducts_item">
+                    <Image
+                      src="/images/product.jpeg"
+                      width={1000}
+                      height={1000}
+                      alt="related product"
+                    />
+                    <h3>name Here</h3>
+                    <h4>100 SAR</h4>
+                    <button>Add To Cart</button>
+                  </div>
+                </SwiperSlide>
+                <SwiperSlide>
+                  <div className="relatedProducts_item">
+                    <Image
+                      src="/images/product.jpeg"
+                      width={1000}
+                      height={1000}
+                      alt="related product"
+                    />
+                    <h3>name Here</h3>
+                    <h4>100 SAR</h4>
+                    <button>Add To Cart</button>
+                  </div>
+                </SwiperSlide>
+              </Swiper>
             </div>
           </div>
         </div>
