@@ -14,7 +14,7 @@ import { Pagination } from "swiper/modules";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { useLocale } from "next-intl";
-import { type Locale } from "../../../../lib/locales";
+import { type Locale } from "../../lib/locales";
 const Section3 = () => {
   const locale = useLocale() as Locale;
   const t = useTranslations("sectionThree");

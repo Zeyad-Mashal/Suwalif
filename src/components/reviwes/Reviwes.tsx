@@ -13,7 +13,7 @@ import "swiper/css/pagination";
 import { Pagination } from "swiper/modules";
 import { useTranslations } from "next-intl";
 import { useLocale } from "next-intl";
-import { type Locale } from "../../../../lib/locales";
+import { type Locale } from "../../lib/locales";
 const Reviwes = () => {
   const locale = useLocale() as Locale;
   const t = useTranslations("sectionFour");
