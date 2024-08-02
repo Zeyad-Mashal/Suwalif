@@ -80,7 +80,7 @@
     transform: scale(1);
   }
   50% {
-    transform: scale(1.2);
+    transform: scale(1.4);
   }
   100% {
     transform: scale(1);
@@ -97,11 +97,14 @@
   .list_fav {
     padding: 10px;
   }
-  .item_item {
+  .list_fav a {
     width: 400px;
   }
+  .item_item {
+    width: 350px;
+  }
   .item_item img {
-    width: 120px;
+    width: 110px;
   }
   .item_item .content_fav {
     margin: 0.6rem;

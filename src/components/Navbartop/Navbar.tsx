@@ -50,7 +50,7 @@ const Navbar = () => {
   return (
     <>
       <div className="navbar_top">
-        <Link href={"/"}>
+        <Link href={`/${locale}`}>
           <Image
             src="/images/logo.png"
             width={110}
@@ -95,14 +95,17 @@ const Navbar = () => {
 
       <div className="navbar_top mobile">
         <div className="logo_icons">
-          <Image
-            src="/images/logo.png"
-            width={110}
-            height={110}
-            alt="logo"
-            loading="lazy"
-            className="logo_image mr-5"
-          />
+
+          <Link href={`/${locale}`}>
+            <Image
+              src="/images/logo.png"
+              width={110}
+              height={110}
+              alt="logo"
+              loading="lazy"
+              className="logo_image mr-5"
+            />
+          </Link>
           <div className="nav_icons flag_mob">
             <Link href={`/${locale}/cart`}>
               <FontAwesomeIcon icon={faCartShopping} width={30} />
