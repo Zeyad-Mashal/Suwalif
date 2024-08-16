@@ -87,13 +87,18 @@
   padding: 1rem;
   border-radius: 6px;
 }
+.qunatity_container {
+  width: 80%;
+  display: flex;
+  justify-self: center;
+  align-items: center;
+}
 .quantity {
   width: 250px;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   height: 100%;
   align-items: center;
-  margin-left: 1rem;
 }
 .quantity button {
   border: 1px solid #aaa;
@@ -112,7 +117,7 @@
 .item_content .price_quantity .price {
   width: 100%;
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
   background-color: #999;
   margin-top: 1rem;

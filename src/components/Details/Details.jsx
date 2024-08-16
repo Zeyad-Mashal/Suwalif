@@ -96,7 +96,7 @@ const Details = () => {
               </p>
 
               <div className="price_quantity">
-                <div className="d-flex w-full justify-center align-middle">
+                <div className="qunatity_container">
                   <p>Quantity*</p>
                   <div className="quantity">
                     <button onClick={decrementCount}>-</button>
