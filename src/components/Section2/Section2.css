@@ -1,0 +1,122 @@
+.section2 {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: #111;
+  position: relative;
+  font-family: myriad-arabic, sans-serif;
+}
+.section2_container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.section2_container h2 {
+  color: #fff;
+  font-size: 28px;
+  font-weight: bold;
+  margin: 10px 0;
+}
+.section2_list {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.section2_item {
+  width: 300px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  border: 1px solid #8888;
+  border-radius: 10px;
+}
+.section2_item img {
+  width: 100%;
+  border-radius: 10px 10px 0 0;
+  margin-bottom: 1rem;
+  box-shadow: 4px 4px 4px #8888;
+}
+.section2_item .item_content {
+  color: #fff;
+  margin-right: 1rem;
+}
+.section2_item .item_content h3 {
+  margin: 5px;
+  font-size: 1.1rem;
+}
+.section2_item .item_content p {
+  color: goldenrod;
+}
+.section2_item .cart_btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #eee;
+  border-radius: 0 0 10px 10px;
+  padding: 10px;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+.section2_item .cart_btn:hover {
+  background-color: #aaa;
+}
+.section2_item .cart_btn:active {
+  background-color: #555;
+  transform: scale(0.95);
+}
+.section2_item .cart_btn button {
+  font-weight: bold;
+}
+.section2 .swiper {
+  height: 450px;
+  z-index: 1;
+  padding: 0 10px;
+}
+.swiper .swiper-wrapper .swiper-slide {
+  width: auto;
+}
+.section2 .banner_container {
+  width: 100%;
+}
+.section2 .banner_container img {
+  height: 480px;
+}
+.section2 .shapes {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  width: 100;
+}
+.section2 .shapes2 {
+  position: absolute;
+  bottom: 100px;
+  right: 20px;
+  width: 100;
+}
+.section2_list .swiper .swiper-pagination .swiper-pagination-bullet {
+  background-color: goldenrod;
+}
+.section2_list .swiper .swiper-pagination .swiper-pagination-bullet-active {
+  width: 10px;
+  height: 10px;
+}
+@media screen and (max-width: 589px) {
+  .section2_container h2 {
+    font-size: 1.2rem;
+  }
+  .section2_item {
+    width: 230px;
+  }
+  .swiper {
+    height: 380px;
+  }
+  .section2 .shapes2 {
+    display: none;
+  }
+}
