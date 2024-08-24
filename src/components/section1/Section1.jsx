@@ -33,7 +33,7 @@ const Section1 = () => {
   };
   const lang = window.localStorage.getItem("Lang");
   const addToCart = (productId) => {
-    data = {
+    const data = {
       quantity: 1,
     };
     addToCartApi(setCartLoading, setError, productId, data);
