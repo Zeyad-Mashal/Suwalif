@@ -1,21 +1,21 @@
-const URL = "https://back.suwalifstore.com/auth/register";
+const URL = "https://back.suwalifstore.com/category/get";
 const lang = window.localStorage.getItem("Lang")
-const RegisterAPI = async (setloading, setError, data, push) => {
+const getCategoriesApi = async (setloading, setError, setAllCategories) => {
     setloading(true)
     try {
         const response = await fetch(URL, {
-            method: 'POST',
+            method: 'GET',
             headers: {
                 "Content-Type": "application/json",
                 "accept-language": lang
             },
-            body: JSON.stringify(data),
         });
 
         const result = await response.json();
+        console.log(result);
 
         if (response.ok) {
-            push(`/${lang}/login`)
+            setAllCategories(result.categories)
             setloading(false);
         } else {
             if (response.status == 400) {
@@ -32,4 +32,4 @@ const RegisterAPI = async (setloading, setError, data, push) => {
         setloading(false)
     }
 }
-export default RegisterAPI;
+export default getCategoriesApi;

@@ -18,8 +18,8 @@ const RegisterPage = () => {
       setError("Please fill all the fields");
     } else {
       const data = {
-        userName,
-        phoneNumber: Phone,
+        name: userName,
+        phone: Phone,
         email: Email,
       };
       RegisterAPI(setloading, setError, data, push);
@@ -72,7 +72,7 @@ const RegisterPage = () => {
             />
             {Error}
             <button className="submit_btn active" onClick={handleRegister}>
-              {loading ? <span class="loader"></span> : "تسجيل"}
+              {loading ? "Loading..." : "تسجيل"}
             </button>
           </div>
         </div>

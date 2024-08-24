@@ -1,21 +1,24 @@
-const URL = "https://back.suwalifstore.com/auth/register";
+const URL = "https://back.suwalifstore.com/favorite/add/";
 const lang = window.localStorage.getItem("Lang")
-const RegisterAPI = async (setloading, setError, data, push) => {
+const USER_TOKEN = window.localStorage.getItem("user")
+const addToFavoriteApi = async (setloading, setError, productId) => {
     setloading(true)
     try {
-        const response = await fetch(URL, {
+        const response = await fetch(`${URL}${productId}`, {
             method: 'POST',
             headers: {
                 "Content-Type": "application/json",
-                "accept-language": lang
+                "accept-language": lang,
+                'authorization': `suwOZ0${USER_TOKEN}`
             },
-            body: JSON.stringify(data),
         });
 
         const result = await response.json();
 
+        console.log(result);
+
         if (response.ok) {
-            push(`/${lang}/login`)
+            document.querySelector(".fav_icon").style.color = "red";
             setloading(false);
         } else {
             if (response.status == 400) {
@@ -32,4 +35,4 @@ const RegisterAPI = async (setloading, setError, data, push) => {
         setloading(false)
     }
 }
-export default RegisterAPI;
+export default addToFavoriteApi;

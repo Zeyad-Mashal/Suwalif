@@ -1,5 +1,5 @@
 import React from 'react'
-import VerifyCode from "../../../../../components/varifycode/[email]/[phoneNumber]/VerifyCode"
+import VerifyCode from "../../../../components/varifycode/[emailOrPhone]/VerifyCode"
 const page = () => {
     return (
         <VerifyCode />

@@ -1,7 +1,7 @@
-const URL = "https://back.suwalifstore.com/auth/register";
+const URL = "https://back.suwalifstore.com/auth/verify";
 const lang = window.localStorage.getItem("Lang")
-const RegisterAPI = async (setloading, setError, data, push) => {
-    setloading(true)
+const VerificationLoginCode = async (setLoading, setError, push, data) => {
+    setLoading(true)
     try {
         const response = await fetch(URL, {
             method: 'POST',
@@ -15,21 +15,22 @@ const RegisterAPI = async (setloading, setError, data, push) => {
         const result = await response.json();
 
         if (response.ok) {
-            push(`/${lang}/login`)
-            setloading(false);
+            push(`/${lang}`)
+            setLoading(false);
+            localStorage.setItem("user", result.token);
         } else {
             if (response.status == 400) {
                 setError(result.message)
-                setloading(false);
+                setLoading(false);
             } else if (response.status == 500) {
                 setError(result.message)
-                setloading(false);
+                setLoading(false);
             }
-            setloading(false)
+            setLoading(false)
         }
     } catch (error) {
         setError('An error occurred');
-        setloading(false)
+        setLoading(false)
     }
 }
-export default RegisterAPI;
+export default VerificationLoginCode;

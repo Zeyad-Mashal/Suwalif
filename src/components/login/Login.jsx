@@ -11,38 +11,37 @@ const LoginPage = () => {
   const [error, setError] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
   const [email, setEmail] = useState("");
-  const choiseLoginEmail = () => {
-    document.querySelector(".email_input").classList.replace("hidden", "block");
-    document.querySelector(".phone_input").classList.replace("block", "hidden");
-    document
-      .querySelector(".login_email_btn")
-      .classList.replace("block", "hidden");
-    document
-      .querySelector(".login_phone_btn")
-      .classList.replace("hidden", "block");
-    setPhoneNumber("");
-  };
-  const choiseLoginPhone = () => {
-    document.querySelector(".email_input").classList.replace("block", "hidden");
-    document.querySelector(".phone_input").classList.replace("hidden", "block");
-    document
-      .querySelector(".login_email_btn")
-      .classList.replace("hidden", "block");
-    document
-      .querySelector(".login_phone_btn")
-      .classList.replace("block", "hidden");
-    setEmail("");
-  };
+  const [emailOrPhone, setemailOrPhone] = useState("");
+  // const choiseLoginEmail = () => {
+  //   document.querySelector(".email_input").classList.replace("hidden", "block");
+  //   document.querySelector(".phone_input").classList.replace("block", "hidden");
+  //   document
+  //     .querySelector(".login_email_btn")
+  //     .classList.replace("block", "hidden");
+  //   document
+  //     .querySelector(".login_phone_btn")
+  //     .classList.replace("hidden", "block");
+  //   setPhoneNumber("");
+  // };
+  // const choiseLoginPhone = () => {
+  //   document.querySelector(".email_input").classList.replace("block", "hidden");
+  //   document.querySelector(".phone_input").classList.replace("hidden", "block");
+  //   document
+  //     .querySelector(".login_email_btn")
+  //     .classList.replace("hidden", "block");
+  //   document
+  //     .querySelector(".login_phone_btn")
+  //     .classList.replace("block", "hidden");
+  //   setEmail("");
+  // };
 
   const handleLogin = () => {
-    if (phoneNumber == "" && email == "") {
+    if (emailOrPhone == "") {
       setError("Please enter your email or phone number");
     } else {
       const data = {
-        phoneNumber: phoneNumber ? phoneNumber : undefined,
-        email: email ? email : undefined,
+        emailOrPhone: emailOrPhone,
       };
-
       LoginAPI(setLoading, setError, data, push);
     }
   };
@@ -73,20 +72,13 @@ const LoginPage = () => {
           <div className="form_register">
             <h2 className="text-center">Login</h2>
             <input
-              type="text"
-              placeholder="رقم الهاتف"
-              className="phone_input block"
-              value={phoneNumber}
-              onChange={(e) => setPhoneNumber(e.target.value)}
-            />
-            <input
               type="email"
-              placeholder="البريد الإلكتروني"
-              className="email_input hidden"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              placeholder="ادخل البريد الالكتروني او رقم الهاتف"
+              className="email_input"
+              value={emailOrPhone}
+              onChange={(e) => setemailOrPhone(e.target.value)}
             />
-            <p
+            {/* <p
               onClick={choiseLoginEmail}
               className="login_email_btn block loginWay"
             >
@@ -97,10 +89,10 @@ const LoginPage = () => {
               className="login_phone_btn hidden loginWay"
             >
               Login With Phone
-            </p>
+            </p> */}
             {error}
             <button className="submit_btn active" onClick={handleLogin}>
-              {loading ? <span class="loader"></span> : "Send Code"}
+              {loading ? "Loading..." : "Send Code"}
             </button>
           </div>
         </div>

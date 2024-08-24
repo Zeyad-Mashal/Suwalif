@@ -1,33 +1,55 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import NavbarTop from "../Navbartop/Navbar";
 import "./Cart.css";
 import Image from "next/image";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleXmark } from "@fortawesome/free-solid-svg-icons";
 import { useTranslations } from "next-intl";
+import getToCartApi from "@/src/app/[locale]/api/cart/getToCartApi";
+import updateToCartApi from "@/src/app/[locale]/api/cart/updateToCartApi";
+import removeToCartApi from "@/src/app/[locale]/api/cart/removeToCartApi";
 const Cart = () => {
+  useEffect(() => {
+    getToCart();
+  }, []);
   const t = useTranslations("cart");
-  const [count, setCount] = useState(1);
-  const [price, setPrice] = useState(100); // Initial price for one item
-  const itemPrice = 100; // Price of one item
+  const [allCart, setAllCart] = useState([]);
+  const [cartNumber, setCartNumber] = useState("");
+  const [loading, setloading] = useState(false);
+  const [error, setError] = useState("");
+  const [cartLoading, setCartLoading] = useState(false);
 
-  const incrementCount = () => {
-    setCount(count + 1);
-    setPrice((count + 1) * itemPrice);
+  const incrementCount = (quantity, productId) => {
+    quantity += 1;
+    updateToCart(quantity, productId);
   };
 
-  const decrementCount = () => {
-    if (count > 1) {
-      setCount(count - 1);
-      setPrice((count - 1) * itemPrice);
+  const decrementCount = (quantity, productId) => {
+    if (quantity > 1) {
+      quantity -= 1;
     }
+    updateToCart(quantity, productId);
   };
-
-  const removeProduct = () => {
-    document.querySelector(".cart_list .cart_item").remove();
+  const getToCart = () => {
+    getToCartApi(setloading, setError, setAllCart, setCartNumber);
   };
-
+  const updateToCart = (quantity, productId) => {
+    const data = {
+      quantity: quantity,
+    };
+    updateToCartApi(
+      setCartLoading,
+      setError,
+      productId,
+      data,
+      setAllCart,
+      setCartNumber
+    );
+  };
+  const deleteFromCart = (productId) => {
+    removeToCartApi(setError, setAllCart, setCartNumber, setloading, productId);
+  };
   return (
     <>
       <NavbarTop />
@@ -35,72 +57,46 @@ const Cart = () => {
         <div className="cart_container">
           <h1 className="text-white">{t("title")}</h1>
           <div className="cart_list">
-            <div className="cart_item">
-              <div className="cart_info">
-                <Image
-                  src="/images/product.jpeg"
-                  width={200}
-                  height={200}
-                  alt="cart product"
-                />
-                <div className="info_content">
-                  <h3>product Name here</h3>
-                  <h4>100 SAR</h4>
-                  <span>Weight: 0.5 kgm</span>
-                  <p>Total: {price} SAR</p>
+            {allCart.map((item) => {
+              return (
+                <div className="cart_item" key={item._id}>
+                  <div className="cart_info">
+                    <Image
+                      src={item.product.images[0]}
+                      width={200}
+                      height={200}
+                      alt="cart product"
+                    />
+                    <div className="info_content">
+                      <h3>{item.product.name}</h3>
+                      <h4>{item.product.price} ريال</h4>
+                      <p>اجمالي: {item.price} ريال</p>
+                    </div>
+                  </div>
+                  <FontAwesomeIcon
+                    icon={faCircleXmark}
+                    onClick={() => deleteFromCart(item.product._id)}
+                  />
+                  <div className="quantity">
+                    <button
+                      onClick={() =>
+                        decrementCount(item.quantity, item.product._id)
+                      }
+                    >
+                      -
+                    </button>
+                    <span>{item.quantity}</span>
+                    <button
+                      onClick={() =>
+                        incrementCount(item.quantity, item.product._id)
+                      }
+                    >
+                      +
+                    </button>
+                  </div>
                 </div>
-              </div>
-              <FontAwesomeIcon icon={faCircleXmark} onClick={removeProduct} />
-              <div className="quantity">
-                <button onClick={decrementCount}>-</button>
-                <span>{count}</span>
-                <button onClick={incrementCount}>+</button>
-              </div>
-            </div>
-            <div className="cart_item">
-              <div className="cart_info">
-                <Image
-                  src="/images/product.jpeg"
-                  width={200}
-                  height={200}
-                  alt="cart product"
-                />
-                <div className="info_content">
-                  <h3>product Name here</h3>
-                  <h4>100 SAR</h4>
-                  <span>Weight: 0.5 kgm</span>
-                  <p>Total: {price} SAR</p>
-                </div>
-              </div>
-              <FontAwesomeIcon icon={faCircleXmark} onClick={removeProduct} />
-              <div className="quantity">
-                <button onClick={decrementCount}>-</button>
-                <span>{count}</span>
-                <button onClick={incrementCount}>+</button>
-              </div>
-            </div>
-            <div className="cart_item">
-              <div className="cart_info">
-                <Image
-                  src="/images/product.jpeg"
-                  width={200}
-                  height={200}
-                  alt="cart product"
-                />
-                <div className="info_content">
-                  <h3>product Name here</h3>
-                  <h4>100 SAR</h4>
-                  <span>Weight: 0.5 kgm</span>
-                  <p>Total: {price} SAR</p>
-                </div>
-              </div>
-              <FontAwesomeIcon icon={faCircleXmark} onClick={removeProduct} />
-              <div className="quantity">
-                <button onClick={decrementCount}>-</button>
-                <span>{count}</span>
-                <button onClick={incrementCount}>+</button>
-              </div>
-            </div>
+              );
+            })}
           </div>
           <div className="cart_Check">
             <button>{t("check")}</button>

@@ -21,6 +21,6 @@
       "@/*": ["./*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/app/[locale]/components/login/Login.jsx", "src/app/[locale]/components/Navbartop/Navbar.tsx", "src/app/[locale]/api/auth/VerificationLogin.api.ts"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/app/[locale]/components/login/Login.jsx", "src/app/[locale]/components/Navbartop/Navbar.tsx", "src/app/[locale]/api/auth/VerificationLogin.api.js", "src/components/Navbarmenu/NavbarMenu.jsx", "src/components/section1/Section1.jsx", "src/components/Section2/Section2.jsx", "src/components/reviwes/Reviwes.jsx", "src/components/Navbartop/Navbar.tsx", "src/components/AddToFav/AddToFav.jsx"],
   "exclude": ["node_modules"]
 }

@@ -57,9 +57,6 @@
   top: 20px;
   left: 10px;
 }
-.review_item > .reviwes_stars svg {
-  color: gold;
-}
 .review_item > p {
   font-size: 1rem;
   color: #111;
@@ -119,6 +116,7 @@
 }
 .reviwe_model_content .stars svg {
   color: gray;
+  cursor: pointer;
 }
 .reviwe_model_content input,
 .reviwe_model_content textarea {
@@ -137,4 +135,10 @@
   padding: 10px;
   width: 100px;
   height: 50px;
+}
+.activeStar {
+  color: gold;
+}
+.ratingChecked {
+  display: none;
 }

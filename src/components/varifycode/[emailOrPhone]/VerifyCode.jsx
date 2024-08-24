@@ -4,13 +4,13 @@ import Image from "next/image";
 import "./code.css";
 import { useParams } from "next/navigation";
 import { useRouter } from "next/navigation";
-import VerificationLoginCode from "../../../../app/[locale]/api/auth/VerificationLogin.api";
+import VerificationLoginCode from "../../../app/[locale]/api/auth/VerificationLogin.api";
 const VerifyCodePage = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const params = useParams();
-  let { email, phoneNumber } = params;
-  email = decodeURIComponent(email);
+  let { emailOrPhone } = params;
+  emailOrPhone = decodeURIComponent(emailOrPhone);
   const { push } = useRouter();
   const [code1, setCode1] = useState("");
   const hendleVerifyCode = () => {
@@ -19,12 +19,12 @@ const VerifyCodePage = () => {
     } else {
       const code = code1;
       const data = {
-        phoneNumber: phoneNumber != "VerifyAccount" ? phoneNumber : undefined,
-        email: email != "VerifyAccount" ? email : undefined,
-        code,
+        emailOrPhone,
+        verificationCode: code,
       };
-      VerificationLoginCode(setLoading, setError, data, push);
+      VerificationLoginCode(setLoading, setError, push, data);
     }
+    console.log(emailOrPhone);
   };
 
   return (
@@ -61,7 +61,7 @@ const VerifyCodePage = () => {
             </div>
             {error}
             <button className="submit_btn active" onClick={hendleVerifyCode}>
-              {loading ? <span class="loader"></span> : "Sign In"}
+              {loading ? "Loading..." : "Sign In"}
             </button>
           </div>
         </div>

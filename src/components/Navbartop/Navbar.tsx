@@ -14,8 +14,25 @@ import Link from "next/link";
 import { useTranslations } from "next-intl";
 import { useLocale } from "next-intl";
 import { type Locale } from "../../lib/locales";
+import searchByProductApi from "@/src/app/[locale]/api/search/searchByProductApi";
+import getCategoriesApi from "@/src/app/[locale]/api/category/getCategoriesApi";
+// Define the Product interface
+interface Product {
+  images: string[];
+  name: string;
+  price: number;
+  category: String;
+}
+interface Category {
+  category: string; // Changed to string for consistency
+  _id: any
+}
+
 
 const Navbar = () => {
+  useEffect(() => {
+    getAllCategories();
+  }, []);
   const locale = useLocale() as Locale;
   const t = useTranslations("navbar");
 
@@ -24,6 +41,10 @@ const Navbar = () => {
   const [isMobileTranslationOpen, setIsMobileTranslationOpen] = useState(false);
   const [searchMenu, setSearchMenu] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
+  const [searchedProducts, setSearchedProducts] = useState<Product[]>([]);
+  const [loading, setloading] = useState(false);
+  const [error, setError] = useState<string>("");
+  const [allCategories, setAllCategories] = useState<Category[]>([]);
 
   const openMobileNavbar = (): void => {
     setIsMobileNavbarOpen(true);
@@ -45,7 +66,20 @@ const Navbar = () => {
     const query = event.target.value;
     setSearchQuery(query);
     setSearchMenu(query.length > 0);
+    searchByProductApi(setloading, setError, setSearchedProducts, query);
+    console.log(query);
   };
+
+  window.localStorage.setItem("Lang", locale);
+
+  const arTranslate = (lang: any) => {
+    window.localStorage.setItem("Lang", lang);
+    window.location.href = `http://localhost:3000/${lang}`;
+  };
+
+  const getAllCategories = () => {
+    getCategoriesApi(setloading, setError, setAllCategories)
+  }
 
 
   return (
@@ -72,76 +106,27 @@ const Navbar = () => {
           {searchMenu && (
             <div className="search_info">
               <div className="search_list">
-                <div className="search_item">
-                  <Image src="/images/logo.png" width={100} height={100} alt="search" />
-                  <div className="search_content">
-                    <h3>Product name here</h3>
-                    <div className="search_content_info">
-                      <span>10 ريال</span>
-                      <p>شاي سيريلاني اسود</p>
+                {loading ? (
+                  "Loading..."
+                ) : (
+                  searchedProducts?.map((item: Product, index: number) => (
+                    <div className="search_item" key={index}>
+                      <Image
+                        src={item.images[0]}
+                        width={100}
+                        height={100}
+                        alt="search"
+                      />
+                      <div className="search_content">
+                        <h3>{item.name}</h3>
+                        <div className="search_content_info">
+                          <span>{item.price} ريال</span>
+                          <p>{item.category}</p>
+                        </div>
+                      </div>
                     </div>
-                  </div>
-                </div>
-                <div className="search_item">
-                  <Image src="/images/logo.png" width={100} height={100} alt="search" />
-                  <div className="search_content">
-                    <h3>Product name here</h3>
-                    <div className="search_content_info">
-                      <span>10 ريال</span>
-                      <p>شاي سيريلاني اسود</p>
-                    </div>
-                  </div>
-                </div>
-                <div className="search_item">
-                  <Image src="/images/logo.png" width={100} height={100} alt="search" />
-                  <div className="search_content">
-                    <h3>Product name here</h3>
-                    <div className="search_content_info">
-                      <span>10 ريال</span>
-                      <p>شاي سيريلاني اسود</p>
-                    </div>
-                  </div>
-                </div>
-                <div className="search_item">
-                  <Image src="/images/logo.png" width={100} height={100} alt="search" />
-                  <div className="search_content">
-                    <h3>Product name here</h3>
-                    <div className="search_content_info">
-                      <span>10 ريال</span>
-                      <p>شاي سيريلاني اسود</p>
-                    </div>
-                  </div>
-                </div>
-                <div className="search_item">
-                  <Image src="/images/logo.png" width={100} height={100} alt="search" />
-                  <div className="search_content">
-                    <h3>Product name here</h3>
-                    <div className="search_content_info">
-                      <span>10 ريال</span>
-                      <p>شاي سيريلاني اسود</p>
-                    </div>
-                  </div>
-                </div>
-                <div className="search_item">
-                  <Image src="/images/logo.png" width={100} height={100} alt="search" />
-                  <div className="search_content">
-                    <h3>Product name here</h3>
-                    <div className="search_content_info">
-                      <span>10 ريال</span>
-                      <p>شاي سيريلاني اسود</p>
-                    </div>
-                  </div>
-                </div>
-                <div className="search_item">
-                  <Image src="/images/logo.png" width={100} height={100} alt="search" />
-                  <div className="search_content">
-                    <h3>Product name here</h3>
-                    <div className="search_content_info">
-                      <span>10 ريال</span>
-                      <p>شاي سيريلاني اسود</p>
-                    </div>
-                  </div>
-                </div>
+                  ))
+                )}
               </div>
             </div>
           )}
@@ -167,9 +152,12 @@ const Navbar = () => {
           />
           <div className="translation">
             <p onClick={toggleTranslation}>{locale}</p>
-            <div className={`translation_options ${isTranslationOpen ? "d-flex" : "d-none"}`}>
-              <Link href={"/en"}>En</Link>
-              <Link href={"/ar"}>عربي</Link>
+            <div
+              className={`translation_options ${isTranslationOpen ? "d-flex" : "d-none"
+                }`}
+            >
+              <button onClick={() => arTranslate("en")}>En</button>
+              <button onClick={() => arTranslate("ar")}>ع</button>
             </div>
           </div>
         </div>
@@ -223,7 +211,10 @@ const Navbar = () => {
         </div>
       </div>
 
-      <nav className={`navbar_bottom_mobile ${isMobileNavbarOpen ? "d-flex" : "d-none"}`}>
+      <nav
+        className={`navbar_bottom_mobile ${isMobileNavbarOpen ? "d-flex" : "d-none"
+          }`}
+      >
         <FontAwesomeIcon icon={faXmark} onClick={closeMobileNavbar} />
         <ul>
           <li>
@@ -232,30 +223,25 @@ const Navbar = () => {
           <li>
             <Link href={`/`}>{t("nav2")}</Link>
           </li>
-          <li>
-            <Link href={`/${locale}/category`}>{t("nav3")}</Link>
-          </li>
-          <li>
-            <Link href="/">{t("nav4")}</Link>
-          </li>
-          <li>
-            <Link href="/">{t("nav5")}</Link>
-          </li>
-          <li>
-            <Link href="/">{t("nav6")}</Link>
-          </li>
-          <li>
-            <Link href="/">{t("nav7")}</Link>
-          </li>
-          <li>
-            <Link href="/">{t("nav8")}</Link>
-          </li>
+          {
+            loading ? "Loading..." :
+              allCategories?.map((item: Category) => {
+                return (
+                  <li key={item._id}>
+                    <Link href={`/${locale}/category`}>{item.category}</Link>
+                  </li>
+                )
+              })
+          }
           <li>
             <div className="translation">
               <p onClick={toggleMobileTranslation}>{locale}</p>
-              <div className={`translation_options ${isMobileTranslationOpen ? "d-flex" : "d-none"}`}>
-                <Link href={"/en"}>En</Link>
-                <Link href={"/ar"}>ع</Link>
+              <div
+                className={`translation_options ${isMobileTranslationOpen ? "d-flex" : "d-none"
+                  }`}
+              >
+                <button onClick={() => arTranslate("en")}>En</button>
+                <button onClick={() => arTranslate("ar")}>ع</button>
               </div>
             </div>
           </li>
