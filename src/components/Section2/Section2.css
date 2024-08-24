@@ -60,7 +60,7 @@
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  /* margin-left: 1.5rem; */
+  margin-left: 1.5rem;
 }
 .section2_item .item_content .cart_btn {
   display: flex;
@@ -169,7 +169,7 @@
     font-size: 1.2rem;
   }
   .section2_item {
-    width: 230px;
+    width: 280px;
   }
   .swiper {
     height: 380px;

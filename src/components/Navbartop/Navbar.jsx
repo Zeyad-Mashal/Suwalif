@@ -12,28 +12,24 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import Link from "next/link";
 import { useTranslations } from "next-intl";
-import { useLocale } from "next-intl";
-import { type Locale } from "../../lib/locales";
 import searchByProductApi from "@/src/app/[locale]/api/search/searchByProductApi";
 import getCategoriesApi from "@/src/app/[locale]/api/category/getCategoriesApi";
 // Define the Product interface
-interface Product {
-  images: string[];
-  name: string;
-  price: number;
-  category: String;
-}
-interface Category {
-  category: string; // Changed to string for consistency
-  _id: any
-}
-
+// interface Product {
+//   images: string[];
+//   name: string;
+//   price: number;
+//   category: String;
+// }
+// interface Category {
+//   category: string; // Changed to string for consistency
+//   _id: any
+// }
 
 const Navbar = () => {
   useEffect(() => {
     getAllCategories();
   }, []);
-  const locale = useLocale() as Locale;
   const t = useTranslations("navbar");
 
   const [isMobileNavbarOpen, setIsMobileNavbarOpen] = useState(false);
@@ -41,16 +37,16 @@ const Navbar = () => {
   const [isMobileTranslationOpen, setIsMobileTranslationOpen] = useState(false);
   const [searchMenu, setSearchMenu] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
-  const [searchedProducts, setSearchedProducts] = useState<Product[]>([]);
+  const [searchedProducts, setSearchedProducts] = useState([]);
   const [loading, setloading] = useState(false);
-  const [error, setError] = useState<string>("");
-  const [allCategories, setAllCategories] = useState<Category[]>([]);
+  const [error, setError] = useState("");
+  const [allCategories, setAllCategories] = useState([]);
 
-  const openMobileNavbar = (): void => {
+  const openMobileNavbar = () => {
     setIsMobileNavbarOpen(true);
   };
 
-  const closeMobileNavbar = (): void => {
+  const closeMobileNavbar = () => {
     setIsMobileNavbarOpen(false);
   };
 
@@ -62,7 +58,7 @@ const Navbar = () => {
     setIsMobileTranslationOpen(!isMobileTranslationOpen);
   };
 
-  const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleSearchChange = (event) => {
     const query = event.target.value;
     setSearchQuery(query);
     setSearchMenu(query.length > 0);
@@ -70,22 +66,20 @@ const Navbar = () => {
     console.log(query);
   };
 
-  window.localStorage.setItem("Lang", locale);
-
-  const arTranslate = (lang: any) => {
+  const arTranslate = (lang) => {
     window.localStorage.setItem("Lang", lang);
     window.location.href = `http://localhost:3000/${lang}`;
   };
 
   const getAllCategories = () => {
-    getCategoriesApi(setloading, setError, setAllCategories)
-  }
+    getCategoriesApi(setloading, setError, setAllCategories);
+  };
 
-
+  const lang = window.localStorage.getItem("Lang");
   return (
     <>
       <div className="navbar_top">
-        <Link href={`/${locale}`}>
+        <Link href={`/${lang}`}>
           <Image
             src="/images/logo.png"
             width={110}
@@ -106,40 +100,38 @@ const Navbar = () => {
           {searchMenu && (
             <div className="search_info">
               <div className="search_list">
-                {loading ? (
-                  "Loading..."
-                ) : (
-                  searchedProducts?.map((item: Product, index: number) => (
-                    <div className="search_item" key={index}>
-                      <Image
-                        src={item.images[0]}
-                        width={100}
-                        height={100}
-                        alt="search"
-                      />
-                      <div className="search_content">
-                        <h3>{item.name}</h3>
-                        <div className="search_content_info">
-                          <span>{item.price} ريال</span>
-                          <p>{item.category}</p>
+                {loading
+                  ? "Loading..."
+                  : searchedProducts?.map((item, index) => (
+                      <div className="search_item" key={index}>
+                        <Image
+                          src={item.images[0]}
+                          width={100}
+                          height={100}
+                          alt="search"
+                        />
+                        <div className="search_content">
+                          <h3>{item.name}</h3>
+                          <div className="search_content_info">
+                            <span>{item.price} ريال</span>
+                            <p>{item.category}</p>
+                          </div>
                         </div>
                       </div>
-                    </div>
-                  ))
-                )}
+                    ))}
               </div>
             </div>
           )}
         </div>
 
         <div className="nav_icons">
-          <Link href={`/${locale}/cart`}>
+          <Link href={`/${lang}/cart`}>
             <FontAwesomeIcon icon={faCartShopping} width={30} />
           </Link>
-          <Link href={`/${locale}/register`}>
+          <Link href={`/${lang}/register`}>
             <FontAwesomeIcon icon={faUser} width={30} />
           </Link>
-          <Link href={`/${locale}/addtofav`}>
+          <Link href={`/${lang}/addtofav`}>
             <FontAwesomeIcon icon={faHeart} />
           </Link>
           <Image
@@ -150,10 +142,11 @@ const Navbar = () => {
             style={{ cursor: "auto" }}
           />
           <div className="translation">
-            <p onClick={toggleTranslation}>{locale}</p>
+            <p onClick={toggleTranslation}>{lang}</p>
             <div
-              className={`translation_options ${isTranslationOpen ? "d-flex" : "d-none"
-                }`}
+              className={`translation_options ${
+                isTranslationOpen ? "d-flex" : "d-none"
+              }`}
             >
               <button onClick={() => arTranslate("en")}>En</button>
               <button onClick={() => arTranslate("ar")}>ع</button>
@@ -164,7 +157,7 @@ const Navbar = () => {
 
       <div className="navbar_top mobile">
         <div className="logo_icons">
-          <Link href={`/${locale}`}>
+          <Link href={`/${lang}`}>
             <Image
               src="/images/logo.png"
               width={110}
@@ -175,14 +168,13 @@ const Navbar = () => {
             />
           </Link>
           <div className="nav_icons flag_mob">
-            <Link href={`/${locale}/cart`}>
+            <Link href={`/${lang}/cart`}>
               <FontAwesomeIcon icon={faCartShopping} width={30} />
             </Link>
-            <span className="cart_count">1</span>
-            <Link href={`/${locale}/register`}>
+            <Link href={`/${lang}/register`}>
               <FontAwesomeIcon icon={faUser} width={30} />
             </Link>
-            <Link href={`/${locale}/addtofav`}>
+            <Link href={`/${lang}/addtofav`}>
               <FontAwesomeIcon icon={faHeart} width={30} />
             </Link>
             <Image
@@ -211,8 +203,9 @@ const Navbar = () => {
       </div>
 
       <nav
-        className={`navbar_bottom_mobile ${isMobileNavbarOpen ? "d-flex" : "d-none"
-          }`}
+        className={`navbar_bottom_mobile ${
+          isMobileNavbarOpen ? "d-flex" : "d-none"
+        }`}
       >
         <FontAwesomeIcon icon={faXmark} onClick={closeMobileNavbar} />
         <ul>
@@ -222,22 +215,24 @@ const Navbar = () => {
           <li>
             <Link href={`/`}>{t("nav2")}</Link>
           </li>
-          {
-            loading ? "Loading..." :
-              allCategories?.map((item: Category) => {
+          {loading
+            ? "Loading..."
+            : allCategories?.map((item) => {
                 return (
                   <li key={item._id}>
-                    <Link href={`/${locale}/category`}>{item.category}</Link>
+                    <Link href={`/${lang}/category/${item._id}`}>
+                      {item.name}
+                    </Link>
                   </li>
-                )
-              })
-          }
+                );
+              })}
           <li>
             <div className="translation">
-              <p onClick={toggleMobileTranslation}>{locale}</p>
+              <p onClick={toggleMobileTranslation}>{lang}</p>
               <div
-                className={`translation_options ${isMobileTranslationOpen ? "d-flex" : "d-none"
-                  }`}
+                className={`translation_options ${
+                  isMobileTranslationOpen ? "d-flex" : "d-none"
+                }`}
               >
                 <button onClick={() => arTranslate("en")}>En</button>
                 <button onClick={() => arTranslate("ar")}>ع</button>

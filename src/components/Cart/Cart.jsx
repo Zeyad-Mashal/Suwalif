@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import NavbarTop from "../Navbartop/Navbar";
 import "./Cart.css";
 import Image from "next/image";
+import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleXmark } from "@fortawesome/free-solid-svg-icons";
 import { useTranslations } from "next-intl";
@@ -50,6 +51,7 @@ const Cart = () => {
   const deleteFromCart = (productId) => {
     removeToCartApi(setError, setAllCart, setCartNumber, setloading, productId);
   };
+  const lang = window.localStorage.getItem("Lang");
   return (
     <>
       <NavbarTop />
@@ -103,7 +105,9 @@ const Cart = () => {
             )}
           </div>
           <div className="cart_Check">
-            <button>{t("check")}</button>
+            <button>
+              <Link href={`/${lang}/order`}>{t("check")}</Link>
+            </button>
           </div>
         </div>
       </section>
