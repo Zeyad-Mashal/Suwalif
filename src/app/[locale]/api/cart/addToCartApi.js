@@ -19,7 +19,10 @@ const addToCartApi = async (setCartLoading, setError, productId, data) => {
         console.log(result);
 
         if (response.ok) {
-            document.querySelectorAll(".cart_btn").style.backgroundColor = "green";
+            document.querySelector(".cart_popop").style.display = "flex";
+            setTimeout(() => {
+                document.querySelector(".cart_popop").style.display = "none";
+            }, 5000);
             setCartLoading(false);
         } else {
             if (response.status == 404) {

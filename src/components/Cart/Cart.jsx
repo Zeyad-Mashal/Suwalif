@@ -57,46 +57,50 @@ const Cart = () => {
         <div className="cart_container">
           <h1 className="text-white">{t("title")}</h1>
           <div className="cart_list">
-            {allCart.map((item) => {
-              return (
-                <div className="cart_item" key={item._id}>
-                  <div className="cart_info">
-                    <Image
-                      src={item.product.images[0]}
-                      width={200}
-                      height={200}
-                      alt="cart product"
+            {loading ? (
+              <p className="cart_loading">Suwalif...</p>
+            ) : (
+              allCart.map((item) => {
+                return (
+                  <div className="cart_item" key={item._id}>
+                    <div className="cart_info">
+                      <Image
+                        src={item.product.images[0]}
+                        width={200}
+                        height={200}
+                        alt="cart product"
+                      />
+                      <div className="info_content">
+                        <h3>{item.product.name}</h3>
+                        <h4>{item.product.price} ريال</h4>
+                        <p>اجمالي: {item.price} ريال</p>
+                      </div>
+                    </div>
+                    <FontAwesomeIcon
+                      icon={faCircleXmark}
+                      onClick={() => deleteFromCart(item.product._id)}
                     />
-                    <div className="info_content">
-                      <h3>{item.product.name}</h3>
-                      <h4>{item.product.price} ريال</h4>
-                      <p>اجمالي: {item.price} ريال</p>
+                    <div className="quantity">
+                      <button
+                        onClick={() =>
+                          decrementCount(item.quantity, item.product._id)
+                        }
+                      >
+                        -
+                      </button>
+                      <span>{item.quantity}</span>
+                      <button
+                        onClick={() =>
+                          incrementCount(item.quantity, item.product._id)
+                        }
+                      >
+                        +
+                      </button>
                     </div>
                   </div>
-                  <FontAwesomeIcon
-                    icon={faCircleXmark}
-                    onClick={() => deleteFromCart(item.product._id)}
-                  />
-                  <div className="quantity">
-                    <button
-                      onClick={() =>
-                        decrementCount(item.quantity, item.product._id)
-                      }
-                    >
-                      -
-                    </button>
-                    <span>{item.quantity}</span>
-                    <button
-                      onClick={() =>
-                        incrementCount(item.quantity, item.product._id)
-                      }
-                    >
-                      +
-                    </button>
-                  </div>
-                </div>
-              );
-            })}
+                );
+              })
+            )}
           </div>
           <div className="cart_Check">
             <button>{t("check")}</button>

@@ -15,6 +15,9 @@ import Image from "next/image";
 import { useTranslations } from "next-intl";
 import getBySection from "@/src/app/[locale]/api/topSale/getBySection";
 import Link from "next/link";
+import addToCartApi from "@/src/app/[locale]/api/cart/addToCartApi";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faX } from "@fortawesome/free-solid-svg-icons";
 const Section2 = () => {
   useEffect(() => {
     getAllProductsSection();
@@ -23,10 +26,21 @@ const Section2 = () => {
   const [bySection, setBySection] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+  const [cartLoading, setCartLoading] = useState(false);
+
   const getAllProductsSection = () => {
     getBySection(setLoading, setError, setBySection, "offers");
   };
   const lang = window.localStorage.getItem("Lang");
+  const addToCart = (productId) => {
+    const data = {
+      quantity: 1,
+    };
+    addToCartApi(setCartLoading, setError, productId, data);
+  };
+  const closeCartPopup = () => {
+    document.querySelector(".cart_popop").style.display = "none";
+  };
   return (
     <section className="section2">
       <div className="section2_container">
@@ -59,16 +73,34 @@ const Section2 = () => {
                         </Link>
                         <div className="item_content">
                           <h3>{item.name}</h3>
-                          <p>{item.price} ريال</p>
-                        </div>
-                        <div className="cart_btn">
-                          <button>Add to Cart</button>
+                          <div className="price">
+                            <p>{item.price} ريال</p>
+                            <div className="cart_btn">
+                              <button
+                                onClick={() => addToCart(item._id)}
+                                className="cart_btn_button"
+                              >
+                                أضف الي السلة
+                              </button>
+                            </div>
+                          </div>
                         </div>
                       </div>
                     </SwiperSlide>
                   );
                 })}
           </Swiper>
+          <div className="cart_popop">
+            <FontAwesomeIcon icon={faX} onClick={closeCartPopup} />
+            <Image
+              src={"/images/logo.png"}
+              alt="cart logo"
+              width={500}
+              height={500}
+            />
+            <h3>تمت الاضافة الي السلة</h3>
+            <Link href={`${lang}/cart`}>عرض السلة</Link>
+          </div>
         </div>
       </div>
 

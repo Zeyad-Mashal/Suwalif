@@ -29,27 +29,29 @@ const Category = () => {
       <div className="category">
         <h1>{allProductsByCategory[0]?.category}</h1>
         <div className="category_list">
-          {loading
-            ? "Loading..."
-            : allProductsByCategory.map((item) => {
-                return (
-                  <div className="category_item" key={item._id}>
-                    <Image
-                      src={item.images[0]}
-                      width={1000}
-                      height={1000}
-                      alt="category product"
-                    />
-                    <div className="category_content">
-                      <h3>{item.name}</h3>
-                      <div className="category_content_info">
-                        <p>{item.price} ريال</p>
-                        <button>اضف الي السلة</button>
-                      </div>
+          {loading ? (
+            <p className="category_loading">Suwalif...</p>
+          ) : (
+            allProductsByCategory.map((item) => {
+              return (
+                <div className="category_item" key={item._id}>
+                  <Image
+                    src={item.images[0]}
+                    width={1000}
+                    height={1000}
+                    alt="category product"
+                  />
+                  <div className="category_content">
+                    <h3>{item.name}</h3>
+                    <div className="category_content_info">
+                      <p>{item.price} ريال</p>
+                      <button>اضف الي السلة</button>
                     </div>
                   </div>
-                );
-              })}
+                </div>
+              );
+            })
+          )}
         </div>
       </div>
       <Footer />

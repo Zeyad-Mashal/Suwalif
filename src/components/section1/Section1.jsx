@@ -19,6 +19,8 @@ import { useTranslations } from "next-intl";
 import getBySection from "@/src/app/[locale]/api/topSale/getBySection";
 import Link from "next/link";
 import addToCartApi from "@/src/app/[locale]/api/cart/addToCartApi";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faX } from "@fortawesome/free-solid-svg-icons";
 const Section1 = () => {
   useEffect(() => {
     getAllProductsBySection();
@@ -37,6 +39,9 @@ const Section1 = () => {
       quantity: 1,
     };
     addToCartApi(setCartLoading, setError, productId, data);
+  };
+  const closeCartPopup = () => {
+    document.querySelector(".cart_popop").style.display = "none";
   };
   return (
     <section className="section1">
@@ -72,21 +77,32 @@ const Section1 = () => {
                           <h3>{item?.name}</h3>
                           <div className="price">
                             <p>{item?.price} ريال</p>
+                            <div className="cart_btn">
+                              <button
+                                onClick={() => addToCart(item._id)}
+                                className="cart_btn_button"
+                              >
+                                أضف الي السلة
+                              </button>
+                            </div>
                           </div>
-                        </div>
-                        <div className="cart_btn">
-                          <button
-                            onClick={() => addToCart(item._id)}
-                            className="cart_btn_button"
-                          >
-                            أضف الي السلة
-                          </button>
                         </div>
                       </div>
                     </SwiperSlide>
                   );
                 })}
           </Swiper>
+          <div className="cart_popop">
+            <FontAwesomeIcon icon={faX} onClick={closeCartPopup} />
+            <Image
+              src={"/images/logo.png"}
+              alt="cart logo"
+              width={500}
+              height={500}
+            />
+            <h3>تمت الاضافة الي السلة</h3>
+            <Link href={`${lang}/cart`}>عرض السلة</Link>
+          </div>
         </div>
       </div>
 

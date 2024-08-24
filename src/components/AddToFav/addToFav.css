@@ -36,6 +36,8 @@
 }
 .item_item img {
   width: 200px;
+  height: 150px;
+  object-fit: cover;
   border-radius: 0 16px 16px 0;
 }
 .item_item .content_fav {
@@ -105,6 +107,7 @@
   }
   .item_item img {
     width: 110px;
+    height: 100px;
   }
   .item_item .content_fav {
     margin: 0.6rem;

@@ -21,13 +21,7 @@ export default function Stars() {
               style={{ display: "none" }}
               onClick={() => setRating(ratingValue)}
             />
-            <FontAwesomeIcon
-              icon={faStar}
-              size="2x"
-              color={ratingValue <= (hover || rating) ? "yellow" : "goldenrod"}
-              onMouseEnter={() => setHover(ratingValue)}
-              onMouseLeave={() => setHover(0)}
-            />
+            <FontAwesomeIcon icon={faStar} />
           </label>
         );
       })}

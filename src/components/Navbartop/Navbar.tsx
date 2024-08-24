@@ -135,7 +135,6 @@ const Navbar = () => {
         <div className="nav_icons">
           <Link href={`/${locale}/cart`}>
             <FontAwesomeIcon icon={faCartShopping} width={30} />
-            <span className="cart_count">1</span>
           </Link>
           <Link href={`/${locale}/register`}>
             <FontAwesomeIcon icon={faUser} width={30} />

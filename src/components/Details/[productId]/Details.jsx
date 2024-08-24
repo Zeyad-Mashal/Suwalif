@@ -4,7 +4,7 @@ import Image from "next/image";
 import "./Details.css";
 import NavbarTop from "../../Navbartop/Navbar";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faHeart, faLeaf } from "@fortawesome/free-solid-svg-icons";
+import { faHeart, faLeaf, faX } from "@fortawesome/free-solid-svg-icons";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 // Import Swiper styles
@@ -16,6 +16,7 @@ import getProductByIdApi from "@/src/app/[locale]/api/product/getProductByIdApi"
 import { useParams } from "next/navigation";
 import addToFavoriteApi from "@/src/app/[locale]/api/favorite/addToFavoriteApi";
 import addToCartApi from "@/src/app/[locale]/api/cart/addToCartApi";
+import Link from "next/link";
 const Details = () => {
   useEffect(() => {
     getProductById();
@@ -30,6 +31,7 @@ const Details = () => {
   const { productId } = param;
   const [originalPrice, setOriginalPrice] = useState("");
   const [totalPrice, setTotalPrice] = useState(null);
+  const lang = window.localStorage.getItem("Lang");
   const incrementCount = () => {
     setCount(count + 1);
     const productDetails = products;
@@ -66,6 +68,9 @@ const Details = () => {
     };
     addToCartApi(setCartLoading, setError, productId, data);
   };
+  const closeCartPopup = () => {
+    document.querySelector(".cart_popop").style.display = "none";
+  };
   return (
     <>
       <NavbarTop />
@@ -95,6 +100,17 @@ const Details = () => {
                   );
                 })}
               </Swiper>
+            </div>
+            <div className="cart_popop">
+              <FontAwesomeIcon icon={faX} onClick={closeCartPopup} />
+              <Image
+                src={"/images/logo.png"}
+                alt="cart logo"
+                width={500}
+                height={500}
+              />
+              <h3>تمت الاضافة الي السلة</h3>
+              <Link href={`${lang}/cart`}>عرض السلة</Link>
             </div>
             <div className="item_content">
               <h3>{products?.name}</h3>
@@ -157,25 +173,27 @@ const Details = () => {
                 modules={[Navigation, Pagination, Keyboard]}
                 className="mySwiper"
               >
-                {loading
-                  ? "loading..."
-                  : relatedProducts?.map((item) => {
-                      return (
-                        <SwiperSlide key={item._id}>
-                          <div className="relatedProducts_item">
-                            <Image
-                              src={item.images[0]}
-                              width={1000}
-                              height={1000}
-                              alt="related product"
-                            />
-                            <h3>{item.name}</h3>
-                            <h4>{item.price} ريال</h4>
-                            <button>Add To Cart</button>
-                          </div>
-                        </SwiperSlide>
-                      );
-                    })}
+                {loading ? (
+                  <p className="details_loading">Suwalif...</p>
+                ) : (
+                  relatedProducts?.map((item) => {
+                    return (
+                      <SwiperSlide key={item._id}>
+                        <div className="relatedProducts_item">
+                          <Image
+                            src={item.images[0]}
+                            width={1000}
+                            height={1000}
+                            alt="related product"
+                          />
+                          <h3>{item.name}</h3>
+                          <h4>{item.price} ريال</h4>
+                          <button>Add To Cart</button>
+                        </div>
+                      </SwiperSlide>
+                    );
+                  })
+                )}
               </Swiper>
             </div>
           </div>

@@ -27,31 +27,33 @@ const AddToFav = () => {
         <div className="fav_container">
           <h2>منتاجاتك المفضلة</h2>
           <div className="list_fav">
-            {loading
-              ? "loading..."
-              : allFavorite?.map((item) => {
-                  return (
-                    <div className="item_item" key={item._id}>
-                      <Image
-                        src={item.product.images[0]}
-                        width={500}
-                        height={500}
-                        alt="fav product"
-                      />
-                      <div className="content_fav">
-                        <h3>{item.product.name}</h3>
-                        <div className="content_bottom_fav">
-                          <p>{item.product.price} ريال</p>
-                          <FontAwesomeIcon
-                            icon={faHeart}
-                            width={50}
-                            onClick={() => deleteFavorite(item.product._id)}
-                          />
-                        </div>
+            {loading ? (
+              <p className="cart_loading">Suwalif...</p>
+            ) : (
+              allFavorite?.map((item) => {
+                return (
+                  <div className="item_item" key={item._id}>
+                    <Image
+                      src={item.product.images[0]}
+                      width={500}
+                      height={500}
+                      alt="fav product"
+                    />
+                    <div className="content_fav">
+                      <h3>{item.product.name}</h3>
+                      <div className="content_bottom_fav">
+                        <p>{item.product.price} ريال</p>
+                        <FontAwesomeIcon
+                          icon={faHeart}
+                          width={50}
+                          onClick={() => deleteFavorite(item.product._id)}
+                        />
                       </div>
                     </div>
-                  );
-                })}
+                  </div>
+                );
+              })
+            )}
           </div>
         </div>
       </section>
