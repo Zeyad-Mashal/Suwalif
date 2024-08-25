@@ -10,9 +10,12 @@ import Footer from "../Footer/Footer";
 import Reviews from "../reviwes/Reviwes";
 import Image from "next/image";
 import "./Home.css";
-
+import { useLocale } from "next-intl";
+import { type Locale } from "@/src/lib/locales";
 const Home = () => {
+  const locale = useLocale() as Locale
   const [modelLoading, setModelLoading] = useState(false);
+  const lang = locale
 
   useEffect(() => {
     setModelLoading(true);
@@ -20,7 +23,7 @@ const Home = () => {
       setModelLoading(false);
     }, 1000);
   }, []);
-  // window.localStorage.setItem("lang")
+  window.localStorage.setItem("translation", lang)
   return (
     <div>
       {modelLoading ? (

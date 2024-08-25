@@ -56,17 +56,15 @@ const Navbar = () => {
     console.log(query);
   };
 
+  const lang = window.localStorage.getItem("translation");
+
   const arTranslate = (lang) => {
-    window.localStorage.setItem("Lang", lang);
     window.location.href = `http://localhost:3000/${lang}`;
   };
 
   const getAllCategories = () => {
     getCategoriesApi(setloading, setError, setAllCategories);
   };
-
-  const lang = window.localStorage.getItem("Lang");
-  lang ? lang : lang == "ar";
   return (
     <>
       <div className="navbar_top">

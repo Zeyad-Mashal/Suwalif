@@ -1,5 +1,5 @@
 const URL = "https://back.suwalifstore.com/auth/verify";
-const lang = window.localStorage.getItem("Lang")
+const lang = window.localStorage.getItem("translation")
 const VerificationLoginCode = async (setLoading, setError, push, data) => {
     setLoading(true)
     try {
