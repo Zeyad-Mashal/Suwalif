@@ -94,6 +94,9 @@
   padding: 10px;
   flex-direction: column;
 }
+.search_list > a {
+  width: 100%;
+}
 .search_item {
   width: 100%;
   display: flex;

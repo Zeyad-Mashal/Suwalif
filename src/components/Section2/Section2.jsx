@@ -18,10 +18,14 @@ import Link from "next/link";
 import addToCartApi from "@/src/app/[locale]/api/cart/addToCartApi";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faX } from "@fortawesome/free-solid-svg-icons";
+import { useRouter } from "next/navigation";
+
 const Section2 = () => {
   useEffect(() => {
     getAllProductsSection();
   }, []);
+  const { push } = useRouter();
+
   const t = useTranslations("sectionTwo");
   const [bySection, setBySection] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -32,11 +36,16 @@ const Section2 = () => {
     getBySection(setLoading, setError, setBySection, "offers");
   };
   const lang = window.localStorage.getItem("translation");
+  const user_token = window.localStorage.getItem("user");
   const addToCart = (productId) => {
-    const data = {
-      quantity: 1,
-    };
-    addToCartApi(setCartLoading, setError, productId, data);
+    if (user_token) {
+      const data = {
+        quantity: 1,
+      };
+      addToCartApi(setCartLoading, setError, productId, data);
+    } else {
+      push(`/${lang}/register`);
+    }
   };
   const closeCartPopup = () => {
     document.querySelector(".cart_popop").style.display = "none";
@@ -90,16 +99,18 @@ const Section2 = () => {
                   );
                 })}
           </Swiper>
-          <div className="cart_popop">
-            <FontAwesomeIcon icon={faX} onClick={closeCartPopup} />
-            <Image
-              src={"/images/logo.png"}
-              alt="cart logo"
-              width={500}
-              height={500}
-            />
-            <h3>تمت الاضافة الي السلة</h3>
-            <Link href={`${lang}/cart`}>عرض السلة</Link>
+          <div className="cart_popop_container">
+            <div className="cart_popop">
+              <FontAwesomeIcon icon={faX} onClick={closeCartPopup} />
+              <Image
+                src={"/images/logo.png"}
+                alt="cart logo"
+                width={500}
+                height={500}
+              />
+              <h3>تمت الاضافة الي السلة</h3>
+              <Link href={`${lang}/cart`}>عرض السلة</Link>
+            </div>
           </div>
         </div>
       </div>

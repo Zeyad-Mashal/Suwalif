@@ -241,6 +241,7 @@
   align-items: center;
   flex-wrap: wrap;
   gap: 1rem;
+  padding: 10px;
 }
 .relatedProducts .relatedProductsList .relatedProducts_item {
   width: 320px;

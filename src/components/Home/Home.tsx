@@ -21,28 +21,28 @@ const Home = () => {
     setModelLoading(true);
     setTimeout(() => {
       setModelLoading(false);
-    }, 1000);
+    }, 2800);
   }, []);
   window.localStorage.setItem("translation", lang)
   return (
     <div>
-      {modelLoading ? (
-        <div className="model">
+      {
+        modelLoading ? <div className="model">
           <Image src={"/images/logo.png"} width={5000} height={5000} alt="loading image" />
           <p>Suwalif</p>
         </div>
-      ) : (
-        <>
-          <Navbar />
-          <NavbarMenu />
-          <Hero />
-          <Section1 />
-          <Section2 />
-          {/* <Section3 /> */}
-          <Reviews />
-          <Footer />
-        </>
-      )}
+          : null
+      }
+
+
+      <Navbar />
+      <NavbarMenu />
+      <Hero />
+      <Section1 />
+      <Section2 />
+      <Reviews />
+      <Footer />
+
     </div>
   );
 };

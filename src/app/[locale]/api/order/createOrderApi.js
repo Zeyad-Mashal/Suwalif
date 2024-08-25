@@ -1,22 +1,25 @@
-const URL = "https://back.suwalifstore.com/favorite/add/";
-const lang = window.localStorage.getItem("translation")
+const URL = "https://back.suwalifstore.com/order/create";
 const USER_TOKEN = window.localStorage.getItem("user")
-const addToFavoriteApi = async (setloading, setError, productId) => {
+const createOrderApi = async (setloading, setError, setOrder, setUser, orderData) => {
     setloading(true)
     try {
-        const response = await fetch(`${URL}${productId}`, {
+        const response = await fetch(URL, {
             method: 'POST',
             headers: {
                 "Content-Type": "application/json",
-                "accept-language": lang,
                 'authorization': `suwOZ0${USER_TOKEN}`
             },
+            body: JSON.stringify(orderData)
         });
 
         const result = await response.json();
+        console.log(result);
+
 
         if (response.ok) {
-            document.querySelector(".fav_icon").style.color = "red";
+            setOrder(result.order)
+            setUser(result.user)
+            document.querySelector(".order_created").style.display = "flex";
             setloading(false);
         } else {
             if (response.status == 400) {
@@ -33,4 +36,4 @@ const addToFavoriteApi = async (setloading, setError, productId) => {
         setloading(false)
     }
 }
-export default addToFavoriteApi;
+export default createOrderApi;

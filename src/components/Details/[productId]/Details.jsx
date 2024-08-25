@@ -17,10 +17,14 @@ import { useParams } from "next/navigation";
 import addToFavoriteApi from "@/src/app/[locale]/api/favorite/addToFavoriteApi";
 import addToCartApi from "@/src/app/[locale]/api/cart/addToCartApi";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
+
 const Details = () => {
   useEffect(() => {
     getProductById();
   }, []);
+  const { push } = useRouter();
+
   const [count, setCount] = useState(1);
   const [products, setProducts] = useState({});
   const [relatedProducts, setRelatedproducts] = useState([]);
@@ -32,6 +36,7 @@ const Details = () => {
   const [originalPrice, setOriginalPrice] = useState("");
   const [totalPrice, setTotalPrice] = useState(null);
   const lang = window.localStorage.getItem("translation");
+  const user_token = window.localStorage.getItem("user");
   const incrementCount = () => {
     setCount(count + 1);
     const productDetails = products;
@@ -60,13 +65,21 @@ const Details = () => {
     );
   };
   const addToFavorite = () => {
-    addToFavoriteApi(setloading, setError, productId);
+    if (user_token) {
+      addToFavoriteApi(setloading, setError, productId);
+    } else {
+      push(`/${lang}/register`);
+    }
   };
   const addToCart = (productId) => {
-    const data = {
-      quantity: count,
-    };
-    addToCartApi(setCartLoading, setError, productId, data);
+    if (user_token) {
+      const data = {
+        quantity: count,
+      };
+      addToCartApi(setCartLoading, setError, productId, data);
+    } else {
+      push(`/${lang}/register`);
+    }
   };
   const closeCartPopup = () => {
     document.querySelector(".cart_popop").style.display = "none";
@@ -179,17 +192,19 @@ const Details = () => {
                   relatedProducts?.map((item) => {
                     return (
                       <SwiperSlide key={item._id}>
-                        <div className="relatedProducts_item">
-                          <Image
-                            src={item.images[0]}
-                            width={1000}
-                            height={1000}
-                            alt="related product"
-                          />
-                          <h3>{item.name}</h3>
-                          <h4>{item.price} ريال</h4>
-                          <button>Add To Cart</button>
-                        </div>
+                        <Link href={`/${lang}/details/${item._id}`}>
+                          <div className="relatedProducts_item">
+                            <Image
+                              src={item.images[0]}
+                              width={1000}
+                              height={1000}
+                              alt="related product"
+                            />
+                            <h3>{item.name}</h3>
+                            <h4>{item.price} ريال</h4>
+                            <button>Add To Cart</button>
+                          </div>
+                        </Link>
                       </SwiperSlide>
                     );
                   })

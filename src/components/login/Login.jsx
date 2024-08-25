@@ -12,28 +12,6 @@ const LoginPage = () => {
   const [phoneNumber, setPhoneNumber] = useState("");
   const [email, setEmail] = useState("");
   const [emailOrPhone, setemailOrPhone] = useState("");
-  // const choiseLoginEmail = () => {
-  //   document.querySelector(".email_input").classList.replace("hidden", "block");
-  //   document.querySelector(".phone_input").classList.replace("block", "hidden");
-  //   document
-  //     .querySelector(".login_email_btn")
-  //     .classList.replace("block", "hidden");
-  //   document
-  //     .querySelector(".login_phone_btn")
-  //     .classList.replace("hidden", "block");
-  //   setPhoneNumber("");
-  // };
-  // const choiseLoginPhone = () => {
-  //   document.querySelector(".email_input").classList.replace("block", "hidden");
-  //   document.querySelector(".phone_input").classList.replace("hidden", "block");
-  //   document
-  //     .querySelector(".login_email_btn")
-  //     .classList.replace("hidden", "block");
-  //   document
-  //     .querySelector(".login_phone_btn")
-  //     .classList.replace("block", "hidden");
-  //   setEmail("");
-  // };
 
   const handleLogin = () => {
     if (emailOrPhone == "") {

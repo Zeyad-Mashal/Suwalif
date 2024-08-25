@@ -117,15 +117,25 @@
   width: 10px;
   height: 10px;
 }
-.cart_popop {
+.cart_popop_container {
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 100;
+}
+.cart_popop_container .cart_popop {
   width: 350px;
   height: 200px;
-  background-color: #333;
+  z-index: 9999;
+  background-color: #222;
   border-radius: 16px;
   box-shadow: 4px 4px 4px #333;
-  position: absolute;
-  z-index: 999;
-  display: none;
+  display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;

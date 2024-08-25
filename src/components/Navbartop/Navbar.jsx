@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from "react";
 import "./Navbar.css";
 import Image from "next/image";
+import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faCartShopping,
@@ -10,7 +11,6 @@ import {
   faXmark,
   faHeart,
 } from "@fortawesome/free-solid-svg-icons";
-import Link from "next/link";
 import { useTranslations } from "next-intl";
 import searchByProductApi from "@/src/app/[locale]/api/search/searchByProductApi";
 import getCategoriesApi from "@/src/app/[locale]/api/category/getCategoriesApi";
@@ -91,22 +91,27 @@ const Navbar = () => {
               <div className="search_list">
                 {loading
                   ? "Loading..."
-                  : searchedProducts?.map((item, index) => (
-                      <div className="search_item" key={index}>
-                        <Image
-                          src={item.images[0]}
-                          width={100}
-                          height={100}
-                          alt="search"
-                        />
-                        <div className="search_content">
-                          <h3>{item.name}</h3>
-                          <div className="search_content_info">
-                            <span>{item.price} ريال</span>
-                            <p>{item.category}</p>
+                  : searchedProducts?.map((item) => (
+                      <Link
+                        href={`/${lang}/details/${item._id}`}
+                        key={item._id}
+                      >
+                        <div className="search_item" key={item._id}>
+                          <Image
+                            src={item.images[0]}
+                            width={100}
+                            height={100}
+                            alt="search"
+                          />
+                          <div className="search_content">
+                            <h3>{item.name}</h3>
+                            <div className="search_content_info">
+                              <span>{item.price} ريال</span>
+                              <p>{item.category}</p>
+                            </div>
                           </div>
                         </div>
-                      </div>
+                      </Link>
                     ))}
               </div>
             </div>
