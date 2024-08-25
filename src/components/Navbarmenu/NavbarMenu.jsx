@@ -15,7 +15,7 @@ const NavbarMenu = () => {
   const getAllCategories = () => {
     getCategoriesApi(setloading, setError, setAllCategories);
   };
-  const lang = window.localStorage.getItem("Lang");
+  const lang = window.localStorage.getItem("translation");
   return (
     <>
       <nav className="navbar_bottom">

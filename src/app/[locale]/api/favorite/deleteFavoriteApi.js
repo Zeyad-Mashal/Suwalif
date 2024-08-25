@@ -1,5 +1,5 @@
 const URL = "https://back.suwalifstore.com/favorite/remove/";
-const lang = window.localStorage.getItem("Lang")
+const lang = window.localStorage.getItem("translation")
 const USER_TOKEN = localStorage.getItem("user");
 const deleteFavoriteApi = async (setError, setAllFavorite, setLoading, productId) => {
     setLoading(true)

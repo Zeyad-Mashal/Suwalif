@@ -33,7 +33,7 @@ const Section1 = () => {
   const getAllProductsBySection = () => {
     getBySection(setLoading, setError, setBySection, "topSale");
   };
-  const lang = window.localStorage.getItem("Lang");
+  const lang = window.localStorage.getItem("translation");
   const addToCart = (productId) => {
     const data = {
       quantity: 1,

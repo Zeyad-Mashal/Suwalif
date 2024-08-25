@@ -1,5 +1,5 @@
 const URL = "https://back.suwalifstore.com/cart/remove/";
-const lang = window.localStorage.getItem("Lang")
+const lang = window.localStorage.getItem("translation")
 const USER_TOKEN = localStorage.getItem("user");
 const removeToCartApi = async (setError, setAllCart, setCartNumber, setloading, productId) => {
     setloading(true)

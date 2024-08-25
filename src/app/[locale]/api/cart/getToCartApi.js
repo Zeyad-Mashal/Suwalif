@@ -1,5 +1,5 @@
 const URL = "https://back.suwalifstore.com/cart/get";
-const lang = window.localStorage.getItem("Lang")
+const lang = window.localStorage.getItem("translation")
 const USER_TOKEN = window.localStorage.getItem("user")
 const getToCartApi = async (setloading, setError, setAllCart, setCartNumber) => {
     setloading(true)

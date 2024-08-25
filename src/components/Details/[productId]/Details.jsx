@@ -31,7 +31,7 @@ const Details = () => {
   const { productId } = param;
   const [originalPrice, setOriginalPrice] = useState("");
   const [totalPrice, setTotalPrice] = useState(null);
-  const lang = window.localStorage.getItem("Lang");
+  const lang = window.localStorage.getItem("translation");
   const incrementCount = () => {
     setCount(count + 1);
     const productDetails = products;

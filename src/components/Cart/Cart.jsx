@@ -51,7 +51,7 @@ const Cart = () => {
   const deleteFromCart = (productId) => {
     removeToCartApi(setError, setAllCart, setCartNumber, setloading, productId);
   };
-  const lang = window.localStorage.getItem("Lang");
+  const lang = window.localStorage.getItem("translation");
   return (
     <>
       <NavbarTop />

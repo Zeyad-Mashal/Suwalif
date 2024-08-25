@@ -78,18 +78,6 @@ const LoginPage = () => {
               value={emailOrPhone}
               onChange={(e) => setemailOrPhone(e.target.value)}
             />
-            {/* <p
-              onClick={choiseLoginEmail}
-              className="login_email_btn block loginWay"
-            >
-              Login With Email
-            </p>
-            <p
-              onClick={choiseLoginPhone}
-              className="login_phone_btn hidden loginWay"
-            >
-              Login With Phone
-            </p> */}
             {error}
             <button className="submit_btn active" onClick={handleLogin}>
               {loading ? "Loading..." : "Send Code"}
