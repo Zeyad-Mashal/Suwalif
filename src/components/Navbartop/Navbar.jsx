@@ -15,16 +15,6 @@ import { useTranslations } from "next-intl";
 import searchByProductApi from "@/src/app/[locale]/api/search/searchByProductApi";
 import getCategoriesApi from "@/src/app/[locale]/api/category/getCategoriesApi";
 // Define the Product interface
-// interface Product {
-//   images: string[];
-//   name: string;
-//   price: number;
-//   category: String;
-// }
-// interface Category {
-//   category: string; // Changed to string for consistency
-//   _id: any
-// }
 
 const Navbar = () => {
   useEffect(() => {
@@ -76,6 +66,7 @@ const Navbar = () => {
   };
 
   const lang = window.localStorage.getItem("Lang");
+  lang ? lang : lang == "ar";
   return (
     <>
       <div className="navbar_top">
