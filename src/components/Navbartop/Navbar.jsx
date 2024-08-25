@@ -59,7 +59,6 @@ const Navbar = () => {
   const lang = window.localStorage.getItem("translation");
 
   const arTranslate = (lang) => {
-    const lang = window.localStorage.getItem("translation");
     window.location.href = `http://localhost:3000/${lang}`;
   };
 
