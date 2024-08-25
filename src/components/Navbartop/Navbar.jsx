@@ -207,7 +207,7 @@ const Navbar = () => {
           </li>
           {loading
             ? "Loading..."
-            : allCategories?.map((item) => {
+            : allCategories.map((item) => {
                 return (
                   <li key={item._id}>
                     <Link href={`/${lang}/category/${item._id}`}>
