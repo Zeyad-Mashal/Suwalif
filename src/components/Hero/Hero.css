@@ -33,7 +33,7 @@
 @media screen and (max-width: 489px) {
   .hero .swiper {
     margin-top: 8rem;
-    height: 30vh;
+    height: 25vh;
   }
   .hero .swiper .swiper-button-prev,
   .hero .swiper .swiper-button-next {

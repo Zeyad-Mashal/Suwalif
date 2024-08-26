@@ -116,7 +116,7 @@ const Section1 = () => {
         <Image
           src="/images/banner1.jpg"
           width={1500}
-          height={100}
+          height={1500}
           alt="banner image"
         />
       </div>
