@@ -15,6 +15,9 @@ const getToCartApi = async (setloading, setError, setAllCart, setCartNumber) => 
 
         const result = await response.json();
 
+        console.log(result);
+
+
         if (response.ok) {
             setAllCart(result.cartItems)
             setCartNumber(result.totalPrice)

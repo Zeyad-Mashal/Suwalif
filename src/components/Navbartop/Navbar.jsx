@@ -62,7 +62,7 @@ const Navbar = () => {
   const lang = window.localStorage.getItem("translation");
   const user_token = window.localStorage.getItem("user");
   const arTranslate = (lang) => {
-    window.location.href = `http://localhost:3000/${lang}`;
+    window.location.href = `https://suwalif.vercel.app/${lang}`;
   };
 
   const getAllCategories = () => {
@@ -70,7 +70,7 @@ const Navbar = () => {
   };
   const removeToken = () => {
     window.localStorage.removeItem("user");
-    window.location.href = `http://localhost:3000/${lang}`;
+    window.location.href = `https://suwalif.vercel.app/${lang}`;
   };
   return (
     <>
