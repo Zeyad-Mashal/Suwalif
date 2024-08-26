@@ -204,6 +204,14 @@ const Navbar = () => {
                 <FontAwesomeIcon icon={faUser} width={30} />
               </Link>
             )}
+            {logOut ? (
+              <div className="logout_dropmenu">
+                <p>هل تريد تسجيل خروج ؟</p>
+                <button onClick={removeToken}>تسجيل خروج</button>
+              </div>
+            ) : (
+              ""
+            )}
             <Link href={`/${lang}/addtofav`}>
               <FontAwesomeIcon icon={faHeart} width={30} />
             </Link>
