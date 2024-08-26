@@ -129,6 +129,9 @@ const Navbar = () => {
           <Link href={`/${lang}/cart`}>
             <FontAwesomeIcon icon={faCartShopping} width={30} />
           </Link>
+          <Link href={`/${lang}/addtofav`}>
+            <FontAwesomeIcon icon={faHeart} />
+          </Link>
           {user_token ? (
             <div className="register_logedin">
               <FontAwesomeIcon
@@ -150,10 +153,6 @@ const Navbar = () => {
           ) : (
             ""
           )}
-
-          <Link href={`/${lang}/addtofav`}>
-            <FontAwesomeIcon icon={faHeart} />
-          </Link>
           <Image
             src="/images/saudi-arabia-flag-icon.png"
             width={40}
@@ -191,6 +190,9 @@ const Navbar = () => {
             <Link href={`/${lang}/cart`}>
               <FontAwesomeIcon icon={faCartShopping} width={30} />
             </Link>
+            <Link href={`/${lang}/addtofav`}>
+              <FontAwesomeIcon icon={faHeart} width={30} />
+            </Link>
             {user_token ? (
               <div className="register_logedin">
                 <FontAwesomeIcon
@@ -212,9 +214,6 @@ const Navbar = () => {
             ) : (
               ""
             )}
-            <Link href={`/${lang}/addtofav`}>
-              <FontAwesomeIcon icon={faHeart} width={30} />
-            </Link>
             <Image
               src="/images/saudi-arabia-flag-icon.png"
               width={1000}
