@@ -73,6 +73,10 @@
   color: #999;
   transform: translateY(2px);
 }
+.login {
+  color: #aaa;
+  text-decoration: underline;
+}
 @media screen and (max-width: 789px) {
   .register_conatiner {
     flex-direction: column;

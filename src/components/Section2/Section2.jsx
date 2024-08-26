@@ -7,9 +7,10 @@ import { Swiper, SwiperSlide } from "swiper/react";
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/pagination";
+import "swiper/css/navigation";
 
 // import required modules
-import { Pagination } from "swiper/modules";
+import { Pagination, Navigation } from "swiper/modules";
 
 import Image from "next/image";
 import { useTranslations } from "next-intl";
@@ -58,12 +59,9 @@ const Section2 = () => {
           <Swiper
             slidesPerView={"auto"}
             spaceBetween={10}
-            mousewheel={true}
-            cssMode={true}
-            pagination={{
-              clickable: true,
-            }}
-            modules={[Pagination]}
+            navigation={true}
+            pagination={true}
+            modules={[Navigation, Pagination]}
             className="mySwiper"
           >
             {loading

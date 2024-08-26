@@ -10,16 +10,19 @@ import {
   faBars,
   faXmark,
   faHeart,
+  faX,
 } from "@fortawesome/free-solid-svg-icons";
 import { useTranslations } from "next-intl";
 import searchByProductApi from "@/src/app/[locale]/api/search/searchByProductApi";
 import getCategoriesApi from "@/src/app/[locale]/api/category/getCategoriesApi";
+import { useRouter } from "next/navigation";
 // Define the Product interface
 
 const Navbar = () => {
   useEffect(() => {
     getAllCategories();
   }, []);
+  const { push } = useRouter();
   const t = useTranslations("navbar");
 
   const [isMobileNavbarOpen, setIsMobileNavbarOpen] = useState(false);
@@ -31,7 +34,7 @@ const Navbar = () => {
   const [loading, setloading] = useState(false);
   const [error, setError] = useState("");
   const [allCategories, setAllCategories] = useState([]);
-
+  const [logOut, setLogout] = useState(false);
   const openMobileNavbar = () => {
     setIsMobileNavbarOpen(true);
   };
@@ -57,13 +60,17 @@ const Navbar = () => {
   };
 
   const lang = window.localStorage.getItem("translation");
-
+  const user_token = window.localStorage.getItem("user");
   const arTranslate = (lang) => {
     window.location.href = `http://localhost:3000/${lang}`;
   };
 
   const getAllCategories = () => {
     getCategoriesApi(setloading, setError, setAllCategories);
+  };
+  const removeToken = () => {
+    window.localStorage.removeItem("user");
+    window.location.href = `http://localhost:3000/${lang}`;
   };
   return (
     <>
@@ -122,9 +129,28 @@ const Navbar = () => {
           <Link href={`/${lang}/cart`}>
             <FontAwesomeIcon icon={faCartShopping} width={30} />
           </Link>
-          <Link href={`/${lang}/register`}>
-            <FontAwesomeIcon icon={faUser} width={30} />
-          </Link>
+          {user_token ? (
+            <div className="register_logedin">
+              <FontAwesomeIcon
+                icon={faUser}
+                width={20}
+                onClick={() => setLogout(!logOut)}
+              />
+            </div>
+          ) : (
+            <Link href={`/${lang}/register`}>
+              <FontAwesomeIcon icon={faUser} width={30} />
+            </Link>
+          )}
+          {logOut ? (
+            <div className="logout_dropmenu">
+              <p>هل تريد تسجيل خروج ؟</p>
+              <button onClick={removeToken}>تسجيل خروج</button>
+            </div>
+          ) : (
+            ""
+          )}
+
           <Link href={`/${lang}/addtofav`}>
             <FontAwesomeIcon icon={faHeart} />
           </Link>
@@ -165,9 +191,19 @@ const Navbar = () => {
             <Link href={`/${lang}/cart`}>
               <FontAwesomeIcon icon={faCartShopping} width={30} />
             </Link>
-            <Link href={`/${lang}/register`}>
-              <FontAwesomeIcon icon={faUser} width={30} />
-            </Link>
+            {user_token ? (
+              <div className="register_logedin">
+                <FontAwesomeIcon
+                  icon={faUser}
+                  width={20}
+                  onClick={() => setLogout(!logOut)}
+                />
+              </div>
+            ) : (
+              <Link href={`/${lang}/register`}>
+                <FontAwesomeIcon icon={faUser} width={30} />
+              </Link>
+            )}
             <Link href={`/${lang}/addtofav`}>
               <FontAwesomeIcon icon={faHeart} width={30} />
             </Link>

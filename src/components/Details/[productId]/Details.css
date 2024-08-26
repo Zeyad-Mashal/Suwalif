@@ -281,6 +281,28 @@
 .relatedProducts .relatedProductsList .swiper .swiper-wrapper .swiper-slide {
   width: auto;
 }
+.relatedProductsList .swiper .swiper-pagination .swiper-pagination-bullet {
+  background-color: goldenrod;
+}
+.relatedProductsList
+  .swiper
+  .swiper-pagination
+  .swiper-pagination-bullet-active {
+  width: 10px;
+  height: 10px;
+}
+.relatedProductsList .swiper .swiper-button-prev,
+.relatedProductsList .swiper .swiper-button-next {
+  background-color: rgba(255, 215, 0, 0.6);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+.relatedProductsList .swiper .swiper-button-prev::after,
+.relatedProductsList .swiper .swiper-button-next::after {
+  font-size: 1.5rem;
+  color: #eee;
+}
 @media screen and (max-width: 789px) {
   .details_item {
     flex-direction: column;

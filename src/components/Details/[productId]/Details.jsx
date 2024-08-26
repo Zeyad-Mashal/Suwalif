@@ -11,7 +11,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
-import { Navigation, Pagination, Mousewheel, Keyboard } from "swiper/modules";
+import { Navigation, Pagination } from "swiper/modules";
 import getProductByIdApi from "@/src/app/[locale]/api/product/getProductByIdApi";
 import { useParams } from "next/navigation";
 import addToFavoriteApi from "@/src/app/[locale]/api/favorite/addToFavoriteApi";
@@ -92,12 +92,9 @@ const Details = () => {
           <div className="details_item">
             <div className="item_image">
               <Swiper
-                cssMode={true}
                 navigation={true}
                 pagination={true}
-                mousewheel={true}
-                keyboard={true}
-                modules={[Navigation, Pagination, Mousewheel, Keyboard]}
+                modules={[Navigation, Pagination]}
                 className="mySwiper"
               >
                 {products?.images?.map((item) => {
@@ -179,11 +176,9 @@ const Details = () => {
               <Swiper
                 slidesPerView={"auto"}
                 spaceBetween={10}
-                loop={true}
                 navigation={true}
                 pagination={true}
-                keyboard={true}
-                modules={[Navigation, Pagination, Keyboard]}
+                modules={[Navigation, Pagination]}
                 className="mySwiper"
               >
                 {loading ? (

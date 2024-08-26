@@ -5,6 +5,7 @@ import "./register.css";
 import { useRouter } from "next/navigation";
 import RegisterAPI from "../../app/[locale]/api/auth/register.api";
 import { useTranslations } from "next-intl";
+import Link from "next/link";
 const RegisterPage = () => {
   const [loading, setloading] = useState(false);
   const [Error, setError] = useState("");
@@ -26,6 +27,7 @@ const RegisterPage = () => {
     }
   };
 
+  const lang = window.localStorage.getItem("translation");
   return (
     <main>
       <title>Register Page</title>
@@ -71,6 +73,9 @@ const RegisterPage = () => {
               onChange={(e) => setEmail(e.target.value)}
             />
             {Error}
+            <div className="login">
+              <Link href={`/${lang}/login`}>هل لديك حساب ؟</Link>
+            </div>
             <button className="submit_btn active" onClick={handleRegister}>
               {loading ? "Loading..." : "تسجيل"}
             </button>

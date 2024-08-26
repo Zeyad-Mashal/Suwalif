@@ -59,10 +59,7 @@ const Section1 = () => {
             slidesPerView={"auto"}
             spaceBetween={10}
             navigation={true}
-            loop={true}
-            pagination={{
-              clickable: true,
-            }}
+            pagination={true}
             modules={[Navigation, Pagination]}
             className="mySwiper"
           >
@@ -72,7 +69,7 @@ const Section1 = () => {
                   return (
                     <SwiperSlide key={item._id}>
                       <div className="section1_item">
-                        <Link href={`${lang}/details/${item._id}`}>
+                        <Link href={`/${lang}/details/${item._id}`}>
                           <Image
                             src={item?.images[0]}
                             width={200}

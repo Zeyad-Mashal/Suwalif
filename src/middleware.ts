@@ -5,7 +5,7 @@ const NextIntlMiddleware = createMiddleware({
     locales: ['ar', 'en'],
 
     // Used when no locale matches
-    defaultLocale: 'en',
+    defaultLocale: 'ar',
     localeDetection: false
 });
 

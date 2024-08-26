@@ -163,6 +163,25 @@
 .cart_popop a {
   text-decoration: underline;
 }
+.section2_list .swiper .swiper-pagination .swiper-pagination-bullet {
+  background-color: goldenrod;
+}
+.section2_list .swiper .swiper-pagination .swiper-pagination-bullet-active {
+  width: 10px;
+  height: 10px;
+}
+.section2_list .swiper .swiper-button-prev,
+.section2_list .swiper .swiper-button-next {
+  background-color: rgba(255, 215, 0, 0.6);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+.section2_list .swiper .swiper-button-prev::after,
+.section2_list .swiper .swiper-button-next::after {
+  font-size: 1.5rem;
+  color: #eee;
+}
 @keyframes cartPopup {
   0% {
     scale: 1;
