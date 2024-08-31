@@ -226,7 +226,7 @@ const Navbar = () => {
                   <FontAwesomeIcon icon={faEnvelope} />
                 </span>
               </div>
-              <button>الدخول </button>
+              <button onClick={handleOpenVerification}>الدخول </button>
             </div>
 
             <div className="code">
