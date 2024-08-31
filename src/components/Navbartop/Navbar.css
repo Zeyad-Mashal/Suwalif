@@ -308,6 +308,14 @@
 .logout_dropmenu button:hover {
   background-color: #000;
 }
+.login {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  max-height: 90vh;
+}
 .login_container {
   width: 100%;
   display: flex;
@@ -318,7 +326,7 @@
   top: 0;
   bottom: 0;
   background-color: rgba(0, 0, 0, 0.5);
-  z-index: 999;
+  z-index: 9998;
   cursor: pointer;
 }
 
@@ -331,7 +339,9 @@
   background-color: #eee;
   padding: 1rem;
   box-shadow: 4px 4px 10px #222;
-  position: relative;
+  position: fixed;
+  top: 25%;
+  z-index: 9999;
 }
 .login_content .close_login {
   position: absolute;
@@ -414,6 +424,64 @@
 .login_email:hover svg {
   color: #fff;
 }
+.phone_way,
+.email_way {
+  width: 100%;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.phone_way > p,
+.email_way > p {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  font-weight: bold;
+}
+.phone_input,
+.email_input {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.phone_input > span,
+.email_input > span {
+  width: 50px;
+  background-color: #fff;
+  border: 1px solid #aaa;
+  padding: 5px 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.email_input > span svg {
+  font-size: 1.5rem;
+}
+.phone_input > input,
+.email_input > input {
+  width: 80%;
+  border: 1px solid #aaa;
+  outline: none;
+  direction: ltr;
+  margin: 1rem 0;
+  padding: 5px 10px;
+}
+.phone_way > button,
+.email_way > button {
+  background-color: goldenrod;
+  padding: 8px;
+  width: 90%;
+  color: #fff;
+  font-weight: bold;
+  transition: 0.3s ease;
+}
+.phone_way > button:hover,
+.email_way > button:hover {
+  background-color: rgb(210, 153, 10);
+}
 @media screen and (max-width: 789px) {
   .mobile {
     display: block;
@@ -439,5 +507,10 @@
   }
   .login_content {
     width: 350px;
+  }
+
+  .login_content > p::before,
+  .login_content > p::after {
+    width: 60px;
   }
 }

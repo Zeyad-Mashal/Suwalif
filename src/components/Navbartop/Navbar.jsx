@@ -37,6 +37,7 @@ const Navbar = () => {
   const [allCategories, setAllCategories] = useState([]);
   const [logOut, setLogout] = useState(false);
   const [login, setLogin] = useState(false);
+  const [openPhone, setOpenPhone] = useState(false);
   const openMobileNavbar = () => {
     setIsMobileNavbarOpen(true);
   };
@@ -73,6 +74,14 @@ const Navbar = () => {
   const removeToken = () => {
     window.localStorage.removeItem("user");
     window.location.href = `https://suwalif.vercel.app/${lang}`;
+  };
+  const handleOpenPhone = () => {
+    document.querySelector(".phone_way").style.display = "flex";
+    document.querySelector(".login_ways").style.display = "none";
+  };
+  const handleOpenemail = () => {
+    document.querySelector(".email_way").style.display = "flex";
+    document.querySelector(".login_ways").style.display = "none";
   };
   return (
     <>
@@ -179,7 +188,11 @@ const Navbar = () => {
       </div>
 
       {login ? (
-        <div className="login_container" onClick={() => setLogin(!login)}>
+        <div className="login">
+          <div
+            className="login_container"
+            onClick={() => setLogin(!login)}
+          ></div>
           <div className="login_content">
             <FontAwesomeIcon
               icon={faX}
@@ -189,12 +202,32 @@ const Navbar = () => {
             <FontAwesomeIcon icon={faUser} />
             <h3>تسجيل الدخول</h3>
             <p>أختر وسيلة الدفع</p>
+
+            <div className="phone_way">
+              <p>رقم الجوال: </p>
+              <div className="phone_input">
+                <input type="text" placeholder="51 234 5678" />
+                <span>+966</span>
+              </div>
+              <button>الدخول </button>
+            </div>
+
+            <div className="email_way ">
+              <p>البريد الالكتروني: </p>
+              <div className="email_input">
+                <input type="text" placeholder="example1@email.com" />
+                <span>
+                  <FontAwesomeIcon icon={faEnvelope} />
+                </span>
+              </div>
+              <button>الدخول </button>
+            </div>
             <div className="login_ways">
-              <div className="login_phone">
+              <div className="login_phone" onClick={handleOpenPhone}>
                 <FontAwesomeIcon icon={faMobile} />
                 <p>رسالة نصية</p>
               </div>
-              <div className="login_email">
+              <div className="login_email" onClick={handleOpenemail}>
                 <FontAwesomeIcon icon={faEnvelope} />
                 <p>البريد الألكتروني</p>
               </div>
