@@ -201,7 +201,7 @@ const Navbar = () => {
             />
             <FontAwesomeIcon icon={faUser} />
             <h3>تسجيل الدخول</h3>
-            <p>أختر وسيلة الدفع</p>
+            <p>أختر وسيلة التسجيل</p>
 
             <div className="phone_way">
               <p>رقم الجوال: </p>
