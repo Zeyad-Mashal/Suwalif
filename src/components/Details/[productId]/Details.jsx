@@ -84,6 +84,7 @@ const Details = () => {
   const closeCartPopup = () => {
     document.querySelector(".cart_popop").style.display = "none";
   };
+
   return (
     <>
       <NavbarTop />
@@ -128,11 +129,24 @@ const Details = () => {
               <h4>{products?.price} ريال</h4>
               <div className="leaves_rating">
                 <div className="leaves_rating_leaves">
+                  <div className="leaves_static">
+                    <FontAwesomeIcon icon={faLeaf} width={30} />
+                    <FontAwesomeIcon icon={faLeaf} width={30} />
+                    <FontAwesomeIcon icon={faLeaf} width={30} />
+                    <FontAwesomeIcon icon={faLeaf} width={30} />
+                    <FontAwesomeIcon icon={faLeaf} width={30} />
+                  </div>
                   {(() => {
                     const leaves = [];
 
                     for (let i = 0; products?.flavorIntensity > i; i++) {
-                      leaves.push(<FontAwesomeIcon icon={faLeaf} width={30} />);
+                      leaves.push(
+                        <FontAwesomeIcon
+                          icon={faLeaf}
+                          width={30}
+                          className="leaves"
+                        />
+                      );
                     }
 
                     return leaves;

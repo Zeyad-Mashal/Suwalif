@@ -64,9 +64,11 @@
   justify-content: flex-start;
   align-items: center;
   width: 100%;
+  position: relative;
 }
-.details_item .item_content .leaves_rating svg {
+.details_item .item_content .leaves_rating .leaves {
   color: #fff;
+  z-index: 9;
 }
 .details_item .item_content .leaves_rating .leaves_rating_word {
   color: #aaa;
@@ -221,6 +223,15 @@
   100% {
     scale: 1;
   }
+}
+.leaves_static {
+  z-index: 1;
+  position: absolute;
+}
+.leaves_static > svg {
+  color: gray;
+  opacity: 0.7;
+  /* width: 100%; */
 }
 .relatedProducts {
   width: 100%;

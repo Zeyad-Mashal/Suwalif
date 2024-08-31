@@ -38,5 +38,9 @@
     "register": {
       "title": "Register Page",
       "btn": "Login"
+    },
+    "login": {
+      "title": "تسجيل دخول",
+      "btn": "تسجيل"
     }
   }

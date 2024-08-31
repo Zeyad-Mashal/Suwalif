@@ -11,6 +11,8 @@ import {
   faXmark,
   faHeart,
   faX,
+  faMobile,
+  faEnvelope,
 } from "@fortawesome/free-solid-svg-icons";
 import { useTranslations } from "next-intl";
 import searchByProductApi from "@/src/app/[locale]/api/search/searchByProductApi";
@@ -22,7 +24,6 @@ const Navbar = () => {
   useEffect(() => {
     getAllCategories();
   }, []);
-  const { push } = useRouter();
   const t = useTranslations("navbar");
 
   const [isMobileNavbarOpen, setIsMobileNavbarOpen] = useState(false);
@@ -35,6 +36,7 @@ const Navbar = () => {
   const [error, setError] = useState("");
   const [allCategories, setAllCategories] = useState([]);
   const [logOut, setLogout] = useState(false);
+  const [login, setLogin] = useState(false);
   const openMobileNavbar = () => {
     setIsMobileNavbarOpen(true);
   };
@@ -141,9 +143,11 @@ const Navbar = () => {
               />
             </div>
           ) : (
-            <Link href={`/${lang}/register`}>
-              <FontAwesomeIcon icon={faUser} width={30} />
-            </Link>
+            <FontAwesomeIcon
+              icon={faUser}
+              width={30}
+              onClick={() => setLogin(!login)}
+            />
           )}
           {logOut ? (
             <div className="logout_dropmenu">
@@ -174,6 +178,33 @@ const Navbar = () => {
         </div>
       </div>
 
+      {login ? (
+        <div className="login_container" onClick={() => setLogin(!login)}>
+          <div className="login_content">
+            <FontAwesomeIcon
+              icon={faX}
+              className="close_login"
+              onClick={() => setLogin(!login)}
+            />
+            <FontAwesomeIcon icon={faUser} />
+            <h3>تسجيل الدخول</h3>
+            <p>أختر وسيلة الدفع</p>
+            <div className="login_ways">
+              <div className="login_phone">
+                <FontAwesomeIcon icon={faMobile} />
+                <p>رسالة نصية</p>
+              </div>
+              <div className="login_email">
+                <FontAwesomeIcon icon={faEnvelope} />
+                <p>البريد الألكتروني</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      ) : (
+        ""
+      )}
+
       <div className="navbar_top mobile">
         <div className="logo_icons">
           <Link href={`/${lang}`}>
@@ -202,9 +233,11 @@ const Navbar = () => {
                 />
               </div>
             ) : (
-              <Link href={`/${lang}/register`}>
-                <FontAwesomeIcon icon={faUser} width={30} />
-              </Link>
+              <FontAwesomeIcon
+                icon={faUser}
+                width={30}
+                onClick={() => setLogin(!login)}
+              />
             )}
             {logOut ? (
               <div className="logout_dropmenu">

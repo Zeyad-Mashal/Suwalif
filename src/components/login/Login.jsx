@@ -5,7 +5,9 @@ import "../register/register.css";
 import LoginAPI from "../../app/[locale]/api/auth/login.api";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import { useTranslations } from "next-intl";
 const LoginPage = () => {
+  const t = useTranslations("login");
   const { push } = useRouter();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
@@ -48,7 +50,7 @@ const LoginPage = () => {
             className="register_image mb-3"
           />
           <div className="form_register">
-            <h2 className="text-center">Login</h2>
+            <h2 className="text-center">{t("title")}</h2>
             <input
               type="email"
               placeholder="ادخل البريد الالكتروني او رقم الهاتف"
@@ -58,7 +60,7 @@ const LoginPage = () => {
             />
             {error}
             <button className="submit_btn active" onClick={handleLogin}>
-              {loading ? "Loading..." : "Send Code"}
+              {loading ? "Loading..." : "تسجيل"}
             </button>
           </div>
         </div>

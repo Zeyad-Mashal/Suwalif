@@ -136,7 +136,7 @@
     gap: 10px;
   }
   .form_register .code_inputs input {
-    width: 45px;
+    width: 100%;
   }
 }
 .loader {
