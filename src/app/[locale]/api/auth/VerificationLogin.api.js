@@ -1,7 +1,7 @@
 const URL = "https://back.suwalifstore.com/auth/verify";
 const lang = window.localStorage.getItem("translation")
-const VerificationLoginCode = async (setLoading, setError, push, data) => {
-    setLoading(true)
+const VerificationLoginCode = async (setloading, setError, data) => {
+    setloading(true)
     try {
         const response = await fetch(URL, {
             method: 'POST',
@@ -14,23 +14,25 @@ const VerificationLoginCode = async (setLoading, setError, push, data) => {
 
         const result = await response.json();
 
+
+
         if (response.ok) {
-            push(`/${lang}`)
-            setLoading(false);
+            setloading(false);
             localStorage.setItem("user", result.token);
+            window.location.reload();
         } else {
             if (response.status == 400) {
                 setError(result.message)
-                setLoading(false);
+                setloading(false);
             } else if (response.status == 500) {
                 setError(result.message)
-                setLoading(false);
+                setloading(false);
             }
-            setLoading(false)
+            setloading(false)
         }
     } catch (error) {
         setError('An error occurred');
-        setLoading(false)
+        setloading(false)
     }
 }
 export default VerificationLoginCode;

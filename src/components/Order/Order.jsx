@@ -14,10 +14,14 @@ const Order = () => {
   const [city, setCity] = useState("");
   const [address, setAddress] = useState("");
   const [copoun, setCopoun] = useState("");
+  const [phone, setPhone] = useState("");
+  const [name, setName] = useState("");
   const [error, setError] = useState("");
   const [loading, setloading] = useState(false);
   const createOrder = () => {
     const orderData = {
+      userName: name,
+      userPhone: phone,
       couponCode: copoun ? copoun : undefined,
       city,
       address,
@@ -37,6 +41,24 @@ const Order = () => {
           <p>يرجي ملئ البيانات لأستلام الطلب</p>
           <div className="order_content">
             <h3>بيانات الطلب</h3>
+            <div className="order_input">
+              <label htmlFor="city">الاسم:</label>
+              <input
+                type="text"
+                name="city"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+              />
+            </div>
+            <div className="order_input">
+              <label htmlFor="city">رقم الجوال:</label>
+              <input
+                type="text"
+                name="city"
+                value={phone}
+                onChange={(e) => setPhone(e.target.value)}
+              />
+            </div>
             <div className="order_input">
               <label htmlFor="city">المنطقة:</label>
               <input
@@ -82,10 +104,10 @@ const Order = () => {
             <div className="order_details">
               <h4>تفاصيل الطلب يرجي اخذ لقطة شاشة</h4>
               <p>
-                <strong>الاسم</strong>: {user.name}
+                <strong>الاسم</strong>: {order.userName}
               </p>
               <p>
-                <strong>رقم الهاتف</strong>: {user.phone}
+                <strong>رقم الهاتف</strong>: {order.userPhone}
               </p>
               <p>
                 <strong>الايميل</strong>: {user.email}

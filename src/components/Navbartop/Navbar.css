@@ -470,7 +470,7 @@
 .phone_input > input,
 .email_input > input,
 .code_input > input {
-  width: 80%;
+  width: 100%;
   border: 1px solid #aaa;
   outline: none;
   direction: ltr;
@@ -482,7 +482,7 @@
 .code > button {
   background-color: goldenrod;
   padding: 8px;
-  width: 90%;
+  width: 100%;
   color: #fff;
   font-weight: bold;
   transition: 0.3s ease;

@@ -19,7 +19,8 @@ import searchByProductApi from "@/src/app/[locale]/api/search/searchByProductApi
 import getCategoriesApi from "@/src/app/[locale]/api/category/getCategoriesApi";
 import { useRouter } from "next/navigation";
 // Define the Product interface
-
+import LoginAPI from "@/src/app/[locale]/api/auth/login.api";
+import VerificationLoginCode from "@/src/app/[locale]/api/auth/VerificationLogin.api";
 const Navbar = () => {
   useEffect(() => {
     getAllCategories();
@@ -33,11 +34,14 @@ const Navbar = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [searchedProducts, setSearchedProducts] = useState([]);
   const [loading, setloading] = useState(false);
+  const [Loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [allCategories, setAllCategories] = useState([]);
   const [logOut, setLogout] = useState(false);
   const [login, setLogin] = useState(false);
   const [openPhone, setOpenPhone] = useState(false);
+  const [emailOrPhone, setemailOrPhone] = useState("");
+
   const openMobileNavbar = () => {
     setIsMobileNavbarOpen(true);
   };
@@ -88,6 +92,28 @@ const Navbar = () => {
   const handleOpenVerification = () => {
     document.querySelector(".code").style.display = "flex";
     document.querySelector(".login_ways_p").style.display = "none";
+  };
+  const handleLogin = () => {
+    if (emailOrPhone == "") {
+      setError("Please enter your email or phone number");
+    } else {
+      const data = {
+        emailOrPhone: emailOrPhone,
+      };
+      LoginAPI(setLoading, setError, data);
+    }
+  };
+  const [code, setCode] = useState("");
+  const hendleVerifyCode = () => {
+    if (code == "") {
+      setError("يرجي إادخال رمز التحقق المرسل");
+    } else {
+      const data = {
+        emailOrPhone,
+        verificationCode: code,
+      };
+      VerificationLoginCode(setloading, setError, data);
+    }
   };
   return (
     <>
@@ -212,30 +238,55 @@ const Navbar = () => {
             <div className="phone_way">
               <p>رقم الجوال: </p>
               <div className="phone_input">
-                <input type="text" placeholder="51 234 5678" />
+                <input
+                  type="text"
+                  placeholder="51 234 5678"
+                  value={emailOrPhone}
+                  onChange={(e) => setemailOrPhone(e.target.value)}
+                />
                 <span>+966</span>
               </div>
-              <button onClick={handleOpenVerification}>الدخول </button>
+              {error}
+              <button onClick={handleLogin}>
+                {Loading ? "Suwalif..." : "دخول"}
+              </button>
             </div>
 
             <div className="email_way ">
               <p>البريد الالكتروني: </p>
               <div className="email_input">
-                <input type="text" placeholder="example1@email.com" />
+                <input
+                  type="text"
+                  placeholder="example1@email.com"
+                  value={emailOrPhone}
+                  onChange={(e) => setemailOrPhone(e.target.value)}
+                />
                 <span>
                   <FontAwesomeIcon icon={faEnvelope} />
                 </span>
               </div>
-              <button onClick={handleOpenVerification}>الدخول </button>
+              {error}
+              <button onClick={handleLogin}>
+                {Loading ? "Suwalif..." : "دخول"}
+              </button>
             </div>
 
             <div className="code">
               <p>يرجي إدخال رمز التحقق</p>
               <div className="code_input">
-                <input type="text" placeholder="رمز التحقق" />
+                <input
+                  type="text"
+                  placeholder="رمز التحقق"
+                  value={code}
+                  onChange={(e) => setCode(e.target.value)}
+                />
               </div>
-              <button>دخول</button>
+              {error}
+              <button onClick={hendleVerifyCode}>
+                {Loading ? "Suwalif..." : "دخول"}
+              </button>
             </div>
+
             <div className="login_ways">
               <div className="login_phone" onClick={handleOpenPhone}>
                 <FontAwesomeIcon icon={faMobile} />

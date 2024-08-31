@@ -1,7 +1,7 @@
 const URL = "https://back.suwalifstore.com/auth/login";
 const lang = window.localStorage.getItem("translation");
-const LoginAPI = async (setloading, setError, data, push) => {
-    setloading(true)
+const LoginAPI = async (setLoading, setError, data) => {
+    setLoading(true)
     try {
         const response = await fetch(URL, {
             method: 'POST',
@@ -14,26 +14,28 @@ const LoginAPI = async (setloading, setError, data, push) => {
 
         const result = await response.json();
 
+        console.log(result);
+
         if (response.ok) {
-            push(`/${lang}/verifycode/${data.emailOrPhone}`)
-            setloading(false);
+            setLoading(false);
+            document.querySelector(".code").style.display = "flex"
         } else {
             if (response.status == 404) {
                 setError(result.message)
-                setloading(false);
+                setLoading(false);
             } else if (response.status == 400) {
                 setError(result.message)
-                setloading(false);
+                setLoading(false);
             }
             else if (response.status == 500) {
                 setError(result.message)
-                setloading(false);
+                setLoading(false);
             }
-            setloading(false)
+            setLoading(false)
         }
     } catch (error) {
         setError('An error occurred');
-        setloading(false)
+        setLoading(false)
     }
 }
 export default LoginAPI;
