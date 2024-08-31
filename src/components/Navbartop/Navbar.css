@@ -226,7 +226,6 @@
 }
 .translation_options button {
   width: 100%;
-  background-color: blue;
 }
 .translation_options a {
   width: 100%;
@@ -332,16 +331,18 @@
 
 .login_content {
   width: 400px;
+  max-height: 480px;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   background-color: #eee;
-  padding: 1rem;
+  padding: 3rem 1rem 1rem 1rem;
   box-shadow: 4px 4px 10px #222;
   position: fixed;
-  top: 25%;
+  top: 20%;
   z-index: 9999;
+  overflow: auto;
 }
 .login_content .close_login {
   position: absolute;
@@ -425,15 +426,20 @@
   color: #fff;
 }
 .phone_way,
-.email_way {
+.email_way,
+.code {
   width: 100%;
   display: none;
   justify-content: center;
   align-items: center;
   flex-direction: column;
 }
+.code {
+  margin-top: 1rem;
+}
 .phone_way > p,
-.email_way > p {
+.email_way > p,
+.code > p {
   width: 100%;
   display: flex;
   justify-content: flex-start;
@@ -441,7 +447,8 @@
   font-weight: bold;
 }
 .phone_input,
-.email_input {
+.email_input,
+.code_input {
   width: 100%;
   display: flex;
   justify-content: center;
@@ -461,7 +468,8 @@
   font-size: 1.5rem;
 }
 .phone_input > input,
-.email_input > input {
+.email_input > input,
+.code_input > input {
   width: 80%;
   border: 1px solid #aaa;
   outline: none;
@@ -470,7 +478,8 @@
   padding: 5px 10px;
 }
 .phone_way > button,
-.email_way > button {
+.email_way > button,
+.code > button {
   background-color: goldenrod;
   padding: 8px;
   width: 90%;
@@ -479,7 +488,8 @@
   transition: 0.3s ease;
 }
 .phone_way > button:hover,
-.email_way > button:hover {
+.email_way > button:hover,
+.code > button:hover {
   background-color: rgb(210, 153, 10);
 }
 @media screen and (max-width: 789px) {

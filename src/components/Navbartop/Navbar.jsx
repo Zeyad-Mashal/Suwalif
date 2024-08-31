@@ -78,10 +78,16 @@ const Navbar = () => {
   const handleOpenPhone = () => {
     document.querySelector(".phone_way").style.display = "flex";
     document.querySelector(".login_ways").style.display = "none";
+    document.querySelector(".login_ways_p").style.display = "none";
   };
   const handleOpenemail = () => {
     document.querySelector(".email_way").style.display = "flex";
     document.querySelector(".login_ways").style.display = "none";
+    document.querySelector(".login_ways_p").style.display = "none";
+  };
+  const handleOpenVerification = () => {
+    document.querySelector(".code").style.display = "flex";
+    document.querySelector(".login_ways_p").style.display = "none";
   };
   return (
     <>
@@ -180,8 +186,8 @@ const Navbar = () => {
                 isTranslationOpen ? "d-flex" : "d-none"
               }`}
             >
-              <button onClick={() => arTranslate("en")}>En</button>
-              <button onClick={() => arTranslate("ar")}>ع</button>
+              <button onClick={() => arTranslate("en")}>English</button>
+              <button onClick={() => arTranslate("ar")}>عربي</button>
             </div>
           </div>
         </div>
@@ -201,7 +207,7 @@ const Navbar = () => {
             />
             <FontAwesomeIcon icon={faUser} />
             <h3>تسجيل الدخول</h3>
-            <p>أختر وسيلة التسجيل</p>
+            <p className="login_ways_p">أختر وسيلة التسجيل</p>
 
             <div className="phone_way">
               <p>رقم الجوال: </p>
@@ -209,7 +215,7 @@ const Navbar = () => {
                 <input type="text" placeholder="51 234 5678" />
                 <span>+966</span>
               </div>
-              <button>الدخول </button>
+              <button onClick={handleOpenVerification}>الدخول </button>
             </div>
 
             <div className="email_way ">
@@ -221,6 +227,14 @@ const Navbar = () => {
                 </span>
               </div>
               <button>الدخول </button>
+            </div>
+
+            <div className="code">
+              <p>يرجي إدخال رمز التحقق</p>
+              <div className="code_input">
+                <input type="text" placeholder="رمز التحقق" />
+              </div>
+              <button>دخول</button>
             </div>
             <div className="login_ways">
               <div className="login_phone" onClick={handleOpenPhone}>

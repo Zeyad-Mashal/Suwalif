@@ -112,13 +112,6 @@ const Section2 = () => {
           </div>
         </div>
       </div>
-
-      <div className="shapes">
-        <Image src="/images/shape-1.png" width={250} height={100} alt="shape" />
-      </div>
-      <div className="shapes2">
-        <Image src="/images/shape-2.png" width={250} height={100} alt="shape" />
-      </div>
     </section>
   );
 };
