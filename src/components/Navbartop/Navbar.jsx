@@ -203,7 +203,7 @@ const Navbar = () => {
           <div className="translation">
             <div className="translate_indecator">
               <p onClick={toggleTranslation}>{`${
-                lang == "ar" ? "عربي" : "English"
+                lang == "ar" ? "English" : "عربي"
               }`}</p>{" "}
               <FontAwesomeIcon icon={faCaretDown} />
             </div>
@@ -411,7 +411,7 @@ const Navbar = () => {
               className="mobile_translation_indecator"
               onClick={() => setOpenMobileTranslate(!openMobileTranslate)}
             >
-              <p>{`${lang == "ar" ? "عربي" : "English"}`}</p>
+              <p>{`${lang == "ar" ? "English" : "عربي"}`}</p>
               <FontAwesomeIcon icon={faCaretDown} />
             </div>
             {openMobileTranslate ? (
