@@ -13,6 +13,7 @@ import {
   faX,
   faMobile,
   faEnvelope,
+  faCaretDown,
 } from "@fortawesome/free-solid-svg-icons";
 import { useTranslations } from "next-intl";
 import searchByProductApi from "@/src/app/[locale]/api/search/searchByProductApi";
@@ -41,7 +42,7 @@ const Navbar = () => {
   const [login, setLogin] = useState(false);
   const [openPhone, setOpenPhone] = useState(false);
   const [emailOrPhone, setemailOrPhone] = useState("");
-
+  const [openMobileTranslate, setOpenMobileTranslate] = useState(false);
   const openMobileNavbar = () => {
     setIsMobileNavbarOpen(true);
   };
@@ -175,6 +176,7 @@ const Navbar = () => {
           <Link href={`/${lang}/addtofav`}>
             <FontAwesomeIcon icon={faHeart} />
           </Link>
+
           {user_token ? (
             <div className="register_logedin">
               <FontAwesomeIcon
@@ -198,15 +200,13 @@ const Navbar = () => {
           ) : (
             ""
           )}
-          <Image
-            src="/images/saudi-arabia-flag-icon.png"
-            width={40}
-            height={40}
-            alt="saudi arabia flag"
-            style={{ cursor: "auto" }}
-          />
           <div className="translation">
-            <p onClick={toggleTranslation}>{lang}</p>
+            <div className="translate_indecator">
+              <p onClick={toggleTranslation}>{`${
+                lang == "ar" ? "عربي" : "English"
+              }`}</p>{" "}
+              <FontAwesomeIcon icon={faCaretDown} />
+            </div>
             <div
               className={`translation_options ${
                 isTranslationOpen ? "d-flex" : "d-none"
@@ -216,6 +216,13 @@ const Navbar = () => {
               <button onClick={() => arTranslate("ar")}>عربي</button>
             </div>
           </div>
+          <Image
+            src="/images/saudi-arabia-flag-icon.png"
+            width={40}
+            height={40}
+            alt="saudi arabia flag"
+            style={{ cursor: "auto" }}
+          />
         </div>
       </div>
 
@@ -375,7 +382,11 @@ const Navbar = () => {
           isMobileNavbarOpen ? "d-flex" : "d-none"
         }`}
       >
-        <FontAwesomeIcon icon={faXmark} onClick={closeMobileNavbar} />
+        <FontAwesomeIcon
+          icon={faXmark}
+          onClick={closeMobileNavbar}
+          className="close_mobile"
+        />
         <ul>
           <li>
             <Link href={``}>{t("main")}</Link>
@@ -394,18 +405,23 @@ const Navbar = () => {
                   </li>
                 );
               })}
-          <li>
-            <div className="translation">
-              <p onClick={toggleMobileTranslation}>{lang}</p>
-              <div
-                className={`translation_options ${
-                  isMobileTranslationOpen ? "d-flex" : "d-none"
-                }`}
-              >
-                <button onClick={() => arTranslate("en")}>En</button>
-                <button onClick={() => arTranslate("ar")}>ع</button>
-              </div>
+
+          <li className="mobile_translation_content">
+            <div
+              className="mobile_translation_indecator"
+              onClick={() => setOpenMobileTranslate(!openMobileTranslate)}
+            >
+              <p>{`${lang == "ar" ? "عربي" : "English"}`}</p>
+              <FontAwesomeIcon icon={faCaretDown} />
             </div>
+            {openMobileTranslate ? (
+              <div className="mobile_translation">
+                <button onClick={() => arTranslate("en")}>English</button>
+                <button onClick={() => arTranslate("ar")}>عربي</button>
+              </div>
+            ) : (
+              ""
+            )}
           </li>
         </ul>
       </nav>

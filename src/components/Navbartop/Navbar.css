@@ -184,7 +184,7 @@
   flex-direction: column;
   width: 100%;
 }
-.navbar_bottom_mobile svg {
+.navbar_bottom_mobile .close_mobile {
   position: absolute;
   top: 60px;
   right: 60px;
@@ -197,46 +197,39 @@
   justify-content: center;
   align-content: center;
   gap: 10px;
-  margin: 0 10px;
   flex-direction: column;
+  margin: 0;
+  padding: 0;
+  position: relative;
 }
 .translation p {
-  width: 50px;
-  background-color: #999;
   display: flex;
   justify-content: center;
   align-items: center;
-  border-radius: 16px;
-}
-.translation p:hover {
-  background-color: #888;
+  margin: 0;
+  padding: 0;
 }
 .translation_options {
   justify-content: center;
   align-items: center;
   flex-direction: column;
   gap: 10px;
-  background-color: #888;
-  height: 100px;
-  position: fixed;
-  top: 60px;
-  width: 100px;
+  background-color: #000;
+  position: absolute;
+  top: 45px;
+  width: 150px;
   border-radius: 16px;
-  margin: 0 -3rem;
+  margin: 0 -1rem;
+  transition: 0.3s ease;
+  padding: 1rem 0;
 }
 .translation_options button {
   width: 100%;
-}
-.translation_options a {
-  width: 100%;
-  background-color: #888999;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   transition: 0.3s ease;
+  padding: 10px 0;
 }
-.translation_options a:hover {
-  background-color: #999;
+.translation_options button:hover {
+  background-color: goldenrod;
 }
 .mobile .flag_mob img {
   width: 45px;
@@ -245,7 +238,9 @@
   top: 585px;
   justify-content: center;
   align-items: center;
+  transition: 0.3s ease;
 }
+
 .navbar_bottom_mobile ul li > .dropMenu {
   display: flex;
   gap: 0.5rem;
@@ -270,6 +265,43 @@
 .navbar_bottom_mobile ul li > .dropMenu p:hover {
   background-color: #666;
   width: 100%;
+  color: #fff;
+}
+.mobile_translation_indecator,
+.translate_indecator {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  cursor: pointer;
+}
+.translate_indecator {
+  gap: 5px;
+}
+.mobile_translation {
+  width: 170px;
+  box-shadow: 4px 4px 10px #999;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 1rem 0;
+  background-color: #fff;
+  color: #000;
+  margin-top: 1rem;
+}
+.mobile_translation button {
+  width: 100%;
+  transition: 0.3s ease;
+  padding: 10px 0;
+}
+.mobile_translation button:hover {
+  background-color: goldenrod;
   color: #fff;
 }
 .register_logedin {

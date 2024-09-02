@@ -120,13 +120,6 @@ const Section1 = () => {
           alt="banner image"
         />
       </div>
-
-      <div className="shapes">
-        <Image src="/images/shape-4.png" width={250} height={100} alt="shape" />
-      </div>
-      <div className="shapes2">
-        <Image src="/images/shape-5.png" width={250} height={100} alt="shape" />
-      </div>
     </section>
   );
 };
