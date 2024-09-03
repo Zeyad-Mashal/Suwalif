@@ -18,13 +18,13 @@ import addToFavoriteApi from "@/src/app/[locale]/api/favorite/addToFavoriteApi";
 import addToCartApi from "@/src/app/[locale]/api/cart/addToCartApi";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-
+import { useTranslations } from "next-intl";
 const Details = () => {
   useEffect(() => {
     getProductById();
   }, []);
   const { push } = useRouter();
-
+  const t = useTranslations("related");
   const [count, setCount] = useState(1);
   const [products, setProducts] = useState({});
   const [relatedProducts, setRelatedproducts] = useState([]);
@@ -185,7 +185,7 @@ const Details = () => {
             </div>
           </div>
           <div className="relatedProducts">
-            <h2>Related Products</h2>
+            <h2>{t("title")}</h2>
             <div className="relatedProductsList">
               <Swiper
                 slidesPerView={"auto"}
