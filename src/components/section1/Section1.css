@@ -120,7 +120,8 @@
   font-size: 1.5rem;
   color: #eee;
 }
-.cart_popop_container {
+.cart_popop_container,
+.cart_notLogin {
   width: 100%;
   height: 100vh;
   position: fixed;
@@ -131,7 +132,8 @@
   align-items: center;
   z-index: 100;
 }
-.cart_popop_container .cart_popop {
+.cart_popop_container .cart_popop,
+.cart_notLogin .cart_notLogin_container {
   width: 350px;
   height: 200px;
   z-index: 9999;
@@ -146,7 +148,11 @@
   color: #fff;
   animation: cartPopup 3s ease-in-out infinite;
 }
-.cart_popop img {
+.cart_notLogin .cart_notLogin_container {
+  animation: none;
+}
+.cart_popop img,
+.cart_notLogin_container img {
   width: 100px;
 }
 .cart_popop svg {
@@ -165,6 +171,14 @@
 }
 .cart_popop a {
   text-decoration: underline;
+}
+.cart_notLogin_container p {
+  color: #fff;
+  font-size: 1.1rem;
+}
+.cart_notLogin_container p:first-of-type {
+  color: rgb(216, 0, 0);
+  font-weight: bold;
 }
 @keyframes cartPopup {
   0% {

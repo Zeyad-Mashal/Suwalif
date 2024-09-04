@@ -44,7 +44,11 @@ const Section1 = () => {
       };
       addToCartApi(setCartLoading, setError, productId, data);
     } else {
-      push(`/${lang}/register`);
+      document.querySelector(".cart_notLogin").style.display = "flex";
+
+      setTimeout(() => {
+        document.querySelector(".cart_notLogin").style.display = "none";
+      }, 4000);
     }
   };
   const closeCartPopup = () => {
@@ -107,6 +111,18 @@ const Section1 = () => {
               />
               <h3>تمت الاضافة الي السلة</h3>
               <Link href={`${lang}/cart`}>عرض السلة</Link>
+            </div>
+          </div>
+          <div className="cart_notLogin">
+            <div className="cart_notLogin_container">
+              <Image
+                src={"/images/logo.png"}
+                width={500}
+                height={500}
+                alt="logo"
+              />
+              <p>يجب تسجيل الدخول اولا </p>
+              <p>يرجي تسجيل الدخول ثم المحاولة مرة اخري</p>
             </div>
           </div>
         </div>
