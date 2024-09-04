@@ -68,7 +68,10 @@ const Details = () => {
     if (user_token) {
       addToFavoriteApi(setloading, setError, productId);
     } else {
-      push(`/${lang}/register`);
+      document.querySelector(".cart_notLogin").style.display = "flex";
+      setTimeout(() => {
+        document.querySelector(".cart_notLogin").style.display = "none";
+      }, 4000);
     }
   };
   const addToCart = (productId) => {
@@ -78,7 +81,10 @@ const Details = () => {
       };
       addToCartApi(setCartLoading, setError, productId, data);
     } else {
-      push(`/${lang}/register`);
+      document.querySelector(".cart_notLogin").style.display = "flex";
+      setTimeout(() => {
+        document.querySelector(".cart_notLogin").style.display = "none";
+      }, 4000);
     }
   };
   const closeCartPopup = () => {
@@ -122,6 +128,18 @@ const Details = () => {
               />
               <h3>تمت الاضافة الي السلة</h3>
               <Link href={`${lang}/cart`}>عرض السلة</Link>
+            </div>
+            <div className="cart_notLogin">
+              <div className="cart_notLogin_container">
+                <Image
+                  src={"/images/logo.png"}
+                  width={500}
+                  height={500}
+                  alt="logo"
+                />
+                <p>يجب تسجيل الدخول اولا </p>
+                <p>يرجي تسجيل الدخول ثم المحاولة مرة اخري</p>
+              </div>
             </div>
             <div className="item_content">
               <h3>{products?.name}</h3>

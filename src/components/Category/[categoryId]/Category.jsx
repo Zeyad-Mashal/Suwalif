@@ -9,6 +9,9 @@ import getByCategoryApi from "@/src/app/[locale]/api/category/getByCategoryApi";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import addToCartApi from "@/src/app/[locale]/api/cart/addToCartApi";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faX } from "@fortawesome/free-solid-svg-icons";
+
 const Category = () => {
   useEffect(() => {
     getAllproductsByCategory();
@@ -38,8 +41,14 @@ const Category = () => {
       };
       addToCartApi(setCartLoading, setError, productId, data);
     } else {
-      push(`/${lang}/register`);
+      document.querySelector(".cart_notLogin").style.display = "flex";
+      setTimeout(() => {
+        document.querySelector(".cart_notLogin").style.display = "none";
+      }, 4000);
     }
+  };
+  const closeCartPopup = () => {
+    document.querySelector(".cart_popop").style.display = "none";
   };
   return (
     <>
@@ -74,6 +83,31 @@ const Category = () => {
               );
             })
           )}
+        </div>
+        <div className="cart_popop_container">
+          <div className="cart_popop">
+            <FontAwesomeIcon icon={faX} onClick={closeCartPopup} />
+            <Image
+              src={"/images/logo.png"}
+              alt="cart logo"
+              width={500}
+              height={500}
+            />
+            <h3>تمت الاضافة الي السلة</h3>
+            <Link href={`${lang}/cart`}>عرض السلة</Link>
+          </div>
+        </div>
+        <div className="cart_notLogin">
+          <div className="cart_notLogin_container">
+            <Image
+              src={"/images/logo.png"}
+              width={500}
+              height={500}
+              alt="logo"
+            />
+            <p>يجب تسجيل الدخول اولا </p>
+            <p>يرجي تسجيل الدخول ثم المحاولة مرة اخري</p>
+          </div>
         </div>
       </div>
       <Footer />
