@@ -52,6 +52,7 @@ const Cart = () => {
     removeToCartApi(setError, setAllCart, setCartNumber, setloading, productId);
   };
   const lang = window.localStorage.getItem("translation");
+  const user_token = window.localStorage.getItem("user");
   return (
     <>
       <NavbarTop />
@@ -60,8 +61,8 @@ const Cart = () => {
           <h1 className="text-white">{t("title")}</h1>
           <div className="cart_list">
             {loading ? (
-              <p className="cart_loading">Suwalif...</p>
-            ) : (
+              <span class="loader"></span>
+            ) : allCart.length >= 1 ? (
               allCart.map((item) => {
                 return (
                   <div className="cart_item" key={item._id}>
@@ -102,12 +103,18 @@ const Cart = () => {
                   </div>
                 );
               })
+            ) : (
+              <p className="empty_cart">السلة فارغة</p>
             )}
           </div>
           <div className="cart_Check">
-            <button>
-              <Link href={`/${lang}/order`}>{t("check")}</Link>
-            </button>
+            {allCart.length >= 1 ? (
+              <button>
+                <Link href={`/${lang}/order`}>{t("check")}</Link>
+              </button>
+            ) : (
+              ""
+            )}
           </div>
         </div>
       </section>

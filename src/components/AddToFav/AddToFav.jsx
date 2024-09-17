@@ -28,8 +28,8 @@ const AddToFav = () => {
           <h2>منتاجاتك المفضلة</h2>
           <div className="list_fav">
             {loading ? (
-              <p className="cart_loading">Suwalif...</p>
-            ) : (
+              <span class="loader"></span>
+            ) : allFavorite.length >= 1 ? (
               allFavorite?.map((item) => {
                 return (
                   <div className="item_item" key={item._id}>
@@ -53,6 +53,8 @@ const AddToFav = () => {
                   </div>
                 );
               })
+            ) : (
+              <p className="fav_empty">المفضلة فارغة</p>
             )}
           </div>
         </div>

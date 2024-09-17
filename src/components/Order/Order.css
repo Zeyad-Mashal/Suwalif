@@ -21,7 +21,7 @@
   margin-bottom: 1rem;
 }
 .order_content {
-  width: 600px;
+  width: 1200px;
   background-color: #fff;
   border: 2px solid goldenrod;
   padding: 1rem;
@@ -41,13 +41,21 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
 }
 .order_content .order_input label {
-  width: 20%;
   font-weight: bold;
 }
 .order_content .order_input input {
-  width: 80%;
+  width: 100%;
+  border: 2px solid #aaa;
+  margin: 10px;
+  padding: 10px;
+  border-radius: 16px;
+  outline: none;
+}
+.order_content .order_input select {
+  width: 100%;
   border: 2px solid #aaa;
   margin: 10px;
   padding: 10px;
@@ -126,6 +134,100 @@
 .order_details > p:last-child {
   border: none;
 }
+.order_content_row {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+.loader {
+  width: 48px;
+  height: 48px;
+  border: 5px solid #fff;
+  border-bottom-color: transparent;
+  border-radius: 50%;
+  display: inline-block;
+  box-sizing: border-box;
+  animation: rotation 1s linear infinite;
+}
+.order_container .order_menu {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+}
+.order_container .order_menu button {
+  background-color: #fff;
+  border: 1px solid grey;
+  margin: 10px 0;
+  border-radius: 50px;
+  padding: 5px 10px;
+}
+.order_container .order_menu > div {
+  background-color: white;
+  border-radius: 10px;
+  padding: 10px;
+  border: 1px solid grey;
+  width: 90%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.details_container_order {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.order_totalPrice {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+.order_totalPrice span {
+  font-size: 1.5rem;
+  font-weight: normal;
+  color: green;
+}
+.order_totalPrice .order_totalPrice_span {
+  font-size: 1.1rem;
+}
+.details_container_order_info {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.details_container_order_info div {
+  width: 100%;
+  border-bottom: 1px dashed gray;
+  padding-bottom: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 0;
+}
+.details_container_order_info div:last-of-type {
+  border: none;
+}
+.totalPrice {
+  padding: 0 2rem;
+}
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
 @media screen and (max-width: 589px) {
   .order_container {
     margin: 8rem 0 2rem 0;
@@ -144,5 +246,26 @@
   }
   .order_content .order_input input {
     width: 100%;
+  }
+  .order_content_row {
+    flex-direction: column;
+  }
+  .order_container .order_menu {
+    width: 95%;
+  }
+  .order_container .order_menu > div {
+    width: 95%;
+  }
+  .order_totalPrice {
+    font-size: 1rem;
+  }
+  .order_totalPrice span {
+    font-size: 1.1rem;
+  }
+  .order_totalPrice .order_totalPrice_span {
+    font-size: 0.9rem;
+  }
+  .totalPrice {
+    padding: 0 0;
   }
 }

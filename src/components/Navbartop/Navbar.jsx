@@ -103,6 +103,7 @@ const Navbar = () => {
       };
       LoginAPI(setLoading, setError, data);
     }
+    document.querySelector(".login_btn_way").style.display = "none";
   };
   const [code, setCode] = useState("");
   const hendleVerifyCode = () => {
@@ -254,8 +255,8 @@ const Navbar = () => {
                 <span>+966</span>
               </div>
               {error}
-              <button onClick={handleLogin}>
-                {Loading ? "Suwalif..." : "دخول"}
+              <button onClick={handleLogin} className="login_btn_way">
+                {Loading ? <span class="loader"></span> : "ارسال رمز التحقق"}
               </button>
             </div>
 
@@ -273,8 +274,8 @@ const Navbar = () => {
                 </span>
               </div>
               {error}
-              <button onClick={handleLogin}>
-                {Loading ? "Suwalif..." : "دخول"}
+              <button onClick={handleLogin} className="login_btn_way">
+                {Loading ? <span class="loader"></span> : "ارسال رمز التحقق"}
               </button>
             </div>
 
@@ -290,7 +291,7 @@ const Navbar = () => {
               </div>
               {error}
               <button onClick={hendleVerifyCode}>
-                {Loading ? "Suwalif..." : "دخول"}
+                {Loading ? <span class="loader"></span> : "دخول"}
               </button>
             </div>
 
@@ -395,7 +396,7 @@ const Navbar = () => {
             <Link href={`/`}>{t("nav2")}</Link>
           </li>
           {loading
-            ? "Loading..."
+            ? "..."
             : allCategories.map((item) => {
                 return (
                   <li key={item._id}>

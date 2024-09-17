@@ -180,6 +180,192 @@
   color: rgb(216, 0, 0);
   font-weight: bold;
 }
+.login {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  max-height: 90vh;
+}
+.login_container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 9998;
+  cursor: pointer;
+}
+
+.login_content {
+  width: 400px;
+  max-height: 480px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: #eee;
+  padding: 3rem 1rem 1rem 1rem;
+  box-shadow: 4px 4px 10px #222;
+  position: fixed;
+  top: 20%;
+  z-index: 9999;
+  overflow: auto;
+}
+.login_content .close_login {
+  position: absolute;
+  color: #666;
+  border: none;
+  font-size: 1rem;
+  top: 10px;
+  right: 10px;
+  width: 25px;
+  height: 25px;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+.login_content .close_login:hover {
+  color: #000;
+}
+.login_content > svg {
+  color: green;
+  border: 3px solid green;
+  border-radius: 50%;
+  padding: 1rem;
+  width: 50px;
+  height: 50px;
+  margin-bottom: 10px;
+}
+.login_content > h3 {
+  font-size: 1.3rem;
+  margin-bottom: 10px;
+}
+.login_content > p {
+  color: #999;
+  font-size: #444;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 10px;
+}
+.login_content > p::before,
+.login_content > p::after {
+  content: "";
+  width: 100px;
+  height: 1px;
+  background-color: #aaa;
+  margin: 0 10px;
+}
+.login_ways {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+.login_phone,
+.login_email {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  border: 1px solid goldenrod;
+  padding: 1rem;
+  height: 100px;
+  gap: 10px;
+  transition: 0.3s ease-in-out;
+  cursor: pointer;
+}
+.login_phone svg,
+.login_email svg {
+  color: #000;
+  font-size: 1.5rem;
+  transition: 0.3s ease-in-out;
+}
+.login_phone:hover,
+.login_email:hover {
+  background-color: goldenrod;
+  color: #fff;
+}
+.login_phone:hover svg,
+.login_email:hover svg {
+  color: #fff;
+}
+.phone_way,
+.email_way,
+.code {
+  width: 100%;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.code {
+  margin-top: 1rem;
+}
+.phone_way > p,
+.email_way > p,
+.code > p {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  font-weight: bold;
+}
+.phone_input,
+.email_input,
+.code_input {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.phone_input > span,
+.email_input > span {
+  width: 50px;
+  background-color: #fff;
+  border: 1px solid #aaa;
+  padding: 5px 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.email_input > span svg {
+  font-size: 1.5rem;
+}
+.phone_input > input,
+.email_input > input,
+.code_input > input {
+  width: 100%;
+  border: 1px solid #aaa;
+  outline: none;
+  direction: ltr;
+  margin: 1rem 0;
+  padding: 5px 10px;
+}
+.phone_way > button,
+.email_way > button,
+.code > button {
+  background-color: goldenrod;
+  padding: 8px;
+  width: 100%;
+  color: #fff;
+  font-weight: bold;
+  transition: 0.3s ease;
+  display: block;
+}
+.phone_way > button:hover,
+.email_way > button:hover,
+.code > button:hover {
+  background-color: rgb(210, 153, 10);
+}
 @keyframes cartPopup {
   0% {
     scale: 1;

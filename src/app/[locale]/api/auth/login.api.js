@@ -19,6 +19,7 @@ const LoginAPI = async (setLoading, setError, data) => {
         if (response.ok) {
             setLoading(false);
             document.querySelector(".code").style.display = "flex"
+            document.querySelector(".email_way .login_btn_way").style.display = "none"
         } else {
             if (response.status == 404) {
                 setError(result.message)

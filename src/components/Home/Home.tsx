@@ -29,12 +29,9 @@ const Home = () => {
       {
         modelLoading ? <div className="model">
           <Image src={"/images/logo.png"} width={5000} height={5000} alt="loading image" />
-          <p>Suwalif</p>
         </div>
           : null
       }
-
-
       <Navbar />
       <NavbarMenu />
       <Hero />

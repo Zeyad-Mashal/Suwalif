@@ -518,11 +518,31 @@
   color: #fff;
   font-weight: bold;
   transition: 0.3s ease;
+  display: block;
 }
 .phone_way > button:hover,
 .email_way > button:hover,
 .code > button:hover {
   background-color: rgb(210, 153, 10);
+}
+.loader {
+  width: 38px;
+  height: 38px;
+  border: 5px solid #fff;
+  border-bottom-color: transparent;
+  border-radius: 50%;
+  display: inline-block;
+  box-sizing: border-box;
+  animation: rotation 1s linear infinite;
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 @media screen and (max-width: 789px) {
   .mobile {

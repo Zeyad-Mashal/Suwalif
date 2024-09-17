@@ -57,7 +57,7 @@ const Category = () => {
         <h1>{allProductsByCategory[0]?.category}</h1>
         <div className="category_list">
           {loading ? (
-            <p className="category_loading">Suwalif...</p>
+            <span class="loader"></span>
           ) : (
             allProductsByCategory.map((item) => {
               return (
