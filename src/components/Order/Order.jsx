@@ -369,7 +369,10 @@ const Order = () => {
                 <strong>المنطقة</strong>: {order.city}
               </p>
               <p>
-                <strong>العنوان</strong>: {order.address}
+                <strong>الحي</strong>: {order.address}
+              </p>
+              <p>
+                <strong>الشارع</strong>: {order.address}
               </p>
               <p>
                 <strong>الكوبون</strong>:{" "}

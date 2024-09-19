@@ -56,7 +56,6 @@
   padding: 10px;
   border-radius: 16px;
   outline: none;
-  padding-right: 4rem;
 }
 .order_content .order_input select {
   width: 100%;
@@ -66,20 +65,23 @@
   border-radius: 16px;
   outline: none;
 }
-.phone_div {
+.order_input .phone_div {
   display: flex;
   justify-content: center;
   align-items: center;
   width: 100%;
   position: relative;
 }
-.phone_div span {
+.order_input .phone_div span {
   position: absolute;
   right: 12px;
   background-color: #eee;
   padding: 10px;
   border-radius: 16px;
   font-weight: bold;
+}
+.order_input .phone_div input {
+  padding-right: 4rem;
 }
 .order_btn {
   width: 100%;
@@ -98,13 +100,11 @@
   border-radius: 10px;
 }
 .order_created {
-  width: 500px;
+  width: 800px;
   background-color: #fff;
   border: 2px solid #000;
   box-shadow: 4px 4px 10px #333;
   border-radius: 16px;
-  position: absolute;
-  z-index: 999;
   display: none;
   justify-content: center;
   align-items: center;
