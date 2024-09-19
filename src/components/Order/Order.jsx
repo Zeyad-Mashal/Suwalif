@@ -204,7 +204,7 @@ const Order = () => {
   ];
 
   const [inputValue, setInputValue] = useState("");
-  const [handleCoupon, setHandleCoupon] = useState(true);
+  const [handleCoupon, setHandleCoupon] = useState(false);
   const handleChange = (e) => {
     setInputValue(e.target.value);
   };
