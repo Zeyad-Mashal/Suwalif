@@ -14,6 +14,7 @@ const Cart = () => {
   useEffect(() => {
     getToCart();
   }, []);
+
   const t = useTranslations("cart");
   const [allCart, setAllCart] = useState([]);
   const [cartNumber, setCartNumber] = useState("");
@@ -75,8 +76,13 @@ const Cart = () => {
                       />
                       <div className="info_content">
                         <h3>{item.product.name}</h3>
-                        <h4>{item.product.price} ريال</h4>
-                        <p>اجمالي: {item.price} ريال</p>
+                        <h4>
+                          {item.product.price} {lang == "ar" ? "ريال" : "SAR"}
+                        </h4>
+                        <p>
+                          {lang == "ar" ? "اجمالي" : "Total"}: {item.price}{" "}
+                          {lang == "ar" ? "ريال" : "SAR"}
+                        </p>
                       </div>
                     </div>
                     <FontAwesomeIcon
@@ -104,7 +110,9 @@ const Cart = () => {
                 );
               })
             ) : (
-              <p className="empty_cart">السلة فارغة</p>
+              <p className="empty_cart">
+                {lang == "ar" ? "السلة فارغة" : "Cart Is Empty"}
+              </p>
             )}
           </div>
           <div className="cart_Check">

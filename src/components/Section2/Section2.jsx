@@ -92,7 +92,7 @@ const Section2 = () => {
                               onClick={() => addToCart(item._id)}
                             >
                               <button className="cart_btn_button">
-                                أضف الي السلة
+                                {lang == "ar" ? "أضف الي السلة" : "Add To Cart"}
                               </button>
                             </div>
                           </div>

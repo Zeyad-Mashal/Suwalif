@@ -328,7 +328,7 @@ const Order = () => {
                   onChange={(e) => setAddress(e.target.value)}
                 />
               </div>
-              <div className="order_input">
+              {/* <div className="order_input">
                 <label htmlFor="copoun">الكوبون:</label>
                 <input
                   type="text"
@@ -336,7 +336,7 @@ const Order = () => {
                   value={copoun}
                   onChange={(e) => setCopoun(e.target.value)}
                 />
-              </div>
+              </div> */}
             </div>
 
             <div className="order_btn">
