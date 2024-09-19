@@ -143,8 +143,12 @@ const Details = () => {
             </div>
             <div className="item_content">
               <h3>{products?.name}</h3>
-              <span>{products?.stock} القطع</span>
-              <h4>{products?.price} ريال</h4>
+              <span>
+                {products?.stock} {lang == "ar" ? "ظرف" : "Envelope"}
+              </span>
+              <h4>
+                {products?.price} {lang == "ar" ? "ريال" : "SAR"}
+              </h4>
               <div className="leaves_rating">
                 <div className="leaves_rating_leaves">
                   <div className="leaves_static">
@@ -178,7 +182,7 @@ const Details = () => {
 
               <div className="price_quantity">
                 <div className="qunatity_container">
-                  <p>الكمية*</p>
+                  <p>{lang == "ar" ? "الكمية" : "Quantity"}*</p>
                   <div className="quantity">
                     <button onClick={decrementCount}>-</button>
                     <span>{count}</span>
@@ -186,12 +190,15 @@ const Details = () => {
                   </div>
                 </div>
                 <div className="price">
-                  <span>السعر:</span>
-                  <span>{totalPrice ? totalPrice : products?.price} ريال</span>
+                  <span>{lang == "ar" ? "السعر" : "Price"}:</span>
+                  <span>
+                    {totalPrice ? totalPrice : products?.price}{" "}
+                    {lang == "ar" ? "ريال" : "SAR"}
+                  </span>
                 </div>
                 <div className="cart_done cart_btn">
                   <button onClick={() => addToCart(products._id)}>
-                    أضف الي السلة
+                    {lang == "ar" ? "أضف الي السلة" : "Add To Cart"}
                   </button>
                   <FontAwesomeIcon
                     icon={faHeart}
@@ -228,8 +235,12 @@ const Details = () => {
                               alt="related product"
                             />
                             <h3>{item.name}</h3>
-                            <h4>{item.price} ريال</h4>
-                            <button>Add To Cart</button>
+                            <h4>
+                              {item.price} {lang == "ar" ? "ريال" : "SAR"}
+                            </h4>
+                            <button>
+                              {lang == "ar" ? "أضف الي السلة" : "Add To Cart"}
+                            </button>
                           </div>
                         </Link>
                       </SwiperSlide>

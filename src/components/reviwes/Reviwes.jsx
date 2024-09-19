@@ -47,6 +47,8 @@ const Reviwes = () => {
   const getAllRatingsApi = () => {
     getRatingApi(setLoading, setError, setAllRatings);
   };
+  const lang = window.localStorage.getItem("translation");
+
   return (
     <section className="review">
       <div className="review_container">
@@ -104,11 +106,11 @@ const Reviwes = () => {
         </div>
       </div>
       <button className="reviwes_btn" onClick={() => setOpenModel(true)}>
-        شاركنا رأيك
+        {lang == "ar" ? "شاركنا رأيك" : "Feedback"}
       </button>
       {openModel ? (
         <div className="reviwe_model">
-          <h3>شاركنا برأيك</h3>
+          <h3> {lang == "ar" ? "شاركنا رأيك" : "Feedback"}</h3>
           <FontAwesomeIcon
             icon={faX}
             width={30}
@@ -161,7 +163,7 @@ const Reviwes = () => {
             ></textarea>
             <p className="ratingChecked">تم استلام تقيمك شكرا لك</p>
             <button className="reviwes_btn" onClick={addRating}>
-              {loading ? "Loading..." : "ارسال"}
+              {loading ? "Loading..." : `${lang == "ar" ? "ارسال" : "Send"}`}
             </button>
           </div>
         </div>

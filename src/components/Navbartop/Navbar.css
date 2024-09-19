@@ -37,19 +37,31 @@
   cursor: pointer;
   position: relative;
 }
-.navbar_top .nav_icons svg {
-  font-size: 1.5rem;
-}
-.navbar_top .nav_icons .cart_count {
-  background-color: red;
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
+.nav_icons .cart_link {
+  width: 50px;
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
+  position: relative;
+}
+
+.nav_icons .cart_link > span {
   position: absolute;
-  margin: -40px -10px 0 0;
+  right: 0;
+  top: -10px;
+  color: #fff;
+  padding: 2px;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(232, 0, 0);
+  border-radius: 50%;
+}
+.navbar_top .nav_icons svg {
+  font-size: 1.5rem;
 }
 .navbar_top .nav_icons .profile_count {
   position: absolute;
@@ -328,6 +340,9 @@
   /* visibility: hidden;
   opacity: 0; */
   transition: 0.5s ease-in-out;
+}
+.logout_dropmenu > p {
+  font-weight: bold;
 }
 .logout_dropmenu button {
   padding: 7px 10px;

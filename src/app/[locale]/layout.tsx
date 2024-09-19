@@ -5,6 +5,7 @@ import { NextIntlClientProvider, useMessages } from "next-intl";
 import styles from "./styles.module.css"
 import { getMessages } from "next-intl/server";
 const inter = Inter({ subsets: ["latin"] });
+import { CartProvider } from "./api/cart/CartContext"
 
 export const metadata: Metadata = {
   title: "Suwlif Tea",
@@ -19,14 +20,16 @@ type Props = {
   }
 }
 
- 
-export default async function RootLayout({ children, params:{locale} }: Props) {
+
+export default async function RootLayout({ children, params: { locale } }: Props) {
   const messages = await getMessages();
   return (
     <html lang={locale}>
       <NextIntlClientProvider messages={messages} locale={locale}>
         <body className={locale === "ar" ? styles.arbic : styles.english}>
-          {children}
+          <CartProvider>
+            {children}
+          </CartProvider>
         </body>
       </NextIntlClientProvider>
     </html>

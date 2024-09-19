@@ -73,9 +73,11 @@ const Category = () => {
                   <div className="category_content">
                     <h3>{item.name}</h3>
                     <div className="category_content_info">
-                      <p>{item.price} ريال</p>
+                      <p>
+                        {item.price} {lang == "ar" ? "ريال" : "SAR"}
+                      </p>
                       <button onClick={() => addToCart(item._id)}>
-                        اضف الي السلة
+                        {lang == "ar" ? "أضف الي السلة" : "Add To Cart"}
                       </button>
                     </div>
                   </div>

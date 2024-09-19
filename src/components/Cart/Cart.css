@@ -86,7 +86,7 @@
   position: absolute;
   top: 20px;
   left: 30px;
-  color: red;
+  color: rgb(228, 1, 1);
   font-size: 1.5rem;
   cursor: pointer;
 }

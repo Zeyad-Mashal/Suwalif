@@ -203,6 +203,12 @@ const Order = () => {
     "الشعراء / Ash-Sha'ra",
   ];
 
+  const [inputValue, setInputValue] = useState("");
+  const [handleCoupon, setHandleCoupon] = useState(true);
+  const handleChange = (e) => {
+    setInputValue(e.target.value);
+  };
+
   return (
     <>
       <Navbar />
@@ -229,8 +235,27 @@ const Order = () => {
                   </DisclosurePanel>
                 </div>
                 <p className="order_totalPrice totalPrice">
-                  الاجمالي : <span> 120 ريال</span>
+                  الاجمالي : <span> 115 ريال</span>
                 </p>
+                <span
+                  className="coupon_btn"
+                  onClick={() => setHandleCoupon(!handleCoupon)}
+                >
+                  لديك كوبون خصم ؟ *
+                </span>
+                {handleCoupon ? (
+                  <div className="coupon_discount">
+                    <input
+                      type="text"
+                      placeholder="ادخل كود الكوبون"
+                      value={inputValue}
+                      onChange={handleChange}
+                    />
+                    <button className={inputValue ? "active" : ""}>
+                      تطبيق
+                    </button>
+                  </div>
+                ) : null}
               </div>
               <DisclosureButton className="py-2">
                 تفاصيل الفاتورة
@@ -241,7 +266,9 @@ const Order = () => {
             <h3>بيانات الطلب</h3>
             <div className="order_content_row">
               <div className="order_input">
-                <label htmlFor="city">الاسم:</label>
+                <label htmlFor="city">
+                  الاسم: <span>*</span>
+                </label>
                 <input
                   type="text"
                   name="city"
@@ -250,18 +277,26 @@ const Order = () => {
                 />
               </div>
               <div className="order_input">
-                <label htmlFor="city">رقم الجوال:</label>
-                <input
-                  type="text"
-                  name="city"
-                  value={phone}
-                  onChange={(e) => setPhone(e.target.value)}
-                />
+                <label htmlFor="city">
+                  رقم الجوال: <span>*</span>
+                </label>
+                <div className="phone_div">
+                  <span>+966</span>
+                  <input
+                    type="text"
+                    name="city"
+                    placeholder="512345678"
+                    value={phone}
+                    onChange={(e) => setPhone(e.target.value)}
+                  />
+                </div>
               </div>
             </div>
             <div className="order_content_row">
               <div className="order_input">
-                <label htmlFor="city">المنطقة:</label>
+                <label htmlFor="city">
+                  المنطقة: <span>*</span>
+                </label>
                 <select value={city} onChange={(e) => setCity(e.target.value)}>
                   <option value="أختر المنطقة">أختر المنطقة</option>
                   {saudiCities.map((city) => {

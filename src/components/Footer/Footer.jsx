@@ -34,15 +34,6 @@ const Footer = () => {
           </Link>
         </div>
         <div className="footer_list">
-          <div className="footer_form">
-            <form>
-              <h3>{t("title")}</h3>
-              <input type="text" placeholder="اسمك" />
-              <input type="text" placeholder="رقم الهاتف" />
-              <textarea placeholder="رسالتك"></textarea>
-              <button>ارسال</button>
-            </form>
-          </div>
           <div className="imp_links">
             <h2>{t("links")}</h2>
             <ul>

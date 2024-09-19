@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import "./Navbar.css";
 import Image from "next/image";
 import Link from "next/link";
@@ -22,12 +22,13 @@ import { useRouter } from "next/navigation";
 // Define the Product interface
 import LoginAPI from "@/src/app/[locale]/api/auth/login.api";
 import VerificationLoginCode from "@/src/app/[locale]/api/auth/VerificationLogin.api";
+import { CartContext } from "../../app/[locale]/api/cart/CartContext";
 const Navbar = () => {
   useEffect(() => {
     getAllCategories();
   }, []);
   const t = useTranslations("navbar");
-
+  const { cartItems } = useContext(CartContext);
   const [isMobileNavbarOpen, setIsMobileNavbarOpen] = useState(false);
   const [isTranslationOpen, setIsTranslationOpen] = useState(false);
   const [isMobileTranslationOpen, setIsMobileTranslationOpen] = useState(false);
@@ -43,6 +44,8 @@ const Navbar = () => {
   const [openPhone, setOpenPhone] = useState(false);
   const [emailOrPhone, setemailOrPhone] = useState("");
   const [openMobileTranslate, setOpenMobileTranslate] = useState(false);
+  const [allCart, setAllCart] = useState([]);
+
   const openMobileNavbar = () => {
     setIsMobileNavbarOpen(true);
   };
@@ -171,7 +174,8 @@ const Navbar = () => {
         </div>
 
         <div className="nav_icons">
-          <Link href={`/${lang}/cart`}>
+          <Link href={`/${lang}/cart`} className="cart_link">
+            {/* <span>{cartItems?.length || 0}</span> */}
             <FontAwesomeIcon icon={faCartShopping} width={30} />
           </Link>
           <Link href={`/${lang}/addtofav`}>
@@ -195,7 +199,7 @@ const Navbar = () => {
           )}
           {logOut ? (
             <div className="logout_dropmenu">
-              <p>هل تريد تسجيل خروج ؟</p>
+              <p>مرحباً بك</p>
               <button onClick={removeToken}>تسجيل خروج</button>
             </div>
           ) : (
@@ -324,7 +328,8 @@ const Navbar = () => {
             />
           </Link>
           <div className="nav_icons flag_mob">
-            <Link href={`/${lang}/cart`}>
+            <Link href={`/${lang}/cart`} className="cart_link">
+              {/* <span>1</span> */}
               <FontAwesomeIcon icon={faCartShopping} width={30} />
             </Link>
             <Link href={`/${lang}/addtofav`}>
