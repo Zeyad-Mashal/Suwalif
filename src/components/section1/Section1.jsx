@@ -91,6 +91,9 @@ const Section1 = () => {
     document.querySelector(".login_ways").style.display = "none";
     document.querySelector(".login_ways_p").style.display = "none";
   };
+  const closeCartPopup = () => {
+    document.querySelector(".cart_popop").style.display = "none";
+  };
 
   return (
     <section className="section1">
@@ -123,11 +126,11 @@ const Section1 = () => {
                         <p>
                           {item?.price} {lang == "ar" ? "ريال" : "SAR"}
                         </p>
-                        <div className="cart_btn">
-                          <button
-                            onClick={() => addToCart(item._id)}
-                            className="cart_btn_button"
-                          >
+                        <div
+                          className="cart_btn"
+                          onClick={() => addToCart(item._id)}
+                        >
+                          <button className="cart_btn_button">
                             أضف الي السلة
                           </button>
                         </div>
@@ -138,6 +141,31 @@ const Section1 = () => {
               );
             })}
           </Swiper>
+          <div className="cart_popop_container">
+            <div className="cart_popop">
+              <FontAwesomeIcon icon={faX} onClick={closeCartPopup} />
+              <Image
+                src={"/images/logo.png"}
+                alt="cart logo"
+                width={500}
+                height={500}
+              />
+              <h3>تمت الاضافة الي السلة</h3>
+              <Link href={`${lang}/cart`}>عرض السلة</Link>
+            </div>
+          </div>
+          <div className="cart_notLogin">
+            <div className="cart_notLogin_container">
+              <Image
+                src={"/images/logo.png"}
+                width={500}
+                height={500}
+                alt="logo"
+              />
+              <p>يجب تسجيل الدخول اولا </p>
+              <p>يرجي تسجيل الدخول ثم المحاولة مرة اخري</p>
+            </div>
+          </div>
         </div>
       </div>
       {login ? (

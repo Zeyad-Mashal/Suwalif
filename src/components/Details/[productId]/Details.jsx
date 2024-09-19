@@ -118,16 +118,18 @@ const Details = () => {
                 })}
               </Swiper>
             </div>
-            <div className="cart_popop">
-              <FontAwesomeIcon icon={faX} onClick={closeCartPopup} />
-              <Image
-                src={"/images/logo.png"}
-                alt="cart logo"
-                width={500}
-                height={500}
-              />
-              <h3>تمت الاضافة الي السلة</h3>
-              <Link href={`${lang}/cart`}>عرض السلة</Link>
+            <div className="cart_popop_container">
+              <div className="cart_popop">
+                <FontAwesomeIcon icon={faX} onClick={closeCartPopup} />
+                <Image
+                  src={"/images/logo.png"}
+                  alt="cart logo"
+                  width={500}
+                  height={500}
+                />
+                <h3>تمت الاضافة الي السلة</h3>
+                <Link href={`${lang}/cart`}>عرض السلة</Link>
+              </div>
             </div>
             <div className="cart_notLogin">
               <div className="cart_notLogin_container">
@@ -238,9 +240,6 @@ const Details = () => {
                             <h4>
                               {item.price} {lang == "ar" ? "ريال" : "SAR"}
                             </h4>
-                            <button>
-                              {lang == "ar" ? "أضف الي السلة" : "Add To Cart"}
-                            </button>
                           </div>
                         </Link>
                       </SwiperSlide>

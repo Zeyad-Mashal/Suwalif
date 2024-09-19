@@ -87,11 +87,11 @@ const Section2 = () => {
                             <p>
                               {item.price} {lang == "ar" ? "ريال" : "SAR"}
                             </p>
-                            <div className="cart_btn">
-                              <button
-                                onClick={() => addToCart(item._id)}
-                                className="cart_btn_button"
-                              >
+                            <div
+                              className="cart_btn"
+                              onClick={() => addToCart(item._id)}
+                            >
+                              <button className="cart_btn_button">
                                 أضف الي السلة
                               </button>
                             </div>

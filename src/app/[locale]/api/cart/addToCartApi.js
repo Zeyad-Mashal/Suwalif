@@ -19,10 +19,13 @@ const addToCartApi = async (setCartLoading, setError, productId, data) => {
         console.log(result);
 
         if (response.ok) {
-            document.querySelector(".cart_popop_container").style.display = "flex";
+            const cartPopup = document.querySelector(".cart_popop_container");
+
+            cartPopup.style.transform = "translateX(0%)"; // Move to 0px
             setTimeout(() => {
-                document.querySelector(".cart_popop_container").style.display = "none";
-            }, 5000);
+                cartPopup.style.transform = "translateX(-100%)";
+
+            }, 3000);
             setCartLoading(false);
         } else {
             if (response.status == 404) {
