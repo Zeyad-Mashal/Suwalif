@@ -137,7 +137,7 @@ const Navbar = () => {
         <div className="search">
           <input
             type="text"
-            placeholder="بحث"
+            placeholder={lang == "ar" ? "بحث" : "Search"}
             value={searchQuery}
             onChange={handleSearchChange}
           />

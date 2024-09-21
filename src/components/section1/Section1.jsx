@@ -108,38 +108,47 @@ const Section1 = () => {
             modules={[Navigation, Pagination]}
             className="mySwiper"
           >
-            {bySection?.map((item) => {
-              return (
-                <SwiperSlide key={item._id}>
-                  <div className="section1_item">
-                    <Link href={`/${lang}/details/${item._id}`}>
-                      <Image
-                        src={item?.images[0]}
-                        width={200}
-                        height={200}
-                        alt="product image"
-                      />
-                    </Link>
-                    <div className="item_content">
-                      <h3>{item?.name}</h3>
-                      <div className="price">
-                        <p>
-                          {item?.price} {lang == "ar" ? "ريال" : "SAR"}
-                        </p>
-                        <div
-                          className="cart_btn"
-                          onClick={() => addToCart(item._id)}
-                        >
-                          <button className="cart_btn_button">
-                            {lang == "ar" ? "أضف الي السلة" : "Add To Cart"}
-                          </button>
+            {Loading ? (
+              <Image
+                src={"/images/logo.png"}
+                width={1000}
+                height={1000}
+                alt="suwalif logo"
+              />
+            ) : (
+              bySection?.map((item) => {
+                return (
+                  <SwiperSlide key={item._id}>
+                    <div className="section1_item">
+                      <Link href={`/${lang}/details/${item._id}`}>
+                        <Image
+                          src={item?.images[0]}
+                          width={200}
+                          height={200}
+                          alt="product image"
+                        />
+                      </Link>
+                      <div className="item_content">
+                        <h3>{item?.name}</h3>
+                        <div className="price">
+                          <p>
+                            {item?.price} {lang == "ar" ? "ريال" : "SAR"}
+                          </p>
+                          <div
+                            className="cart_btn"
+                            onClick={() => addToCart(item._id)}
+                          >
+                            <button className="cart_btn_button">
+                              {lang == "ar" ? "أضف الي السلة" : "Add To Cart"}
+                            </button>
+                          </div>
                         </div>
                       </div>
                     </div>
-                  </div>
-                </SwiperSlide>
-              );
-            })}
+                  </SwiperSlide>
+                );
+              })
+            )}
           </Swiper>
           <div className="cart_popop_container">
             <div className="cart_popop">

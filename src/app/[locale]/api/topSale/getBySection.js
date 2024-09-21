@@ -1,7 +1,7 @@
 const URL = "https://back.suwalifstore.com/product/getBySection?section=";
 const lang = window.localStorage.getItem("translation")
-const getBySection = async (setloading, setError, setBySection, sections) => {
-    setloading(true)
+const getBySection = async (setLoading, setError, setBySection, sections) => {
+    setLoading(true)
     try {
         const response = await fetch(`${URL}${sections}`, {
             method: 'GET',
@@ -15,20 +15,20 @@ const getBySection = async (setloading, setError, setBySection, sections) => {
 
         if (response.ok) {
             setBySection(result.products)
-            setloading(false);
+            setLoading(false);
         } else {
             if (response.status == 400) {
                 setError(result.message)
-                setloading(false);
+                setLoading(false);
             } else if (response.status == 500) {
                 setError(result.message)
-                setloading(false);
+                setLoading(false);
             }
-            setloading(false)
+            setLoading(false)
         }
     } catch (error) {
         setError('An error occurred');
-        setloading(false)
+        setLoading(false)
     }
 }
 export default getBySection;
