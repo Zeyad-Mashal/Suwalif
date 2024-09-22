@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Navbar from "@/src/components/Navbartop/Navbar";
 import "./Order.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -10,7 +10,12 @@ import {
   DisclosureButton,
   DisclosurePanel,
 } from "@headlessui/react";
+import getToCartApi from "@/src/app/[locale]/api/cart/getToCartApi";
+import ApplayCouponAPI from "@/src/app/[locale]/api/coupon/applayCouponAPI";
 const Order = () => {
+  useEffect(() => {
+    getAllCartItems();
+  }, []);
   const closeOrder = () => {
     document.querySelector(".order_created").style.display = "none";
   };
@@ -21,18 +26,25 @@ const Order = () => {
   const [copoun, setCopoun] = useState("");
   const [phone, setPhone] = useState("");
   const [name, setName] = useState("");
+  const [street, setStreet] = useState("");
   const [error, setError] = useState("");
   const [loading, setloading] = useState(false);
+  const [allCart, setAllCart] = useState([]);
+  const [cartNumber, setCartNumber] = useState("");
+  const [inputValue, setInputValue] = useState("");
+  const [handleCoupon, setHandleCoupon] = useState(false);
+  const [discountPercentage, setDiscountPercentage] = useState(0);
   const createOrder = () => {
     const orderData = {
       userName: name,
       userPhone: phone,
-      couponCode: copoun ? copoun : undefined,
+      couponCode: inputValue ? inputValue : undefined,
       city,
-      address,
+      neighborhood: address,
+      street,
       paymentWay: "Cash on Delivery",
     };
-    if (city == "" || address == "") {
+    if (city === "" || address === "" || name === "" || phone === "") {
       setError("يجب ملئ البيانات المطلوبة اولا");
     }
     createOrderApi(setloading, setError, setOrder, setUser, orderData);
@@ -202,13 +214,21 @@ const Order = () => {
     "العقيق / Al-Aqiq",
     "الشعراء / Ash-Sha'ra",
   ];
-
-  const [inputValue, setInputValue] = useState("");
-  const [handleCoupon, setHandleCoupon] = useState(false);
   const handleChange = (e) => {
     setInputValue(e.target.value);
+    if (e.target.value === "" || e.target.value.length < 6) {
+      document.querySelector(".order_coupon_created").style.display = "none";
+    }
   };
-
+  const getAllCartItems = () => {
+    getToCartApi(setloading, setError, setAllCart, setCartNumber);
+  };
+  const ApplayCouponApi = () => {
+    const data = {
+      code: inputValue,
+    };
+    ApplayCouponAPI(setloading, setError, setDiscountPercentage, data);
+  };
   return (
     <>
       <Navbar />
@@ -224,18 +244,22 @@ const Order = () => {
                   <DisclosurePanel className="text-gray-500">
                     <p className="order_totalPrice">
                       ملخص السلة:{" "}
-                      <span className="order_totalPrice_span">100 ريال</span>
+                      <span className="order_totalPrice_span">
+                        {cartNumber} ريال
+                      </span>
                     </p>
                   </DisclosurePanel>
                   <DisclosurePanel className="text-gray-500">
                     <p className="order_totalPrice">
                       اجمالي الضريبة المضافة 15%{" "}
-                      <span className="order_totalPrice_span">15 ريال</span>
+                      <span className="order_totalPrice_span">
+                        {Math.ceil(cartNumber * 0.15)} ريال
+                      </span>
                     </p>
                   </DisclosurePanel>
                 </div>
                 <p className="order_totalPrice totalPrice">
-                  الاجمالي : <span> 115 ريال</span>
+                  الاجمالي : <span> {Math.ceil(cartNumber * 1.15)} ريال</span>
                 </p>
                 <span
                   className="coupon_btn"
@@ -251,11 +275,28 @@ const Order = () => {
                       value={inputValue}
                       onChange={handleChange}
                     />
-                    <button className={inputValue ? "active" : ""}>
+                    <button
+                      className={inputValue ? "active" : ""}
+                      onClick={ApplayCouponApi}
+                    >
                       تطبيق
                     </button>
                   </div>
                 ) : null}
+                <p className="error">{error}</p>
+                <div className="order_coupon_created">
+                  <p>تم تطبيق الخصم بنجاح</p>
+                  <div className="coupon_done">
+                    <p>الاجمالي بعد الخصم:</p>
+                    <span>
+                      {Math.ceil(
+                        (cartNumber - cartNumber * (discountPercentage / 100)) *
+                          1.15
+                      )}
+                      ريال
+                    </span>
+                  </div>
+                </div>
               </div>
               <DisclosureButton className="py-2">
                 تفاصيل الفاتورة
@@ -309,12 +350,12 @@ const Order = () => {
                 </select>
               </div>
               <div className="order_input">
-                <label htmlFor="address">
+                <label htmlFor="city">
                   الحي: <span>*</span>
                 </label>
                 <input
                   type="text"
-                  name="address"
+                  name="city"
                   value={address}
                   onChange={(e) => setAddress(e.target.value)}
                 />
@@ -322,23 +363,14 @@ const Order = () => {
             </div>
             <div className="order_content_row">
               <div className="order_input">
-                <label htmlFor="address">الشارع:</label>
+                <label htmlFor="city">الشارع:</label>
                 <input
                   type="text"
-                  name="address"
-                  value={address}
-                  onChange={(e) => setAddress(e.target.value)}
+                  name="city"
+                  value={street}
+                  onChange={(e) => setStreet(e.target.value)}
                 />
               </div>
-              {/* <div className="order_input">
-                <label htmlFor="copoun">الكوبون:</label>
-                <input
-                  type="text"
-                  name="copoun"
-                  value={copoun}
-                  onChange={(e) => setCopoun(e.target.value)}
-                />
-              </div> */}
             </div>
 
             <div className="order_btn">
@@ -371,14 +403,14 @@ const Order = () => {
                 <strong>المنطقة</strong>: {order.city}
               </p>
               <p>
-                <strong>الحي</strong>: {order.address}
+                <strong>الحي</strong>: {order.neighborhood}
               </p>
               <p>
-                <strong>الشارع</strong>: {order.address}
+                <strong>الشارع</strong>: {order.street}
               </p>
               <p>
                 <strong>الكوبون</strong>:{" "}
-                {copoun ? copoun : "لم يتم استخدام اي كوبون"}
+                {inputValue ? inputValue : "لم يتم استخدام اي كوبون"}
               </p>
               <p>
                 <strong>اجمالي المبلغ</strong>: {order.totalAmount} ريال

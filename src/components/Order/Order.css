@@ -160,6 +160,33 @@
   align-items: center;
   gap: 1rem;
 }
+.order_coupon_created {
+  width: 100%;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 1rem;
+  padding: 0 5rem;
+}
+.order_coupon_created > p {
+  color: green;
+  font-size: 1.1rem;
+}
+.coupon_done {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.order_coupon_created .coupon_done p {
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+.order_coupon_created .coupon_done span {
+  color: green;
+  font-size: 1.5rem;
+}
 .loader {
   width: 48px;
   height: 48px;
@@ -216,6 +243,9 @@
 }
 .order_totalPrice .order_totalPrice_span {
   font-size: 1.1rem;
+}
+.error {
+  color: rgb(233, 0, 0);
 }
 .details_container_order_info {
   width: 100%;
@@ -331,5 +361,8 @@
   }
   .totalPrice {
     padding: 0 0;
+  }
+  .order_coupon_created {
+    padding: 0;
   }
 }
