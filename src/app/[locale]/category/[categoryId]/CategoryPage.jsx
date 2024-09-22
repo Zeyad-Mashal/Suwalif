@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import Category from "../../../../components/Category/[categoryId]/Category";
 import Navbar from "@/src/components/Navbartop/Navbar";
 import addToCartApi from "../../api/cart/addToCartApi";
-const page = () => {
+const CategoryPage = () => {
   const user_token = window.localStorage.getItem("user");
   const [cartLoading, setCartLoading] = useState(false);
   const [error, setError] = useState("");
@@ -28,4 +28,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default CategoryPage;

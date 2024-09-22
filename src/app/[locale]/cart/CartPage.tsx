@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 import Cart from "../../../components/Cart/Cart"
 import Navbar from '@/src/components/Navbartop/Navbar'
 import removeToCartApi from '../api/cart/removeToCartApi'
-const page = () => {
+const CartPage = () => {
     const [totalCart, setTotalCart] = useState(0)
     const removeCart = (setError: any, setAllCart: any, setCartNumber: any, setloading: any, productId: any) => {
         removeToCartApi(setError, setAllCart, setCartNumber, setloading, productId, setTotalCart)
@@ -16,4 +16,4 @@ const page = () => {
     )
 }
 
-export default page
+export default CartPage;
