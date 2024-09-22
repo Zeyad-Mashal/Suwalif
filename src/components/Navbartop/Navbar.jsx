@@ -352,7 +352,7 @@ const Navbar = () => {
             )}
             {logOut ? (
               <div className="logout_dropmenu">
-                <p>هل تريد تسجيل خروج ؟</p>
+                <p>مرحباً بك</p>
                 <button onClick={removeToken}>تسجيل خروج</button>
               </div>
             ) : (

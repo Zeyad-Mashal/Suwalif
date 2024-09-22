@@ -309,7 +309,9 @@ const Order = () => {
                 </select>
               </div>
               <div className="order_input">
-                <label htmlFor="address">الحي:</label>
+                <label htmlFor="address">
+                  الحي: <span>*</span>
+                </label>
                 <input
                   type="text"
                   name="address"

@@ -37,12 +37,16 @@ const Reviwes = () => {
     setRating(num);
   };
   const addRating = () => {
-    const data = {
-      rating,
-      name,
-      comment,
-    };
-    addRatingApi(setLoading, setError, data);
+    if (rating === "" || name === "" || comment === "") {
+      setError("يجب ملئ جميع البيانات");
+    } else {
+      const data = {
+        rating,
+        name,
+        comment,
+      };
+      addRatingApi(setLoading, setError, data);
+    }
   };
   const getAllRatingsApi = () => {
     getRatingApi(setLoading, setError, setAllRatings);
