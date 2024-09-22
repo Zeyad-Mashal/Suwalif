@@ -10,7 +10,7 @@ import { useTranslations } from "next-intl";
 import getToCartApi from "@/src/app/[locale]/api/cart/getToCartApi";
 import updateToCartApi from "@/src/app/[locale]/api/cart/updateToCartApi";
 import removeToCartApi from "@/src/app/[locale]/api/cart/removeToCartApi";
-const Cart = () => {
+const Cart = ({ removeCart }) => {
   useEffect(() => {
     getToCart();
   }, []);
@@ -21,6 +21,7 @@ const Cart = () => {
   const [loading, setloading] = useState(false);
   const [error, setError] = useState("");
   const [cartLoading, setCartLoading] = useState(false);
+  const [totalCart, setTotalCart] = useState(0);
 
   const incrementCount = (quantity, productId) => {
     quantity += 1;
@@ -34,7 +35,7 @@ const Cart = () => {
     updateToCart(quantity, productId);
   };
   const getToCart = () => {
-    getToCartApi(setloading, setError, setAllCart, setCartNumber);
+    getToCartApi(setloading, setError, setAllCart, setCartNumber, setTotalCart);
   };
   const updateToCart = (quantity, productId) => {
     const data = {
@@ -56,7 +57,6 @@ const Cart = () => {
   const user_token = window.localStorage.getItem("user");
   return (
     <>
-      <NavbarTop />
       <section className="cart mt-28">
         <div className="cart_container">
           <h1 className="text-white">{t("title")}</h1>
@@ -87,7 +87,15 @@ const Cart = () => {
                     </div>
                     <FontAwesomeIcon
                       icon={faCircleXmark}
-                      onClick={() => deleteFromCart(item.product._id)}
+                      onClick={() =>
+                        removeCart(
+                          setError,
+                          setAllCart,
+                          setCartNumber,
+                          setloading,
+                          item.product._id
+                        )
+                      }
                     />
                     <div className="quantity">
                       <button

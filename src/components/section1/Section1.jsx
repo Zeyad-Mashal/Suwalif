@@ -30,7 +30,7 @@ import {
 import { useRouter } from "next/navigation";
 import LoginAPI from "@/src/app/[locale]/api/auth/login.api";
 import VerificationLoginCode from "@/src/app/[locale]/api/auth/VerificationLogin.api";
-const Section1 = () => {
+const Section1 = ({ onAddToCart, login, setLogin }) => {
   useEffect(() => {
     getAllProductsBySection();
   }, []);
@@ -40,7 +40,6 @@ const Section1 = () => {
   const [Loading, setLoading] = useState(false);
   const [cartLoading, setCartLoading] = useState(false);
   const [error, setError] = useState("");
-  const [login, setLogin] = useState(false);
   const [emailOrPhone, setemailOrPhone] = useState("");
   const [code, setCode] = useState("");
 
@@ -48,17 +47,6 @@ const Section1 = () => {
     getBySection(setLoading, setError, setBySection, "topSale");
   };
   const lang = window.localStorage.getItem("translation");
-  const user_token = window.localStorage.getItem("user");
-  const addToCart = (productId) => {
-    if (user_token) {
-      const data = {
-        quantity: 1,
-      };
-      addToCartApi(setCartLoading, setError, productId, data);
-    } else {
-      setLogin(true);
-    }
-  };
   const handleLogin = () => {
     if (emailOrPhone == "") {
       setError("Please enter your email or phone number");
@@ -136,7 +124,7 @@ const Section1 = () => {
                           </p>
                           <div
                             className="cart_btn"
-                            onClick={() => addToCart(item._id)}
+                            onClick={() => onAddToCart(item._id)}
                           >
                             <button className="cart_btn_button">
                               {lang == "ar" ? "أضف الي السلة" : "Add To Cart"}

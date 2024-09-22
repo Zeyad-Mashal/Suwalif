@@ -19,7 +19,7 @@ import addToCartApi from "@/src/app/[locale]/api/cart/addToCartApi";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useTranslations } from "next-intl";
-const Details = () => {
+const Details = ({ onAddToCart }) => {
   useEffect(() => {
     getProductById();
   }, []);
@@ -93,7 +93,6 @@ const Details = () => {
 
   return (
     <>
-      <NavbarTop />
       <div className="details">
         <div className="details_container">
           <div className="details_item">
@@ -199,7 +198,7 @@ const Details = () => {
                   </span>
                 </div>
                 <div className="cart_done cart_btn">
-                  <button onClick={() => addToCart(products._id)}>
+                  <button onClick={() => onAddToCart(products._id)}>
                     {lang == "ar" ? "أضف الي السلة" : "Add To Cart"}
                   </button>
                   <FontAwesomeIcon

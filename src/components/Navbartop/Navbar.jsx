@@ -23,9 +23,11 @@ import { useRouter } from "next/navigation";
 import LoginAPI from "@/src/app/[locale]/api/auth/login.api";
 import VerificationLoginCode from "@/src/app/[locale]/api/auth/VerificationLogin.api";
 import { CartContext } from "../../app/[locale]/api/cart/CartContext";
-const Navbar = () => {
+import getToCartApi from "@/src/app/[locale]/api/cart/getToCartApi";
+const Navbar = ({ totalCart, setTotalCart }) => {
   useEffect(() => {
     getAllCategories();
+    getToCartAPI();
   }, []);
   const t = useTranslations("navbar");
   const { cartItems } = useContext(CartContext);
@@ -45,6 +47,7 @@ const Navbar = () => {
   const [emailOrPhone, setemailOrPhone] = useState("");
   const [openMobileTranslate, setOpenMobileTranslate] = useState(false);
   const [allCart, setAllCart] = useState([]);
+  const [cartNumber, setCartNumber] = useState("");
 
   const openMobileNavbar = () => {
     setIsMobileNavbarOpen(true);
@@ -120,6 +123,9 @@ const Navbar = () => {
       VerificationLoginCode(setloading, setError, data);
     }
   };
+  const getToCartAPI = () => {
+    getToCartApi(setloading, setError, setAllCart, setCartNumber, setTotalCart);
+  };
   return (
     <>
       <div className="navbar_top">
@@ -175,7 +181,7 @@ const Navbar = () => {
 
         <div className="nav_icons">
           <Link href={`/${lang}/cart`} className="cart_link">
-            {/* <span>{cartItems?.length || 0}</span> */}
+            <span>{totalCart}</span>
             <FontAwesomeIcon icon={faCartShopping} width={30} />
           </Link>
           <Link href={`/${lang}/addtofav`}>
@@ -329,7 +335,7 @@ const Navbar = () => {
           </Link>
           <div className="nav_icons flag_mob">
             <Link href={`/${lang}/cart`} className="cart_link">
-              {/* <span>1</span> */}
+              <span>{totalCart}</span>
               <FontAwesomeIcon icon={faCartShopping} width={30} />
             </Link>
             <Link href={`/${lang}/addtofav`}>

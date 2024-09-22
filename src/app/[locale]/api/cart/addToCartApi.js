@@ -1,7 +1,7 @@
 const URL = "https://back.suwalifstore.com/cart/add/";
 const lang = window.localStorage.getItem("translation")
 const USER_TOKEN = window.localStorage.getItem("user")
-const addToCartApi = async (setCartLoading, setError, productId, data) => {
+const addToCartApi = async (setCartLoading, setError, productId, data, setTotalCart) => {
     setCartLoading(true)
     try {
         const response = await fetch(`${URL}${productId}`, {
@@ -19,6 +19,7 @@ const addToCartApi = async (setCartLoading, setError, productId, data) => {
         console.log(result);
 
         if (response.ok) {
+            setTotalCart(result.totalProducts)
             const cartPopup = document.querySelector(".cart_popop_container");
 
             cartPopup.style.transform = "translateX(0%)"; // Move to 0px

@@ -1,7 +1,7 @@
 const URL = "https://back.suwalifstore.com/cart/get";
 const lang = window.localStorage.getItem("translation")
 const USER_TOKEN = window.localStorage.getItem("user")
-const getToCartApi = async (setloading, setError, setAllCart, setCartNumber) => {
+const getToCartApi = async (setloading, setError, setAllCart, setCartNumber, setTotalCart) => {
     setloading(true)
     try {
         const response = await fetch(URL, {
@@ -19,6 +19,7 @@ const getToCartApi = async (setloading, setError, setAllCart, setCartNumber) => 
 
 
         if (response.ok) {
+            setTotalCart(result.totalProducts)
             setAllCart(result.cartItems)
             setCartNumber(result.totalPrice)
             setloading(false);

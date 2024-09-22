@@ -12,7 +12,7 @@ import addToCartApi from "@/src/app/[locale]/api/cart/addToCartApi";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faX } from "@fortawesome/free-solid-svg-icons";
 
-const Category = () => {
+const Category = ({ onAddToCart }) => {
   useEffect(() => {
     getAllproductsByCategory();
   }, []);
@@ -52,7 +52,6 @@ const Category = () => {
   };
   return (
     <>
-      <Navbar />
       <div className="category">
         <h1>{allProductsByCategory[0]?.category}</h1>
         <div className="category_list">
@@ -76,7 +75,7 @@ const Category = () => {
                       <p>
                         {item.price} {lang == "ar" ? "ريال" : "SAR"}
                       </p>
-                      <button onClick={() => addToCart(item._id)}>
+                      <button onClick={() => onAddToCart(item._id)}>
                         {lang == "ar" ? "أضف الي السلة" : "Add To Cart"}
                       </button>
                     </div>

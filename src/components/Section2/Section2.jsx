@@ -16,43 +16,65 @@ import Image from "next/image";
 import { useTranslations } from "next-intl";
 import getBySection from "@/src/app/[locale]/api/topSale/getBySection";
 import Link from "next/link";
-import addToCartApi from "@/src/app/[locale]/api/cart/addToCartApi";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faX } from "@fortawesome/free-solid-svg-icons";
-import { useRouter } from "next/navigation";
+import {
+  faX,
+  faUser,
+  faEnvelope,
+  faMobile,
+} from "@fortawesome/free-solid-svg-icons";
 
-const Section2 = () => {
+const Section2 = ({ onAddToCart, login, setLogin }) => {
   useEffect(() => {
     getAllProductsSection();
   }, []);
-  const { push } = useRouter();
 
   const t = useTranslations("sectionTwo");
   const [bySection, setBySection] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [cartLoading, setCartLoading] = useState(false);
+  const [emailOrPhone, setemailOrPhone] = useState("");
+  const [code, setCode] = useState("");
 
   const getAllProductsSection = () => {
     getBySection(setLoading, setError, setBySection, "offers");
   };
   const lang = window.localStorage.getItem("translation");
-  const user_token = window.localStorage.getItem("user");
-  const addToCart = (productId) => {
-    if (user_token) {
-      const data = {
-        quantity: 1,
-      };
-      addToCartApi(setCartLoading, setError, productId, data);
-    } else {
-      document.querySelector(".cart_notLogin").style.display = "flex";
-      setTimeout(() => {
-        document.querySelector(".cart_notLogin").style.display = "none";
-      }, 4000);
-    }
-  };
   const closeCartPopup = () => {
     document.querySelector(".cart_popop").style.display = "none";
+  };
+  const handleLogin = () => {
+    if (emailOrPhone == "") {
+      setError("Please enter your email or phone number");
+    } else {
+      const data = {
+        emailOrPhone: emailOrPhone,
+      };
+      LoginAPI(setError, data);
+    }
+    document.querySelector(".login_btn_way").style.display = "none";
+  };
+  const hendleVerifyCode = () => {
+    if (code == "") {
+      setError("يرجي إادخال رمز التحقق المرسل");
+    } else {
+      const data = {
+        emailOrPhone,
+        verificationCode: code,
+      };
+      VerificationLoginCode(setLoading, setError, data);
+    }
+  };
+  const handleOpenPhone = () => {
+    document.querySelector(".section_2_phone").style.display = "flex";
+    document.querySelector(".login_section2").style.display = "none";
+    document.querySelector(".login_ways_p_section2").style.display = "none";
+  };
+  const handleOpenemail = () => {
+    document.querySelector(".email_way_section2").style.display = "flex";
+    document.querySelector(".login_section2").style.display = "none";
+    document.querySelector(".login_ways_p_section2").style.display = "none";
   };
   return (
     <section className="section2">
@@ -89,7 +111,7 @@ const Section2 = () => {
                             </p>
                             <div
                               className="cart_btn"
-                              onClick={() => addToCart(item._id)}
+                              onClick={() => onAddToCart(item._id)}
                             >
                               <button className="cart_btn_button">
                                 {lang == "ar" ? "أضف الي السلة" : "Add To Cart"}
@@ -115,6 +137,89 @@ const Section2 = () => {
               <Link href={`${lang}/cart`}>عرض السلة</Link>
             </div>
           </div>
+          {login ? (
+            <div className="login">
+              <div
+                className="login_container"
+                onClick={() => setLogin(!login)}
+              ></div>
+              <div className="login_content">
+                <FontAwesomeIcon
+                  icon={faX}
+                  className="close_login"
+                  onClick={() => setLogin(!login)}
+                />
+                <FontAwesomeIcon icon={faUser} />
+                <h3>تسجيل الدخول</h3>
+                <p className="login_ways_p login_ways_p_section2">
+                  أختر وسيلة التسجيل
+                </p>
+
+                <div className="phone_way section_2_phone">
+                  <p>رقم الجوال: </p>
+                  <div className="phone_input">
+                    <input
+                      type="text"
+                      placeholder="51 234 5678"
+                      value={emailOrPhone}
+                      onChange={(e) => setemailOrPhone(e.target.value)}
+                    />
+                    <span>+966</span>
+                  </div>
+                  {error}
+                  <button onClick={handleLogin} className="login_btn_way">
+                    ارسال رمز التحقق
+                  </button>
+                </div>
+
+                <div className="email_way email_way_section2">
+                  <p>البريد الالكتروني: </p>
+                  <div className="email_input">
+                    <input
+                      type="text"
+                      placeholder="example1@email.com"
+                      value={emailOrPhone}
+                      onChange={(e) => setemailOrPhone(e.target.value)}
+                    />
+                    <span>
+                      <FontAwesomeIcon icon={faEnvelope} />
+                    </span>
+                  </div>
+                  {error}
+                  <button onClick={handleLogin} className="login_btn_way">
+                    ارسال رمز التحقق
+                  </button>
+                </div>
+
+                <div className="code">
+                  <p>يرجي إدخال رمز التحقق</p>
+                  <div className="code_input">
+                    <input
+                      type="text"
+                      placeholder="رمز التحقق"
+                      value={code}
+                      onChange={(e) => setCode(e.target.value)}
+                    />
+                  </div>
+                  {error}
+                  <button onClick={hendleVerifyCode}>دخول</button>
+                </div>
+
+                <div className="login_ways login_section2">
+                  <div className="login_phone" onClick={handleOpenPhone}>
+                    <FontAwesomeIcon icon={faMobile} />
+                    <p>رسالة نصية</p>
+                  </div>
+                  <div className="login_email" onClick={handleOpenemail}>
+                    <FontAwesomeIcon icon={faEnvelope} />
+                    <p>البريد الألكتروني</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          ) : (
+            ""
+          )}
           <div className="cart_notLogin">
             <div className="cart_notLogin_container">
               <Image

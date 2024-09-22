@@ -1,7 +1,7 @@
 const URL = "https://back.suwalifstore.com/cart/remove/";
 const lang = window.localStorage.getItem("translation")
 const USER_TOKEN = localStorage.getItem("user");
-const removeToCartApi = async (setError, setAllCart, setCartNumber, setloading, productId) => {
+const removeToCartApi = async (setError, setAllCart, setCartNumber, setloading, productId, setTotalCart) => {
     setloading(true)
     try {
         const response = await fetch(`${URL}${productId}`, {
@@ -16,6 +16,7 @@ const removeToCartApi = async (setError, setAllCart, setCartNumber, setloading, 
         const result = await response.json();
 
         if (response.ok) {
+            setTotalCart(result.totalProducts)
             setAllCart(result.cartItems)
             setCartNumber(result.totalPrice)
             setloading(false)
