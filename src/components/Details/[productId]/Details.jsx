@@ -144,9 +144,7 @@ const Details = ({ onAddToCart }) => {
             </div>
             <div className="item_content">
               <h3>{products?.name}</h3>
-              <span>
-                {products?.stock} {lang == "ar" ? "ظرف" : "Envelope"}
-              </span>
+              <span>{products?.packaging}</span>
               <h4>
                 {products?.price} {lang == "ar" ? "ريال" : "SAR"}
               </h4>

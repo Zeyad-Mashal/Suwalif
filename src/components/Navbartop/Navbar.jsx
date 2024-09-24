@@ -48,7 +48,7 @@ const Navbar = ({ totalCart, setTotalCart }) => {
   const [openMobileTranslate, setOpenMobileTranslate] = useState(false);
   const [allCart, setAllCart] = useState([]);
   const [cartNumber, setCartNumber] = useState("");
-
+  const [loginLoading, setLoginLoading] = useState(false);
   const openMobileNavbar = () => {
     setIsMobileNavbarOpen(true);
   };
@@ -107,7 +107,7 @@ const Navbar = ({ totalCart, setTotalCart }) => {
       const data = {
         emailOrPhone: emailOrPhone,
       };
-      LoginAPI(setLoading, setError, data);
+      LoginAPI(setLoginLoading, setError, data);
     }
     document.querySelector(".login_btn_way").style.display = "none";
   };
@@ -124,7 +124,15 @@ const Navbar = ({ totalCart, setTotalCart }) => {
     }
   };
   const getToCartAPI = () => {
-    getToCartApi(setloading, setError, setAllCart, setCartNumber, setTotalCart);
+    if (user_token) {
+      getToCartApi(
+        setloading,
+        setError,
+        setAllCart,
+        setCartNumber,
+        setTotalCart
+      );
+    }
   };
   return (
     <>
@@ -266,7 +274,11 @@ const Navbar = ({ totalCart, setTotalCart }) => {
               </div>
               {error}
               <button onClick={handleLogin} className="login_btn_way">
-                {Loading ? <span class="loader"></span> : "ارسال رمز التحقق"}
+                {loginLoading ? (
+                  <span class="loader login_loading"></span>
+                ) : (
+                  "ارسال رمز التحقق"
+                )}
               </button>
             </div>
 
@@ -285,7 +297,11 @@ const Navbar = ({ totalCart, setTotalCart }) => {
               </div>
               {error}
               <button onClick={handleLogin} className="login_btn_way">
-                {Loading ? <span class="loader"></span> : "ارسال رمز التحقق"}
+                {loginLoading ? (
+                  <span class="loader login_loading"></span>
+                ) : (
+                  "ارسال رمز التحقق"
+                )}
               </button>
             </div>
 

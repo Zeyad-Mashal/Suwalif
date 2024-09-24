@@ -559,6 +559,16 @@
     transform: rotate(360deg);
   }
 }
+.login_loading {
+  width: 18px;
+  height: 18px;
+  border: 3px solid #fff;
+  border-bottom-color: transparent;
+  border-radius: 50%;
+  display: inline-block;
+  box-sizing: border-box;
+  animation: rotation 1s linear infinite;
+}
 @media screen and (max-width: 789px) {
   .mobile {
     display: block;
