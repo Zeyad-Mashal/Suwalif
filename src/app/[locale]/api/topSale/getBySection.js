@@ -1,4 +1,4 @@
-const URL = "https://back.suwalifstore.com/product/getBySection?section=";
+const URL = "https://suwalif-s9rn.onrender.com/product/getBySection?section=";
 const lang = window.localStorage.getItem("translation")
 const getBySection = async (setLoading, setError, setBySection, sections) => {
     setLoading(true)

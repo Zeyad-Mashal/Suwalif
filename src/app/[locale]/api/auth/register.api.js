@@ -1,4 +1,4 @@
-const URL = "https://back.suwalifstore.com/auth/register";
+const URL = "https://suwalif-s9rn.onrender.com/auth/register";
 const lang = window.localStorage.getItem("translation")
 const RegisterAPI = async (setloading, setError, data, push) => {
     setloading(true)

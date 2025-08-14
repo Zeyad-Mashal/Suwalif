@@ -1,4 +1,4 @@
-const URL = "https://back.suwalifstore.com/category/get";
+const URL = "https://suwalif-s9rn.onrender.com/category/get";
 const lang = window.localStorage.getItem("translation")
 const getCategoriesApi = async (setloading, setError, setAllCategories) => {
     setloading(true)

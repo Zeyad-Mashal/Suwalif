@@ -1,4 +1,4 @@
-const URL = "https://back.suwalifstore.com/feedback/get?type=visible";
+const URL = "https://suwalif-s9rn.onrender.com/feedback/get?type=visible";
 const getRatingApi = async (setloading, setError, setAllRatings) => {
     setloading(true)
     try {

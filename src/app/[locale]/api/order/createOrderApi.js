@@ -1,4 +1,4 @@
-const URL = "https://back.suwalifstore.com/order/create";
+const URL = "https://suwalif-s9rn.onrender.com/order/create";
 const USER_TOKEN = window.localStorage.getItem("user")
 const createOrderApi = async (setloading, setError, setOrder, setUser, orderData) => {
     setloading(true)

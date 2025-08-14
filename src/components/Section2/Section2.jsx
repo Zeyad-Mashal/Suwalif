@@ -24,6 +24,8 @@ import {
   faMobile,
 } from "@fortawesome/free-solid-svg-icons";
 
+import LoginAPI from "@/src/app/[locale]/api/auth/login.api";
+
 const Section2 = ({ onAddToCart, login, setLogin }) => {
   useEffect(() => {
     getAllProductsSection();
@@ -51,7 +53,7 @@ const Section2 = ({ onAddToCart, login, setLogin }) => {
       const data = {
         emailOrPhone: emailOrPhone,
       };
-      LoginAPI(setError, data);
+      LoginAPI(setLoading, setError, data);
     }
     document.querySelector(".login_btn_way").style.display = "none";
   };

@@ -1,4 +1,4 @@
-const URL = "https://back.suwalifstore.com/product/details/";
+const URL = "https://suwalif-s9rn.onrender.com/product/details/";
 const lang = window.localStorage.getItem("translation")
 const getProductByIdApi = async (setloading, setError, setProducts, setRelatedproducts, productId, setOriginalPrice) => {
     setloading(true)

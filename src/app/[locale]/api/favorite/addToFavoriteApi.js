@@ -1,4 +1,4 @@
-const URL = "https://back.suwalifstore.com/favorite/add/";
+const URL = "https://suwalif-s9rn.onrender.com/favorite/add/";
 const lang = window.localStorage.getItem("translation")
 const USER_TOKEN = window.localStorage.getItem("user")
 const addToFavoriteApi = async (setloading, setError, productId) => {

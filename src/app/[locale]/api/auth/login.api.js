@@ -1,9 +1,7 @@
-import { faListSquares } from "@fortawesome/free-solid-svg-icons";
-
-const URL = "https://back.suwalifstore.com/auth/login";
+const URL = "https://suwalif-s9rn.onrender.com/auth/login";
 const lang = window.localStorage.getItem("translation");
-const LoginAPI = async (setLoginLoading, setError, data) => {
-    setLoginLoading(true)
+const LoginAPI = async (setLoading, setError, data) => {
+    setLoading(true)
     try {
         const response = await fetch(URL, {
             method: 'POST',
@@ -19,26 +17,26 @@ const LoginAPI = async (setLoginLoading, setError, data) => {
         console.log(result);
 
         if (response.ok) {
-            setLoginLoading(false)
+            setLoading(false)
             document.querySelector(".code").style.display = "flex"
             document.querySelector(".email_way .login_btn_way").style.display = "none"
         } else {
             if (response.status == 404) {
                 setError(result.message)
-                setLoginLoading(false)
+                setLoading(false)
             } else if (response.status == 400) {
                 setError(result.message)
-                setLoginLoading(false)
+                setLoading(false)
             }
             else if (response.status == 500) {
                 setError(result.message)
-                setLoginLoading(false)
+                setLoading(false)
             }
-            setLoginLoading(false)
+            setLoading(false)
         }
     } catch (error) {
         setError('An error occurred');
-        setLoginLoading(false)
+        setLoading(false)
     }
 }
 export default LoginAPI;

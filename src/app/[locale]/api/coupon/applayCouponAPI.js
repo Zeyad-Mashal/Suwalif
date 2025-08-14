@@ -1,4 +1,4 @@
-const URL = "https://back.suwalifstore.com/coupon/apply";
+const URL = "https://suwalif-s9rn.onrender.com/coupon/apply";
 const USER_TOKEN = window.localStorage.getItem("user")
 const ApplayCouponAPI = async (setloading, setError, setDiscountPercentage, data) => {
     setloading(true)

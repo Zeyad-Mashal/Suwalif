@@ -1,4 +1,4 @@
-const URL = "https://back.suwalifstore.com/cart/add/";
+const URL = "https://suwalif-s9rn.onrender.com/cart/add/";
 const lang = window.localStorage.getItem("translation")
 const USER_TOKEN = window.localStorage.getItem("user")
 const addToCartApi = async (setCartLoading, setError, productId, data, setTotalCart) => {

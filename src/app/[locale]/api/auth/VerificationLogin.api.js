@@ -1,4 +1,4 @@
-const URL = "https://back.suwalifstore.com/auth/verify";
+const URL = "https://suwalif-s9rn.onrender.com/auth/verify";
 const lang = window.localStorage.getItem("translation")
 const VerificationLoginCode = async (setloading, setError, data) => {
     setloading(true)

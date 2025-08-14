@@ -1,4 +1,4 @@
-const URL = "https://back.suwalifstore.com/feedback/add";
+const URL = "https://suwalif-s9rn.onrender.com/feedback/add";
 const lang = window.localStorage.getItem("translation")
 const addRatingApi = async (setloading, setError, data) => {
     setloading(true)
